@@ -2,3 +2,4 @@
 
 Elle Whaley
 Adetola Oyawoye
+Elton John
