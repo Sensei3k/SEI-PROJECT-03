@@ -19,6 +19,24 @@ const userSchema = new mongoose.Schema({
   passwordConfirmation: {
     type: String,
     required: 'Please confirm your password'
+  },
+  dateOfBirth: {
+    type: Date,
+    required: 'Please enter your date of birth'
+  },
+  location: {
+    type: String,
+    required: 'Please enter a location'
+  },
+  gender: {
+    type: String,
+    enum: ['male', 'female', 'other']
+  },
+  image: {
+    type: String
+  },
+  interests: {
+    type: String
   }
 })
 
