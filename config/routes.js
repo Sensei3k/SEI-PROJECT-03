@@ -2,7 +2,7 @@ const router = require('express').Router()
 const usersController = require('../controllers/users')
 const authController = require('../controllers/auth')
 //const authController = require('../controllers/auth')
-//const secureRoute = require('../lib/secureRoute')
+const secureRoute = require('../lib/secureRoute')
 
 router.get('/', (req,res) => res.json({ message: 'Welcome to the Dating App API' }))
 
@@ -12,7 +12,7 @@ router.post('/users', usersController.create)
 router.put('/users/:id', usersController.update)
 router.delete('/users/:id', usersController.delete)
 
-router.get('/users/show/:id', usersController.showProfile)
+router.get('/users/show/:id', secureRoute, usersController.showProfile)
 
 router.post('/register', authController.register)
 router.post('/login', authController.login)
