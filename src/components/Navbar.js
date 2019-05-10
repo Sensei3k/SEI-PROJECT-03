@@ -45,27 +45,16 @@ class Navbar extends React.Component {
 
                 <form onSubmit={this.handleSubmit}>
                   <div className="field has-addons">
-                    <div className="control">
-                      <input className="input is-small is-full-width" type="search" onChange={this.handleSearch} placeholder="Find Your Match" />
-                    </div>
-                    <div className="control">
-                      <button className="button is-light is-small">
-                        <i className="fas fa-search"></i>
-                      </button>
-                    </div>
+
                   </div>
                 </form>
 
               </div>
             </div>
             <div className="navbar-end">
-              <div className="navbar-item" id="insta"></div>
-            </div>
-            <div className="navbar-end">
-              <div className="navbar-item" id="twitter"></div>
-            </div>
-            <div className="navbar-end">
               <a href="" rel="noopener noreferrer" target="_blank"><div className="navbar-item" id="facebook"></div></a>
+              <a className="button is-link">Register</a>
+              <a className="button is-link">Login</a>
             </div>
           </div>
         </div>
