@@ -7,11 +7,8 @@ import Register from './auth/Register'
 import Login from './auth/Login'
 import UsersIndex from './components/UsersIndex'
 
-
-import Home from './components/Home'
 import Navbar from './components/Navbar'
-import Register from './components/Register'
-import UsersIndex from './components/UsersIndex'
+
 
 import 'bulma'
 import './style.scss'
