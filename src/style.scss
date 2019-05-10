@@ -1,0 +1,48 @@
+
+$hr-color: #bbd9ea;
+
+body {
+  background-image: url('https://wallpaperstudio10.com/static/wpdb/wallpapers/3840x2160/181007.jpg');
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-image: contain;
+
+
+  .button {
+    width: 50px;
+  }
+
+  #facebook {
+    background-image: url('https://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png');
+    background-size: contain;
+    width: 50px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 10px;
+  }
+
+  .logo {
+    background-image: url('http://www.clker.com/cliparts/9/D/t/Z/i/2/light-blue-heart-hi.png');
+    background-size: contain;
+    width: 50px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 10px;
+  }
+
+  .input {
+      width: 500px;
+    }
+
+    hr {
+      border: 1px solid $hr-color;
+   }
+
+   i {
+    font-size: 20px;
+   }
+
+}

@@ -39,18 +39,18 @@ class Navbar extends React.Component {
 
           <div className="navbar-menu">
             <div className="navbar-start is-full-width">
-              <Link to="/" className="navbar-item">Home</Link>
+              <Link to="/" className="navbar-item logo"></Link>
 
               <div className="navbar-item is-full-width">
 
                 <form onSubmit={this.handleSubmit}>
                   <div className="field has-addons">
                     <div className="control">
-                      <input className="input is-small is-full-width" type="search" onChange={this.handleSearch} placeholder="Search music" />
+                      <input className="input is-small is-full-width" type="search" onChange={this.handleSearch} placeholder="Find Your Match" />
                     </div>
                     <div className="control">
                       <button className="button is-light is-small">
-                        <i className="fas fa-caret-right"></i>
+                        <i className="fas fa-search"></i>
                       </button>
                     </div>
                   </div>
@@ -58,9 +58,14 @@ class Navbar extends React.Component {
 
               </div>
             </div>
-
             <div className="navbar-end">
-              <a href="/" rel="noopener noreferrer" target="_blank"><div className="navbar-item" id="logo"></div></a>
+              <div className="navbar-item" id="insta"></div>
+            </div>
+            <div className="navbar-end">
+              <div className="navbar-item" id="twitter"></div>
+            </div>
+            <div className="navbar-end">
+              <a href="" rel="noopener noreferrer" target="_blank"><div className="navbar-item" id="facebook"></div></a>
             </div>
           </div>
         </div>
