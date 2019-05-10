@@ -15,7 +15,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1991, 11, 25),
-    location: 'London',
+    location: 'New York',
     image: 'https://cdn2.iconfinder.com/data/icons/business-and-finance-related-hand-gestures/256/face_human_blank_user_avatar_mannequin_dummy-512.png'
   }, {
 
@@ -35,7 +35,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1994, 2, 19),
-    location: 'London',
+    location: 'Mexico City',
     image: 'https://cdn2.iconfinder.com/data/icons/business-and-finance-related-hand-gestures/256/face_female_blank_user_avatar_mannequin-512.png'
 
   }, {
@@ -46,7 +46,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1992, 6, 17),
-    location: 'London',
+    location: 'Paris',
     image: 'https://cdn2.iconfinder.com/data/icons/business-and-finance-related-hand-gestures/256/face_human_blank_user_avatar_mannequin_dummy-512.png'
 
   }, {
@@ -57,7 +57,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1993, 5, 11),
-    location: 'London',
+    location: 'Paris',
     image: 'https://i.pinimg.com/736x/d2/e7/ab/d2e7ab5a97279f2fa98db80fc80482ca--male-model-headshots-professional-headshots.jpg'
 
   }, {
@@ -68,7 +68,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1996, 8, 17),
-    location: 'London',
+    location: 'Paris',
     image: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTU0MTI1OTI0Nl5BMl5BanBnXkFtZTgwMTY1NTk5NjE@._V1_.jpg'
 
   }, {
@@ -79,7 +79,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1998, 9, 27),
-    location: 'London',
+    location: 'Mexico City',
     image: 'https://i.pinimg.com/736x/c0/00/ff/c000ffde132b9ff55342a698e95a5cc5--dark-blonde-model-face.jpg'
 
   }, {
@@ -90,7 +90,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1996, 4, 23),
-    location: 'London',
+    location: 'Amsterdam',
     image: 'http://www.thevandallist.com/wp-content/uploads/2013/09/tumblr_mrdcfp8RMG1r615eio1_1280.jpg'
 
     // 9.)
@@ -100,7 +100,7 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(2000, 2, 11),
-    location: 'London',
+    location: 'Paris',
     image: 'https://i.pinimg.com/736x/fc/d9/06/fcd906e2a207577f265958f8fcc150ed.jpg'
 
     // 10.)
