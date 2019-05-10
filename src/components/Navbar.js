@@ -20,7 +20,7 @@ class Navbar extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    this.props.history.push(`/search/${this.state.data}`)
+    this.props.history.push(`/${this.state.data}`)
   }
 
   render() {
@@ -52,9 +52,8 @@ class Navbar extends React.Component {
               </div>
             </div>
             <div className="navbar-end">
-              <a href="" rel="noopener noreferrer" target="_blank"><div className="navbar-item" id="facebook"></div></a>
-              <a className="button is-link">Register</a>
-              <a className="button is-link">Login</a>
+              <Link to="/register" className="navbar-item">Register</Link>
+              <Link to="/login" className="navbar-item">Login</Link>
             </div>
           </div>
         </div>

@@ -8,8 +8,14 @@ body {
   background-image: contain;
 
 
-  .button {
-    width: 50px;
+  a.navbar-item {
+    width: 80px;
+    padding-top: 10px;
+  }
+
+  a.navbar-item-one {
+    width: 80px;
+    padding-top: 10px;
   }
 
   #facebook {
