@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema({
   },
   location: {
     type: String
-    // required: 'Please enter a location'
   },
   gender: {
     type: String,

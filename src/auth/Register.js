@@ -27,6 +27,7 @@ class Register extends React.Component {
       .catch(err => this.setState({errors: err.response.data.errors}))
   }
 
+  // within render, added a dropdown menu for location.
   render() {
     return (
       <section className="section">
@@ -46,6 +47,27 @@ class Register extends React.Component {
                   <label className="label">Email</label>
                   <div className="control">
                     <input className="input" name="email" placeholder="eg: leela@planetexpress.nnyc" onChange={this.handleChange} />
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label">Location</label>
+                  <div className="select">
+                    <select>
+                      <option value="">Select</option>
+                      <option value="Amsterdam">Amsterdam</option>
+                      <option value="london">London</option>
+                      <option value="manchester">Manchester</option>
+                      <option value="birmingham">Birmingham</option>
+                      <option value="mexico-city">Mexico City</option>
+                      <option value="Berlin">Berlin</option>
+                      <option value="Paris">Paris</option>
+                      <option value="Brussels">Brussels</option>
+                      <option value="Qubec">Qubec</option>
+                      <option value="Montreal">Montreal</option>
+                      <option value="New York">New York</option>
+                      <option value="Venice">Venice</option>
+                    </select>
                   </div>
                 </div>
 
@@ -74,18 +96,18 @@ class Register extends React.Component {
 }
 
 
-                // <div className="field">
-                //   <label className="label">Date of Birth</label>
-                //   <div className="control">
-                //     <input className="input" name="Date of Birth" type="number" placeholder="YYYY-MM-DD" onChange={this.handleChange} />
-                //   </div>
-                // </div>
-                //
-                // <div className="field">
-                //   <label className="label">Location</label>
-                //   <div className="control">
-                //     <input className="input" name="Location" placeholder="eg: London, Tokyo, New York " onChange={this.handleChange} />
-                //   </div>
-                // </div>
+// <div className="field">
+//   <label className="label">Date of Birth</label>
+//   <div className="control">
+//     <input className="input" name="Date of Birth" type="number" placeholder="YYYY-MM-DD" onChange={this.handleChange} />
+//   </div>
+// </div>
+//
+// <div className="field">
+//   <label className="label">Location</label>
+//   <div className="control">
+//     <input className="input" name="Location" placeholder="eg: London, Tokyo, New York " onChange={this.handleChange} />
+//   </div>
+// </div>
 
 export default Register
