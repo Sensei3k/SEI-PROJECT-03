@@ -10,6 +10,6 @@ mongoose.connect(dbUri)
 
 
 app.use(bodyParser.json())
-app.use(routes)
+app.use('/api', routes)
 
 app.listen(port, () => console.log(`App is listening on port ${port}`))
