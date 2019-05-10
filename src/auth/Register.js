@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import DatePicker from 'react-datepicker'
 
 class Register extends React.Component {
   constructor() {
@@ -70,14 +69,6 @@ class Register extends React.Component {
                       <option value="Venice">Venice</option>
                     </select>
                   </div>
-                </div>
-
-                <div className="field">
-                  <label className="label">Date</label>
-                  <DatePicker
-                    dateFormat="yyyy/MM/dd"
-                    selected={this.state.startDate}
-                    onChange={this.handleChange} />
                 </div>
 
                 <div className="field">
