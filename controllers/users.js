@@ -38,13 +38,14 @@ function deleteRoute(req, res, next) {
 
 function showProfileRoute(req, res, next) {
   // get a specific character
-  User.findById(req.params.id)
-    .select('-email -password -passwordConfirmation -__v') // convert the user ID into the whole user object
-    .then(user => res.json(user)) // send it as JSON
-    .catch(next) // handle our errors
   // User.findById(req.params.id)
-  //   .then(user => res.json(user))
-  //   .catch(next)
+  //   .select('-email -password -passwordConfirmation -__v') // convert the user ID into the whole user object
+  //   .then(user => res.json(user)) // send it as JSON
+  //   .catch(next) // handle our errors
+
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(next)
 }
 
 module.exports = {
