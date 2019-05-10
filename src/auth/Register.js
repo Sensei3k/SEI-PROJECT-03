@@ -7,12 +7,19 @@ class Register extends React.Component {
 
     this.state = {
       data: {},
-      errors: {}
+      errors: {},
+      startDate: new Date()
     }
 
+    this.handleDateChange = this.handleDateChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
 
+  }
+
+  handleDateChange(e) {
+    const date = {...this.state.data, [e.target.name]: e.target.value}
+    this.setState({ data: date })
   }
 
   handleChange(e) {
@@ -69,6 +76,11 @@ class Register extends React.Component {
                       <option value="Venice">Venice</option>
                     </select>
                   </div>
+                </div>
+
+                <div className="field">
+                  <div className="label">D.O.B</div>
+                  <input type="date" id="dob" name="dob" max="2000-01-01" onChange={this.handleDateChange}/>
                 </div>
 
                 <div className="field">
