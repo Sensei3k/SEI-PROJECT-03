@@ -29,7 +29,7 @@ class Login extends React.Component {
       // set the token in localStorage
         Auth.setToken(res.data.token)
         // redirect to `/cheeses`
-        this.props.history.push('/')
+        this.props.history.push('/users')
       })
       .catch(() => this.setState({ error: 'Invalid credentials' }))
   }
