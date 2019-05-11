@@ -7,13 +7,13 @@ class UserIndex extends React.Component {
   constructor() {
     super()
     this.state = {
-      data: []
+      users: []
     }
   }
 
   componentDidMount() {
     axios.get('api/users')
-      .then(res => this.setState({ data: res.data }))
+      .then(res => this.setState({ users: res.data }))
   }
 
   render() {
@@ -22,8 +22,8 @@ class UserIndex extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-multiline">
-            {this.state.data.map(user =>
-              <div key={user._id} className="column is-one-quarter-desktop is-one-third-tablet">
+            {this.state.users.map(user =>
+              <div key={user._id} className="column is-one-third-desktop is-half-tablet">
                 <Link to ={`/users/${user._id}`}>
                   <UserCard {...user} />
                 </Link>

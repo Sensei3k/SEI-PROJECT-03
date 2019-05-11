@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Switch} from 'react-router-dom'
 
 import Home from './components/Home'
+import Navbar from './components/Navbar'
 import Register from './auth/Register'
 import Login from './auth/Login'
-import UsersIndex from './components/UsersIndex'
 
-import Navbar from './components/Navbar'
-
+import UserShow from './components/UserShow'
+import UserIndex from './components/UserIndex'
 
 import 'bulma'
 import './style.scss'
@@ -23,7 +23,8 @@ class App extends React.Component {
         <main>
           <Navbar />
           <Switch>
-            <Route path="/users" component={UsersIndex}/>
+            <Route path="/users/:id" component={UserShow}/>
+            <Route path="/users" component={UserIndex}/>
             <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>
             <Route path="/" component={Home}/>
