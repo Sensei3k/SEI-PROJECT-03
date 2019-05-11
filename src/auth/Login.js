@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../lib/Auth'
 
 class Login extends React.Component {
   constructor() {
@@ -22,8 +23,14 @@ class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
     axios.post('api/login', this.state.data)
-      .then(() => this.props.history.push('/'))
+      .then(res => {
+      // set the token in localStorage
+        Auth.setToken(res.data.token)
+        // redirect to `/cheeses`
+        this.props.history.push('/')
+      })
       .catch(() => this.setState({ error: 'Invalid credentials' }))
   }
 
