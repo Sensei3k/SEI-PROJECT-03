@@ -29,7 +29,8 @@ class Login extends React.Component {
       // set the token in localStorage
         Auth.setToken(res.data.token)
         // redirect to `/cheeses`
-        this.props.history.push('/users')
+        //this.props.history.push('/users')
+        this.props.history.push(`/users/${res.data._id}`)
       })
       .catch(() => this.setState({ error: 'Invalid credentials' }))
   }
