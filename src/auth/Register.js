@@ -11,16 +11,16 @@ class Register extends React.Component {
       startDate: new Date()
     }
 
-    this.handleDateChange = this.handleDateChange.bind(this)
+    // this.handleDateChange = this.handleDateChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
-  handleDateChange(e) {
-    const date = {...this.state.data, [e.target.name]: e.target.value}
-    this.setState({ data: date })
-  }
+  // handleDateChange(e) {
+  //   const date = {...this.state.data, [e.target.name]: e.target.value}
+  //   this.setState({ data: date })
+  // }
 
   handleChange(e) {
     const data =  {...this.state.data, [e.target.name]: e.target.value }
@@ -60,7 +60,7 @@ class Register extends React.Component {
                 <div className="field">
                   <label className="label">Location</label>
                   <div className="select">
-                    <select>
+                    <select name="location" onChange={this.handleChange}>
                       <option value="">Select</option>
                       <option value="Amsterdam">Amsterdam</option>
                       <option value="london">London</option>
@@ -80,7 +80,7 @@ class Register extends React.Component {
 
                 <div className="field">
                   <div className="label">D.O.B</div>
-                  <input type="date" id="dob" name="dob" max="2000-01-01" onChange={this.handleDateChange}/>
+                  <input type="date" id="dateOfBirth" name="dateOfBirth" max="2000-01-01" onChange={this.handleChange}/>
                 </div>
 
                 <div className="field">
