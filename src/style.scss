@@ -7,15 +7,18 @@ body {
   background-size: cover;
   background-image: contain;
 
+  .navbar {
 
-  a.navbar-item {
-    width: 80px;
-    padding-top: 10px;
-  }
+    a.navbar-item {
+      width: 80px;
+      padding-top: 10px;
+    }
 
-  a.navbar-item-one {
-    width: 80px;
-    padding-top: 10px;
+    a.navbar-item-one {
+      width: 80px;
+      padding-top: 10px;
+    }
+
   }
 
   #facebook {
@@ -60,4 +63,17 @@ body {
 .user-background {
   background-color: #C0C0C0;
   min-height: 800px;
+}
+
+.card {
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+
+  img {
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+  }
+
 }

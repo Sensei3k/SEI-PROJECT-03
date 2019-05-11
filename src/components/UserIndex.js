@@ -19,7 +19,7 @@ class UserIndex extends React.Component {
   render() {
     console.log(this.state.data)
     return (
-      <section className="section">
+      <section className="section user-background">
         <div className="container">
           <div className="columns is-multiline">
             {this.state.users.map(user =>
