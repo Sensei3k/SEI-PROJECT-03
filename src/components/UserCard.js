@@ -5,7 +5,9 @@ const UserCard = (props) => {
     <div className="card">
 
       <div className="card-header">
-        <h3 className="card-header-title">{props.username}</h3>
+        <figure>
+          <img src={props.image} alt={props.name}  />
+        </figure>
       </div>
 
     </div>
