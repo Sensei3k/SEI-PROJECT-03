@@ -34,7 +34,7 @@ class Navbar extends React.Component {
         <div className="container">
           <div className="navbar-brand">
 
-            <Link to="/" className="navbar-item">Home</Link>
+            <Link to="/" className="navbar-item navbar-home"></Link>
 
             <a role="button" className={`navbar-burger ${this.state.active ? 'is-active' : ''}`}
               onClick={this.toggleActive}>
@@ -46,12 +46,6 @@ class Navbar extends React.Component {
 
           <div className={`navbar-menu ${this.state.active ? 'is-active' : ''}`}>
             {/* Everything else*/}
-
-            <div className="navbar-start">
-              {/* Left-hand links*/}
-              <Link to="/" className="navbar-item"></Link>
-              {Auth.isAuthenticated() && <Link to="/" className="navbar-item">New Cheeses!</Link>}
-            </div>
 
             <div className="navbar-end">
               {/* Right-hand links*/}
