@@ -49,7 +49,7 @@ class UserShow extends React.Component {
           </div>
           {this.canModify() &&
             <div className="level-right">
-              <Link to={`/users/${this.state.user._id}/edit`} className="button is-primary">Edit</Link>
+              <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
             </div>
           }
         </div>

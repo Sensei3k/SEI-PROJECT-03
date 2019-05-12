@@ -90,9 +90,9 @@ body {
   height: 250px;
 }
 
-// form {
-//   display: flex;
-// }
+.edit-form {
+  display: flex;
+}
 
 .img-profile {
   justify-content: center;
@@ -103,6 +103,14 @@ input {
   height: 36px;
   padding: 5px 9px;
   border-radius: 4px;
+}
+
+.register-container {
+  display: flex;
+
+  .field {
+    padding-right: 50px;
+  }
 }
 
 .edit-container {

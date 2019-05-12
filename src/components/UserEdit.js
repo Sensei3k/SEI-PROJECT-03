@@ -36,13 +36,13 @@ class UserEdit extends React.Component {
 
     axios.put(`api/users/${this.state.data._id}`, this.state.data, { headers: {'Authorization': `Bearer ${token}` }
     })
-      .then(() => this.props.history.push('/users/${this.state.data._id}'))
+      .then(() => this.props.history.push(`/users/${this.state.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
   componentDidMount() {
     axios.get(`api/users/${this.props.match.params.id}`)
-      .then(res => this.setState({ data: res.data }))
+      .then(res => this.setState({ user: res.data }))
   }
 
   render() {
@@ -50,7 +50,7 @@ class UserEdit extends React.Component {
       <section className="section user-background">
         <div className="container edit-container">
           <div className="columns edit-columns is-multiline is-mobile">
-            <form onSubmit={this.handleSubmit}>
+            <form className="edit-form" onSubmit={this.handleSubmit}>
               <div className="column is-one-third-desktop is-half-tablet is-mobile level-left">
                 <div className="field">
                   <label className="label">Profile Photo</label>
@@ -161,7 +161,7 @@ class UserEdit extends React.Component {
                     </div>
                   </div>
                 </div>
-                <hr />
+                <br/>
                 <button className="button is-info submit-edit-button">Submit Changes</button>
               </div>
             </form>
