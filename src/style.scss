@@ -90,7 +90,30 @@ body {
   height: 250px;
 }
 
+// form {
+//   display: flex;
+// }
+
 .img-profile {
   justify-content: center;
   display: flex;
+}
+
+input {
+  height: 36px;
+  padding: 5px 9px;
+  border-radius: 4px;
+}
+
+.edit-container {
+  max-width: 800px;
+  margin: auto;
+  //
+  .genders-container {
+    display: flex;
+
+    .field {
+      padding-right: 50px;
+    }
+  }
 }
