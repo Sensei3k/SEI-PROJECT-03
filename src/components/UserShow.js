@@ -20,11 +20,11 @@ class UserShow extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="section user-background">
-        <div className="container">
-          <div className="columns is-multiline">
-            <div className="column is-one-third-desktop">
-              <figure className="image is-96x96">
-                <img src={this.state.user.image} alt={this.state.user.name} />
+        <div className="container profile">
+          <div className="columns is-multiline columns-profile">
+            <div className="column is-one-third-desktop img-profile">
+              <figure className="image is-128x128">
+                <img className="" src={this.state.user.image} alt={this.state.user.name} />
               </figure>
             </div>
             <div className="column is-two-thirds-desktop">
