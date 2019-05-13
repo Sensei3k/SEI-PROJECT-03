@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../lib/Auth'
+import Loading from './Loading'
 
 class UserEdit extends React.Component {
 
@@ -46,6 +47,7 @@ class UserEdit extends React.Component {
   }
 
   render() {
+    if(!this.state.users) return <Loading />
     return (
       <section className="section user-background">
         <div className="container edit-container">

@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import UserCard from './UserCard'
+import Loading from './Loading'
 
 class MatchIndex extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class MatchIndex extends React.Component {
   }
 
   render() {
+    if(!this.state.users) return <Loading />
     console.log(this.state.data)
     return (
       <section className="section user-background">
