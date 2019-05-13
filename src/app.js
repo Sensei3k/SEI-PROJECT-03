@@ -9,6 +9,7 @@ import Login from './auth/Login'
 
 import UserShow from './components/UserShow'
 import UserIndex from './components/UserIndex'
+import MatchIndex from './components/MatchIndex'
 
 import 'bulma'
 import './style.scss'
@@ -23,6 +24,7 @@ class App extends React.Component {
         <main>
           <Navbar />
           <Switch>
+            <Route path="/users/:id/matches" component={MatchIndex}/>
             <Route path="/users/:id" component={UserShow}/>
             <Route path="/users" component={UserIndex}/>
             <Route path="/register" component={Register}/>

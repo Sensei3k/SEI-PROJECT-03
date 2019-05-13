@@ -20,7 +20,8 @@ router.post('/login', authController.login)
 //router.post('/register', authController.register)
 //router.post('/login', authController.login)
 
-router.get('/matches/:id', matchController.match)
+router.get('/users/:id/matches', matchController.match)
+//router.get('/matches/:id', matchController.match)
 
 
 
