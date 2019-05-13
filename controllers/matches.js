@@ -52,10 +52,11 @@ function matchRoute(req, res, next) {
           }
         })
 
-        //if IDs dont match and the locations match, push into array
+        // if IDs dont match and the locations match, push into array
         if(userId !== matchId && userLocation === matchLocation && userGender !== matchGender && similarInterests.length > 2) {
           arrayOfMatches.push(match)
         }
+
 
       })
       //return the arrayOfMatches as JSON

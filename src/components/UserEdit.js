@@ -1,7 +1,6 @@
-
 import React from 'react'
 import axios from 'axios'
-import Auth from '../lib/Auth'
+// import Auth from '../lib/Auth'
 import ReactFilestack from 'filestack-react'
 
 const options = {
@@ -40,7 +39,11 @@ class UserEdit extends React.Component {
     e.preventDefault()
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data })
+
+    console.log(this.state.data)
+
   }
+
 
   // onSuccess(e) {
   //   // handle result here
@@ -50,22 +53,22 @@ class UserEdit extends React.Component {
     e.preventDefault()
 
     // Auth.getToken()
-    console.log('recognise submit')
-    console.log(this.state.data)
+    //console.log('recognise submit')
+    //console.log(this.state.data)
 
-    axios.put(`/users/${this.props.match.params.id}`, this.state.data)
+    axios.put(`api/users/${this.props.match.params.id}`, this.state.data)
       .then(res => {
         this.props.history.push(`/users/${res.data._id}`)
         // this.props.history.push(`/users/${this.props.match.params.id}`)
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
+
   }
 
   componentDidMount() {
     axios.get(`api/users/${this.props.match.params.id}`)
-      .then(res => this.setState({ user: res.data }))
+      .then(res => this.setState({ data: res.data }))
 
-    console.log(this.state.data)
   }
 
   render() {
@@ -151,10 +154,10 @@ class UserEdit extends React.Component {
                       <div className="select">
                         <select name="gender" onChange={this.handleChange} value={this.state.data.gender || ''}>
                           <option value="">Select</option>
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                          <option value="both">Both</option>
-                          <option value="other">Other</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Both">Both</option>
+                          <option value="Other">Other</option>
                         </select>
                       </div>
                     </div>
@@ -165,10 +168,10 @@ class UserEdit extends React.Component {
                       <div className="select">
                         <select name="interestedIn" onChange={this.handleChange} value={this.state.data.interestedIn || ''}>
                           <option value="">Select</option>
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                          <option value="both">Both</option>
-                          <option value="other">Other</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Both">Both</option>
+                          <option value="Other">Other</option>
                         </select>
                       </div>
                     </div>
