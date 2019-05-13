@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../lib/Auth'
+import Loading from './Loading'
 
 class UserShow extends React.Component {
 
@@ -23,7 +24,7 @@ class UserShow extends React.Component {
   }
 
   render() {
-    if (!this.state.user) return null
+    if(!this.state.user) return <Loading />
     return (
       <section className="section user-background">
         <div className="container profile">
