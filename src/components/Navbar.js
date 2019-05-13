@@ -7,12 +7,9 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      data: {}
-    }
-    this.handleSearch = this.handleSearch.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    // Just added feature to make the navbar responsive
+    this.state = { active: false }
+
+    this.logout = this.logout.bind(this)
     this.toggleActive = this.toggleActive.bind(this)
   }
 
@@ -33,14 +30,14 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar is-transparent">
+      <nav className="navbar is-dark">
         <div className="container">
           <div className="navbar-brand">
 
-            <a role="button"
-              className={`navbar-burger${this.state.active ? ' is-active' : ''}`}
-              onClick={this.toggleActive}
-            >
+            <Link to="/" className="navbar-item navbar-home"></Link>
+
+            <a role="button" className={`navbar-burger ${this.state.active ? 'is-active' : ''}`}
+              onClick={this.toggleActive}>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -52,7 +49,7 @@ class Navbar extends React.Component {
 
             <div className="navbar-end">
               {/* Right-hand links*/}
-              {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item is-danger">Register</Link>}
+              {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item">Register</Link>}
               {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item">Login</Link>}
 
               {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.logout}>Logout</a>}

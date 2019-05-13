@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../lib/Auth'
 import Loading from './Loading'
+import moment from 'moment'
 
 
 class UserShow extends React.Component {
@@ -15,13 +16,23 @@ class UserShow extends React.Component {
     }
 
     //this.findMatches = this.findMatches.bind(this)
+    this.displayAge = this.displayAge.bind(this)
   }
 
   componentDidMount() {
+    // console.log(this.props.match.params.id, 'props')
+    console.log(this.props, 'match')
+
     axios.get(`api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
   }
 
+  displayAge(){
+    const str = this.state.user.dateOfBirth
+    const dob = str.substr(0,9)
+    const years = moment().diff(dob, 'years')
+    return years
+  }
 
   // findMatches() {
   //   //redirect the user to their match index page
@@ -35,6 +46,7 @@ class UserShow extends React.Component {
 
   render() {
     if(!this.state.user) return <Loading />
+    console.log(this.state.user.dateOfBirth)
     return (
       <section className="section user-background">
         <div className="container profile">
@@ -46,8 +58,8 @@ class UserShow extends React.Component {
             </div>
             <div className="column is-two-thirds-desktop">
               <p className="subtitle is-3">{this.state.user.username}</p>
-              <p className="subtitle">{this.state.user.dateOfBirth}</p>
-              <p className="subtitle">{this.state.user.location}</p>
+              <p className="subtitle">Age: {this.displayAge()}</p>
+              <p className="subtitle">Location: {this.state.user.location}</p>
             </div>
           </div>
           <div className="columns is-multiline">
