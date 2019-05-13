@@ -59,7 +59,7 @@ class UserShow extends React.Component {
             </div>
           </div>
 
-          {/*button for finding matches*/}
+          {/*a button for finding matches*/}
           {this.canModify() &&
           <Link to ={{
             pathname: `/users/${this.props.match.params.id}/matches`,
