@@ -12,4 +12,4 @@ mongoose.connect(dbUri)
 app.use(bodyParser.json())
 app.use(routes)
 
-app.listen(port, () => console.log(`App is listening to port ${port}`))
+app.listen(port, () => console.log(`CRUSH is listening to port ${port}`))

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import Auth from '../lib/Auth'
 
 class Navbar extends React.Component {
 
@@ -11,6 +12,8 @@ class Navbar extends React.Component {
     }
     this.handleSearch = this.handleSearch.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    // Just added feature to make the navbar responsive
+    this.toggleActive = this.toggleActive.bind(this)
   }
 
   handleSearch(e) {
@@ -23,18 +26,30 @@ class Navbar extends React.Component {
     this.props.history.push(`/${this.state.data}`)
   }
 
+  toggleActive() {
+    this.setState({ active: !this.state.active })
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({ active: false })
+    }
+  }
+
   render() {
     return (
-      <nav className="navbar is-dark">
+      <nav className="navbar is-transparent">
         <div className="container">
           <div className="navbar-brand">
 
-            <a role="button" className="navbar-burger">
+            <a role="button"
+              className={`navbar-burger${this.state.active ? ' is-active' : ''}`}
+              onClick={this.toggleActive}
+            >
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
-
           </div>
 
           <div className="navbar-menu">
@@ -53,7 +68,7 @@ class Navbar extends React.Component {
             </div>
             <div className="navbar-end">
               <Link to="/register" className="navbar-item">Register</Link>
-              <Link to="/login" className="navbar-item">Login</Link>
+              {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item">Login</Link>}
             </div>
           </div>
         </div>

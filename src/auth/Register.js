@@ -10,10 +10,9 @@ class Register extends React.Component {
       errors: {},
       startDate: new Date()
     }
-
-    this.handleDateChange = this.handleDateChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDateChange = this.handleDateChange.bind(this)
 
   }
 
