@@ -24,7 +24,7 @@ class UserIndex extends React.Component {
         <div className="container">
           <div className="columns is-multiline">
             {this.state.users.map(user =>
-              <div key={user._id} className="column is-one-third-desktop is-half-tablet">
+              <div key={user._id} className="column is-one-third-desktop is-half-tablet div-frame">
                 <Link to ={`/users/${user._id}`}>
                   <UserCard {...user} />
                 </Link>
