@@ -2,7 +2,6 @@ const router = require('express').Router()
 const usersController = require('../controllers/users')
 const authController = require('../controllers/auth')
 const matchController = require('../controllers/matches')
-
 //const secureRoute = require('../lib/secureRoute')
 
 router.get('/', (req,res) => res.json({ message: 'Welcome to the Dating App API' }))
@@ -19,6 +18,9 @@ router.post('/register', authController.register)
 router.post('/login', authController.login)
 //router.post('/register', authController.register)
 //router.post('/login', authController.login)
+
+//router.post('/characters/:id/comments', secureRoute, charactersController.commentCreate)
+router.post('/characters/:id/comments', usersController.commentCreate)
 
 router.get('/users/:id/matches', matchController.match)
 //router.get('/matches/:id', matchController.match)

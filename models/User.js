@@ -1,6 +1,28 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
+const commentSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  content: {
+    type: String,
+    required: true,
+    maxlength: 280
+  }
+}, {
+  timestamps: true, // this adds `createdAt` and `updatedAt` properties
+  toJSON: {
+    // whenever the comment is converted to JSON
+    transform(doc, json) {
+      delete json.__v
+      return json
+    }
+  }
+})
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -39,7 +61,8 @@ const userSchema = new mongoose.Schema({
   },
   aboutMe: {
     type: String
-  }
+  },
+  comments: [commentSchema]
 }, {
   toJSON: {
     virtuals: true,

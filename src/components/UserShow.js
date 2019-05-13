@@ -59,14 +59,17 @@ class UserShow extends React.Component {
             </div>
           </div>
 
-          {/*Add a button for finding matches*/}
+          {/*button for finding matches*/}
+          {this.canModify() &&
           <Link to ={{
             pathname: `/users/${this.props.match.params.id}/matches`,
             state: {id: this.props.match.params.id}
           }}>
             <button className="button is-danger">Find Matches</button>
           </Link>
+          }
 
+          {/*button for editing profiles*/}
           {this.canModify() &&
             <div className="level-right">
               <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
