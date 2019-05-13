@@ -69,6 +69,10 @@ body {
   min-height: 800px;
 }
 
+.profile {
+  max-width: 800px;
+}
+
 .card {
   border-radius: 50%;
   height: 300px;
@@ -80,4 +84,44 @@ body {
     width: 300px;
   }
 
+}
+
+.columns-profile {
+  height: 250px;
+}
+
+.edit-form {
+  display: flex;
+}
+
+.img-profile {
+  justify-content: center;
+  display: flex;
+}
+
+input {
+  height: 36px;
+  padding: 5px 9px;
+  border-radius: 4px;
+}
+
+.register-container {
+  display: flex;
+
+  .field {
+    padding-right: 50px;
+  }
+}
+
+.edit-container {
+  max-width: 800px;
+  margin: auto;
+  //
+  .genders-container {
+    display: flex;
+
+    .field {
+      padding-right: 50px;
+    }
+  }
 }

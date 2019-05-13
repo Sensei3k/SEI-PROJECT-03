@@ -11,16 +11,16 @@ class Register extends React.Component {
       startDate: new Date()
     }
 
-    this.handleDateChange = this.handleDateChange.bind(this)
+    // this.handleDateChange = this.handleDateChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
-  handleDateChange(e) {
-    const date = {...this.state.data, [e.target.name]: e.target.value}
-    this.setState({ data: date })
-  }
+  // handleDateChange(e) {
+  //   const date = {...this.state.data, [e.target.name]: e.target.value}
+  //   this.setState({ data: date })
+  // }
 
   handleChange(e) {
     const data =  {...this.state.data, [e.target.name]: e.target.value }
@@ -57,30 +57,32 @@ class Register extends React.Component {
                   </div>
                 </div>
 
-                <div className="field">
-                  <label className="label">Location</label>
-                  <div className="select">
-                    <select>
-                      <option value="">Select</option>
-                      <option value="Amsterdam">Amsterdam</option>
-                      <option value="london">London</option>
-                      <option value="manchester">Manchester</option>
-                      <option value="birmingham">Birmingham</option>
-                      <option value="mexico-city">Mexico City</option>
-                      <option value="Berlin">Berlin</option>
-                      <option value="Paris">Paris</option>
-                      <option value="Brussels">Brussels</option>
-                      <option value="Qubec">Qubec</option>
-                      <option value="Montreal">Montreal</option>
-                      <option value="New York">New York</option>
-                      <option value="Venice">Venice</option>
-                    </select>
+                <div className="register-container">
+                  <div className="field">
+                    <label className="label">Location</label>
+                    <div className="select">
+                      <select name="location" onChange={this.handleChange}>
+                        <option value="">Select</option>
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="london">London</option>
+                        <option value="manchester">Manchester</option>
+                        <option value="birmingham">Birmingham</option>
+                        <option value="mexico-city">Mexico City</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Brussels">Brussels</option>
+                        <option value="Qubec">Qubec</option>
+                        <option value="Montreal">Montreal</option>
+                        <option value="New York">New York</option>
+                        <option value="Venice">Venice</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
-                <div className="field">
-                  <div className="label">D.O.B</div>
-                  <input type="date" id="dob" name="dob" max="2000-01-01" onChange={this.handleDateChange}/>
+                  <div className="field">
+                    <div className="label">D.O.B</div>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" max="2000-01-01" onChange={this.handleChange}/>
+                  </div>
                 </div>
 
                 <div className="field">
@@ -96,8 +98,8 @@ class Register extends React.Component {
                     <input className="input" name="passwordConfirmation" type="password" placeholder="eg: ••••••••" onChange={this.handleChange} />
                   </div>
                 </div>
-
-                <button className="button is-primary">Submit</button>
+                <br />
+                <button className="button is-info submit-edit-button">Submit</button>
               </form>
             </div>
           </div>

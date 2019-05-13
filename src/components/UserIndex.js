@@ -19,7 +19,6 @@ class UserIndex extends React.Component {
 
   render() {
     if(!this.state.users) return <Loading />
-    console.log(this.state.data)
     return (
       <section className="section user-background">
         <div className="container">
