@@ -13,7 +13,14 @@ function matchRoute(req, res, next) {
       let userGender = ''
       let userInterests = ''
 
-      //find the location of the user searching for a match
+      //filter out the users that have not entered interests yet
+      users = users.filter((user) => {
+        if(user.interests) return user
+      })
+
+
+
+      //find the location, gender of interest, and interests of the user searching for a match
       users.forEach((user) => {
 
         if(user._id.equals(req.params.id)) {
@@ -24,6 +31,8 @@ function matchRoute(req, res, next) {
         }
 
       })
+
+
 
       //initialize an array in which to store your matches
       const arrayOfMatches = []

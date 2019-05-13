@@ -43,7 +43,6 @@ class UserShow extends React.Component {
     return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id
   }
 
-
   render() {
     if(!this.state.user) return <Loading />
     console.log(this.state.user.dateOfBirth)
@@ -53,7 +52,7 @@ class UserShow extends React.Component {
           <div className="columns is-multiline columns-profile">
             <div className="column is-one-third-desktop img-profile">
               <figure className="image is-128x128">
-                <img className="" src={this.state.user.image} alt={this.state.user.name} />
+                <img className="" src={this.state.user.image || 'https://i0.wp.com/reviveyouthandfamily.org/wp-content/uploads/2013/01/headshot-placeholder.jpg?fit=600%2C600&ssl=1'} alt={this.state.user.name} />
               </figure>
             </div>
             <div className="column is-two-thirds-desktop">
@@ -64,27 +63,34 @@ class UserShow extends React.Component {
           </div>
           <div className="columns is-multiline">
             <div className="column is-full-desktop">
-              <p className="subtitle is-3">Hobbies & Interests</p>
+              <p className="subtitle is-3">About Me</p>
             </div>
             <div className="column is-desktop">
-              <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div className="column is-full-desktop">
+              <p className="subtitle is-3">Interests</p>
+            </div>
+            <div className="column is-desktop">
+              <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
           </div>
-
-          {/*Add a button for finding matches*/}
+          {/*a button for finding matches*/}
+          {this.canModify() &&
           <Link to ={{
             pathname: `/users/${this.props.match.params.id}/matches`,
             state: {id: this.props.match.params.id}
           }}>
             <button className="button is-danger">Find Matches</button>
           </Link>
+          }
 
+          {/*button for editing profiles*/}
           {this.canModify() &&
             <div className="level-right">
               <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
             </div>
           }
-
         </div>
       </section>
     )

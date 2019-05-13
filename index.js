@@ -9,7 +9,7 @@ const { port, dbUri } = require('./config/environment')
 const app = express()
 //connect to the database
 mongoose.connect(dbUri)
-
+require('dotenv').config()
 
 app.use(bodyParser.json())
 app.use('/api', routes)
