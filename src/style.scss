@@ -19,27 +19,10 @@ body {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-
     }
 
-  #facebook {
-    background-image: url('https://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png');
-    background-size: contain;
-    width: 50px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 10px;
-  }
-
-  .logo {
-    background-image: url('http://www.clker.com/cliparts/9/D/t/Z/i/2/light-blue-heart-hi.png');
-    background-size: contain;
-    width: 50px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 10px;
+  br {
+    border: 3px solid $hr-color;
   }
 
   .loading {
@@ -49,6 +32,7 @@ body {
   .input {
       width: 500px;
     }
+
 
     hr {
       border: 1px solid $hr-color;
@@ -69,11 +53,14 @@ body {
   }
 
   .user-background {
+    // background-image: url('https://static.eharmony.com/files/corp/prod/images/tour/section-1/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: #f9fbff;
     min-height: 800px;
   }
 
-  .profile {
+.profile {
     max-width: 800px;
   }
 
