@@ -116,6 +116,12 @@ input {
 .edit-container {
   max-width: 800px;
   margin: auto;
+
+  .upload-photo {
+    height: 36px;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
   //
   .genders-container {
     display: flex;

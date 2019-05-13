@@ -7,9 +7,10 @@ const routes = require('./config/routes')
 const app = express()
 //connect to the database
 mongoose.connect(dbUri)
-
+require('dotenv').config()
 
 app.use(bodyParser.json())
 app.use('/api', routes)
+
 
 app.listen(port, () => console.log(`App is listening to port ${port}`))
