@@ -53,6 +53,17 @@ class UserShow extends React.Component {
               <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
           </div>
+          {/*a button for finding matches*/}
+          {this.canModify() &&
+          <Link to ={{
+            pathname: `/users/${this.props.match.params.id}/matches`,
+            state: {id: this.props.match.params.id}
+          }}>
+            <button className="button is-danger">Find Matches</button>
+          </Link>
+          }
+
+          {/*button for editing profiles*/}
           {this.canModify() &&
             <div className="level-right">
               <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
