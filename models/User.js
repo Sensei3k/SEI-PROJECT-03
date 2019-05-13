@@ -36,6 +36,9 @@ const userSchema = new mongoose.Schema({
   },
   interests: {
     type: String
+  },
+  aboutMe: {
+    type: String
   }
 }, {
   toJSON: {

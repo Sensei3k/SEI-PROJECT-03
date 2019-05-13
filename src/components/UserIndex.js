@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import Loading from './Loading'
 import UserCard from './UserCard'
 
 class UserIndex extends React.Component {
@@ -17,7 +18,7 @@ class UserIndex extends React.Component {
   }
 
   render() {
-    console.log(this.state.data)
+    if(!this.state.users) return <Loading />
     return (
       <section className="section user-background">
         <div className="container">
