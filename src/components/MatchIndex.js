@@ -1,24 +1,24 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import Loading from './Loading'
 import UserCard from './UserCard'
 
-class UserIndex extends React.Component {
-  constructor() {
-    super()
+class MatchIndex extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
+      //consider changing the below to 'matches'
       users: []
     }
   }
 
   componentDidMount() {
-    axios.get('api/users')
+    axios.get(`api/users/${this.props.match.params.id}/matches`)
       .then(res => this.setState({ users: res.data }))
   }
 
   render() {
-    if(!this.state.users) return <Loading />
+    console.log(this.state.data)
     return (
       <section className="section user-background">
         <div className="container">
@@ -37,4 +37,4 @@ class UserIndex extends React.Component {
   }
 }
 
-export default UserIndex
+export default MatchIndex
