@@ -30,7 +30,14 @@ const userSchema = new mongoose.Schema({
   image: {
     type: String
   },
+  interestedIn: {
+    type: String,
+    enum: ['Male', 'Female', 'Other']
+  },
   interests: {
+    type: String
+  },
+  aboutMe: {
     type: String
   }
 }, {

@@ -16,14 +16,9 @@ class Navbar extends React.Component {
     this.toggleActive = this.toggleActive.bind(this)
   }
 
-  handleSearch(e) {
-    this.setState({ data: e.target.value })
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-
-    this.props.history.push(`/${this.state.data}`)
+  logout() {
+    Auth.removeToken()
+    this.props.history.push('/')
   }
 
   toggleActive() {
@@ -52,23 +47,16 @@ class Navbar extends React.Component {
             </a>
           </div>
 
-          <div className="navbar-menu">
-            <div className="navbar-start is-full-width">
-              <Link to="/" className="navbar-item logo"></Link>
+          <div className={`navbar-menu ${this.state.active ? 'is-active' : ''}`}>
+            {/* Everything else*/}
 
-              <div className="navbar-item is-full-width">
-
-                <form onSubmit={this.handleSubmit}>
-                  <div className="field has-addons">
-
-                  </div>
-                </form>
-
-              </div>
-            </div>
             <div className="navbar-end">
-              <Link to="/register" className="navbar-item">Register</Link>
+              {/* Right-hand links*/}
+              {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item is-danger">Register</Link>}
               {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item">Login</Link>}
+
+              {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.logout}>Logout</a>}
+
             </div>
           </div>
         </div>
@@ -76,5 +64,5 @@ class Navbar extends React.Component {
     )
   }
 }
-
+// `withRouter` gives the Navbar `history` via props
 export default withRouter(Navbar)
