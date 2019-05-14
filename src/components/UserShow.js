@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../lib/Auth'
+import CommentCard from './CommentCard'
 
 class UserShow extends React.Component {
 
@@ -16,7 +17,6 @@ class UserShow extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.commentLoaded = this.commentLoaded.bind(this)
   }
 
   handleChange(e) {
@@ -34,6 +34,7 @@ class UserShow extends React.Component {
     })
       .then(res => this.props.history.push(`/users/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
+
   }
 
 
@@ -47,16 +48,8 @@ class UserShow extends React.Component {
     return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id
   }
 
-  commentLoaded() {
-    if(this.state.user.comments[4]) {
-      return this.state.user.comments[4].content
-    } else {
-      return false
-    }
-
-  }
-
   render() {
+    console.log(this.state.user)
     if (!this.state.user) return null
     return (
       <section className="section user-background">
@@ -87,14 +80,16 @@ class UserShow extends React.Component {
               <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
-            {this.canModify() &&
+            {this.canModify() && this.state.user.comments.length &&
             <div>
               <div className="column is-full-desktop">
                 <p className="subtitle is-3">Comments</p>
               </div>
-              <div className="column is-desktop">
-                <p className="subtitle">{ this.commentLoaded() || ''}</p>
-              </div>
+              {this.state.user.comments.map(comment =>
+                <div key={comment._id}>
+                  <CommentCard {...comment} />
+                </div>
+              )}
             </div>
             }
 
@@ -108,10 +103,7 @@ class UserShow extends React.Component {
               </form>
 
             }
-
           </div>
-
-
 
           {/*a button for finding matches*/}
           {this.canModify() &&
@@ -130,9 +122,15 @@ class UserShow extends React.Component {
             </div>
           }
         </div>
+        {/*<CommentCard {}/>*/}
       </section>
     )
   }
 }
 
 export default UserShow
+
+// <div key={comment._id}>
+//   <p>{comment.content}</p>
+//   <p>{comment.user.username}</p>
+// </div>

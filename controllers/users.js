@@ -9,6 +9,7 @@ function indexRoute(req, res, next) {
 
 function showRoute(req, res, next) {
   User.findById(req.params.id)
+    .populate('comments.user')
     .then(user => res.json(user))
     .catch(next)
 }
@@ -42,15 +43,14 @@ function commentCreateRoute(req, res, next) {
   req.body.user = req.currentUser // this comes from `secureRoute`
   // find the user we want to add a comment to
   User.findById(req.params.id)
-    //.populate('comments.user')
+    //.populate('user.comments')
+    .populate('comments.user', '-comments')
     //.select('comments username')
     .then(user => {
       // add a comment to the user
       user.comments.push(req.body)
       return user.save()
     })
-    // .populate('comments.user')
-    // .select('comments username')
     .then(user => res.json(user))
     .catch(next)
 }

@@ -3,11 +3,10 @@ const bcrypt = require('bcrypt')
 
 const commentSchema = new mongoose.Schema({
   //user: {
-  username: {
-    //type: mongoose.Schema.ObjectId,
-    type: String
-    //ref: 'User',
-    //required: true - might put back
+  user: {
+    type: mongoose.Schema.ObjectId,
+    // type: String
+    ref: 'User'
   },
   content: {
     type: String,
