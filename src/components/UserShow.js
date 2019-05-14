@@ -5,6 +5,8 @@ import Auth from '../lib/Auth'
 import Loading from './Loading'
 import moment from 'moment'
 
+import Footer from './Footer'
+
 
 class UserShow extends React.Component {
 
@@ -20,9 +22,6 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.match.params.id, 'props')
-    console.log(this.props, 'match')
-
     axios.get(`api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
   }
@@ -45,54 +44,57 @@ class UserShow extends React.Component {
 
   render() {
     if(!this.state.user) return <Loading />
-    console.log(this.state.user.dateOfBirth)
     return (
-      <section className="section user-background">
-        <div className="container profile">
-          <div className="columns is-multiline columns-profile">
-            <div className="column is-one-third-desktop img-profile">
-              <figure className="image is-128x128">
-                <img className="" src={this.state.user.image || 'https://i0.wp.com/reviveyouthandfamily.org/wp-content/uploads/2013/01/headshot-placeholder.jpg?fit=600%2C600&ssl=1'} alt={this.state.user.name} />
-              </figure>
+      <section>
+        <section className="section user-background">
+          <div className="container profile">
+            <div className="columns is-multiline columns-profile">
+              <div className="column is-one-third-desktop img-profile">
+                <figure className="image is-128x128">
+                  <img className="" src={this.state.user.image || 'https://i0.wp.com/reviveyouthandfamily.org/wp-content/uploads/2013/01/headshot-placeholder.jpg?fit=600%2C600&ssl=1'} alt={this.state.user.name} />
+                </figure>
+              </div>
+              <div className="column is-two-thirds-desktop">
+                <p className="subtitle is-3">{this.state.user.username}</p>
+                <p className="subtitle">Age: {this.displayAge()}</p>
+                <p className="subtitle">Location: {this.state.user.location}</p>
+              </div>
             </div>
-            <div className="column is-two-thirds-desktop">
-              <p className="subtitle is-3">{this.state.user.username}</p>
-              <p className="subtitle">Age: {this.displayAge()}</p>
-              <p className="subtitle">Location: {this.state.user.location}</p>
+            <div className="columns is-multiline">
+              <div className="column is-full-desktop">
+                <p className="subtitle is-3">About Me</p>
+              </div>
+              <div className="column is-desktop">
+                <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+              <div className="column is-full-desktop">
+                <p className="subtitle is-3">Interests</p>
+              </div>
+              <div className="column is-desktop">
+                <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
             </div>
-          </div>
-          <div className="columns is-multiline">
-            <div className="column is-full-desktop">
-              <p className="subtitle is-3">About Me</p>
-            </div>
-            <div className="column is-desktop">
-              <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div className="column is-full-desktop">
-              <p className="subtitle is-3">Interests</p>
-            </div>
-            <div className="column is-desktop">
-              <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-          </div>
-          {/*a button for finding matches*/}
-          {this.canModify() &&
-          <Link to ={{
-            pathname: `/users/${this.props.match.params.id}/matches`,
-            state: {id: this.props.match.params.id}
-          }}>
-            <button className="button is-danger">Find Matches</button>
-          </Link>
-          }
+            {/*a button for finding matches*/}
+            {this.canModify() &&
+            <Link to ={{
+              pathname: `/users/${this.props.match.params.id}/matches`,
+              state: {id: this.props.match.params.id}
+            }}>
+              <button className="button is-danger">Find Matches</button>
+            </Link>
+            }
 
-          {/*button for editing profiles*/}
-          {this.canModify() &&
-            <div className="level-right">
-              <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
-            </div>
-          }
-        </div>
+            {/*button for editing profiles*/}
+            {this.canModify() &&
+              <div className="level-right">
+                <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
+              </div>
+            }
+          </div>
+        </section>
+        <Footer />
       </section>
+
     )
   }
 }
