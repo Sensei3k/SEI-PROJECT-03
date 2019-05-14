@@ -33,6 +33,7 @@ class App extends React.Component {
             <Route path="/login" component={Login}/>
             <Route path="/" component={Home}/>
           </Switch>
+          
         </main>
       </Router>
     )

@@ -24,7 +24,7 @@ class Register extends React.Component {
 
   handleChange(e) {
     const data =  {...this.state.data, [e.target.name]: e.target.value }
-    this.setState({ data: data})
+    this.setState({ data: data })
   }
 
   handleSubmit(e) {
@@ -36,6 +36,7 @@ class Register extends React.Component {
 
   // within render, added a dropdown menu for location.
   render() {
+    console.log(this.state.errors.username)
     return (
       <section className="section">
         <div className="container">
@@ -55,7 +56,7 @@ class Register extends React.Component {
                   <div className="control">
                     <input className="input" name="email" placeholder="eg: leela@planetexpress.nnyc" onChange={this.handleChange} />
                   </div>
-                </div>
+                </div>```
 
                 <div className="register-container">
                   <div className="field">

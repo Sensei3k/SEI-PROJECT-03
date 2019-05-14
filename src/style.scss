@@ -8,7 +8,6 @@ body {
   background-image: contain;
 
     a.navbar-item {
-      width: 80px;
       padding-top: 10px;
 
     }
@@ -16,14 +15,16 @@ body {
     a.navbar-home {
       width: 80px;
       padding-top: 10px;
-      background-image: url('https://cdn4.iconfinder.com/data/icons/utilities-part-3/64/empty_heart-512.png');
+      background-image: url('./images/h-logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-
     }
 
-
+  .navbar {
+    opacity: 0.3;
+    background-color: black;
+  }
 
   #facebook {
     background-image: url('https://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png');
@@ -35,43 +36,44 @@ body {
     margin-top: 10px;
   }
 
-  .logo {
-    background-image: url('http://www.clker.com/cliparts/9/D/t/Z/i/2/light-blue-heart-hi.png');
-    background-size: contain;
-    width: 50px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 10px;
-  }
-
-  .navbar-item {
-    width: 30px;
+  .loading {
+   image-orientation: 40px;
   }
 
   .input {
       width: 500px;
     }
 
+
     hr {
       border: 1px solid $hr-color;
+   }
 
+   h3 {
+     font-size: 30px;
+   }
+
+   .div-frame {
+     padding-top: 70px;
    }
 
    i {
     font-size: 20px;
    }
 
-}
+  }
 
-.user-background {
-  background-color: #C0C0C0;
-  min-height: 800px;
-}
+  .user-background {
+    // background-image: url('https://static.eharmony.com/files/corp/prod/images/tour/section-1/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #f9fbff;
+    min-height: 800px;
+  }
 
 .profile {
-  max-width: 800px;
-}
+    max-width: 800px;
+  }
 
 .card {
   border-radius: 50%;
@@ -80,8 +82,12 @@ body {
 
   img {
     border-radius: 50%;
-    height: 300px;
-    width: 300px;
+    height: 298px;
+    width: 298px;
+  }
+
+  figure {
+   text-align: center;
   }
 
 }
@@ -116,6 +122,12 @@ input {
 .edit-container {
   max-width: 800px;
   margin: auto;
+
+  .upload-photo {
+    height: 36px;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
   //
   .genders-container {
     display: flex;

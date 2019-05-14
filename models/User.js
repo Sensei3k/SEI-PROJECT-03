@@ -48,12 +48,14 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: String
+    // enum: ['Male', 'Female', 'Other']
   },
   image: {
     type: String
   },
   interestedIn: {
     type: String
+    // enum: ['Male', 'Female', 'Other']
   },
   interests: {
     type: String
