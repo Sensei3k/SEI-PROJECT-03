@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const commentSchema = new mongoose.Schema({
+  //user: {
   user: {
     type: mongoose.Schema.ObjectId,
-    ref: 'User',
-    required: true
+    // type: String
+    ref: 'User'
   },
   content: {
     type: String,

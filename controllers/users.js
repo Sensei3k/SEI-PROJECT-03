@@ -9,6 +9,7 @@ function indexRoute(req, res, next) {
 
 function showRoute(req, res, next) {
   User.findById(req.params.id)
+    .populate('comments.user')
     .then(user => res.json(user))
     .catch(next)
 }
@@ -36,26 +37,17 @@ function deleteRoute(req, res, next) {
     .catch(next)
 }
 
-function showProfileRoute(req, res, next) {
-  // get a specific character
-  // User.findById(req.params.id)
-  //   .select('-email -password -passwordConfirmation -__v') // convert the user ID into the whole user object
-  //   .then(user => res.json(user)) // send it as JSON
-  //   .catch(next) // handle our errors
-
-  User.findById(req.params.id)
-    .then(user => res.json(user))
-    .catch(next)
-}
-
 
 function commentCreateRoute(req, res, next) {
   //  add the currentUser to the data
   req.body.user = req.currentUser // this comes from `secureRoute`
   // find the user we want to add a comment to
   User.findById(req.params.id)
+    //.populate('user.comments')
+    .populate('comments.user', '-comments')
+    //.select('comments username')
     .then(user => {
-      // add a comment to the character
+      // add a comment to the user
       user.comments.push(req.body)
       return user.save()
     })
@@ -71,6 +63,5 @@ module.exports = {
   create: createRoute,
   update: updateRoute,
   delete: deleteRoute,
-  showProfile: showProfileRoute,
   commentCreate: commentCreateRoute
 }

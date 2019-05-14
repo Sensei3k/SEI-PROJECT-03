@@ -2,11 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../lib/Auth'
+import CommentCard from './CommentCard'
 import Loading from './Loading'
 import moment from 'moment'
-
 import Footer from './Footer'
-
 
 class UserShow extends React.Component {
 
@@ -14,12 +13,34 @@ class UserShow extends React.Component {
     super(props)
 
     this.state = {
-      user: null
+      user: null,
+      data: {},
+      errors: {}
     }
 
-    //this.findMatches = this.findMatches.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.displayAge = this.displayAge.bind(this)
   }
+
+  handleChange(e) {
+    const data = { ...this.state.data, [e.target.name]: e.target.value }
+    this.setState({ data: data })
+    console.log(this.state)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+
+    const token = Auth.getToken()
+
+    axios.post(`api/users/${this.state.user._id}/comments`, this.state.data, { headers: {'Authorization': `Bearer ${token}` }
+    })
+      .then(res => this.props.history.push(`/users/${res.data._id}`))
+      .catch(err => this.setState({ errors: err.response.data.errors }))
+
+  }
+
 
   componentDidMount() {
     axios.get(`api/users/${this.props.match.params.id}`)
@@ -33,17 +54,12 @@ class UserShow extends React.Component {
     return years
   }
 
-  // findMatches() {
-  //   //redirect the user to their match index page
-  //   this.props.history.push(`${this.props.match.params.id}/matches`)
-  // }
-
   canModify() {
     return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id
   }
 
   render() {
-    if(!this.state.user) return <Loading />
+    if (!this.state.user) return <Loading />
     return (
       <section>
         <section className="section user-background">
@@ -83,6 +99,30 @@ class UserShow extends React.Component {
             <div className="column is-desktop">
               <p className="subtitle">{this.state.user.interests || ''}</p>
             </div>
+
+            {this.canModify() && this.state.user.comments.length &&
+            <div>
+              <div className="column is-full-desktop">
+                <p className="subtitle is-3">Comments</p>
+              </div>
+              {this.state.user.comments.map(comment =>
+                <div key={comment._id}>
+                  <CommentCard {...comment} />
+                </div>
+              )}
+            </div>
+            }
+
+            {!this.canModify() &&
+              <form onSubmit={this.handleSubmit}>
+                <label>
+                    Leave a message:
+                </label>
+                <input type="textarea" name="content" value={this.state.value} onChange={this.handleChange} />
+                <button className="button is-info submit-edit-button">Submit Changes</button>
+              </form>
+
+            }
           </div>
           {/*a button for finding matches*/}
           {this.canModify() &&
@@ -110,3 +150,8 @@ class UserShow extends React.Component {
 }
 
 export default UserShow
+
+// <div key={comment._id}>
+//   <p>{comment.content}</p>
+//   <p>{comment.user.username}</p>
+// </div>
