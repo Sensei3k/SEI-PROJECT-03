@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Switch} from 'react-router-dom'
 
 import Home from './components/Home'
+import AboutUs from './components/AboutUs'
 import Navbar from './components/Navbar'
 import Register from './auth/Register'
 import Login from './auth/Login'
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path="/users/:id/edit" component={UserEdit}/>
             <Route path="/users/:id" component={UserShow}/>
             <Route path="/users" component={UserIndex}/>
+            <Route path="/aboutus" component={AboutUs}/>
             <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>
             <Route path="/" component={Home}/>
