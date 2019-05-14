@@ -121,6 +121,19 @@ class UserEdit extends React.Component {
                   </div>
                 </div>
               </div>
+              <div className="field">
+                <label className="label">Match Radius</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="number"
+                    name="radius"
+                    placeholder="please enter the maximum distance (km) for your matches"
+                    onChange={this.handleChange}
+                    value={this.state.data.username || ''}
+                  />
+                </div>
+              </div>
               <div className="column is-two-thirds-desktop level-right is-half-tablet is-mobile">
                 <div className="field">
                   <label className="label">About Me</label>
