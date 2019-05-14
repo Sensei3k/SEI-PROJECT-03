@@ -108,28 +108,34 @@ class UserShow extends React.Component {
                 <p className="subtitle">{this.state.user.interests || ''}</p>
               </div>
             </div>
-            {this.canModify() && this.state.user.comments.length &&
-            <div>
-              <div className="column is-full-desktop">
-                <p className="subtitle is-3">Comments</p>
-              </div>
-              {this.state.user.comments.map(comment =>
-                <div key={comment._id}>
-                  <CommentCard {...comment} />
+            <div className="columns is-multiline">
+              {this.canModify() && this.state.user.comments.length &&
+              <div>
+                <div className="column is-full-desktop">
+                  <p className="subtitle is-3">Comments</p>
                 </div>
-              )}
+                <div className="column is-desktop">
+                  {this.state.user.comments.map(comment =>
+                    <div key={comment._id}>
+                      <CommentCard {...comment} />
+                    </div>
+                  )}
+                </div>
+              </div>
+              }
             </div>
-            }
-
-            {!this.canModify() &&
-              <form onSubmit={this.handleSubmit}>
-                <label>
-                    Leave a message:
-                </label>
-                <input type="textarea" name="content" value={this.state.value} onChange={this.handleChange} />
-                <button className="button is-info submit-edit-button">Post</button>
-              </form>
-            }
+            <div className="columns is-multiline">
+              <div className="column">
+                {!this.canModify() &&
+                  <form onSubmit={this.handleSubmit}>
+                    <label className="subtitle is-3">Leave a message:</label>
+                    <br />
+                    <input type="textarea" name="content" value={this.state.value} onChange={this.handleChange} />
+                    <button className="button is-info submit-edit-button">Post</button>
+                  </form>
+                }
+              </div>
+            </div>
           </div>
         </section>
 
