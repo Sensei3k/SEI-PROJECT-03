@@ -81,25 +81,15 @@ class UserShow extends React.Component {
                 <p className="subtitle is-3">About Me</p>
               </div>
               <div className="column is-desktop">
-                <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p className="subtitle">{this.state.user.aboutMe || ''}</p>
               </div>
               <div className="column is-full-desktop">
                 <p className="subtitle is-3">Interests</p>
               </div>
               <div className="column is-desktop">
-                <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p className="subtitle">{this.state.user.interests || ''}</p>
               </div>
             </div>
-            <div className="column is-desktop">
-              <p className="subtitle">{this.state.user.aboutMe || ''}</p>
-            </div>
-            <div className="column is-full-desktop">
-              <p className="subtitle is-3">Interests</p>
-            </div>
-            <div className="column is-desktop">
-              <p className="subtitle">{this.state.user.interests || ''}</p>
-            </div>
-
             {this.canModify() && this.state.user.comments.length &&
             <div>
               <div className="column is-full-desktop">
@@ -121,7 +111,6 @@ class UserShow extends React.Component {
                 <input type="textarea" name="content" value={this.state.value} onChange={this.handleChange} />
                 <button className="button is-info submit-edit-button">Submit Changes</button>
               </form>
-
             }
           </div>
           {/*a button for finding matches*/}
