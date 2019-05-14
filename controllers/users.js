@@ -48,11 +48,29 @@ function showProfileRoute(req, res, next) {
     .catch(next)
 }
 
+
+function commentCreateRoute(req, res, next) {
+  //  add the currentUser to the data
+  req.body.user = req.currentUser // this comes from `secureRoute`
+  // find the user we want to add a comment to
+  User.findById(req.params.id)
+    .then(user => {
+      // add a comment to the character
+      user.comments.push(req.body)
+      return user.save()
+    })
+    .then(user => res.json(user))
+    .catch(next)
+}
+
+
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
   create: createRoute,
   update: updateRoute,
   delete: deleteRoute,
-  showProfile: showProfileRoute
+  showProfile: showProfileRoute,
+  commentCreate: commentCreateRoute
 }

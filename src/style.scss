@@ -21,8 +21,19 @@ body {
       background-position: center;
     }
 
-  br {
-    border: 3px solid $hr-color;
+  .navbar {
+    opacity: 0.3;
+    background-color: black;
+  }
+
+  #facebook {
+    background-image: url('https://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png');
+    background-size: contain;
+    width: 50px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 10px;
   }
 
   .loading {
@@ -111,6 +122,12 @@ input {
 .edit-container {
   max-width: 800px;
   margin: auto;
+
+  .upload-photo {
+    height: 36px;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
   //
   .genders-container {
     display: flex;
