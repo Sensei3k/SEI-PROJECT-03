@@ -16,19 +16,19 @@ mongoose.connect(dbUri, (err, db) => {
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1991, 11, 25),
     location: 'New York',
-    image: '../images/cpu-profile-images/placeholder.jpg',
+    image: '../images/cpu-profile-images/cristiano-ronaldo.jpg',
     gender: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
     // 2.)
-    username: 'Paul',
+    username: 'John',
     email: 'paulo@gmail.com',
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1995, 2, 13),
     location: 'London',
-    image: '../images/cpu-profile-images/placeholder.jpg',
+    image: '../images/cpu-profile-images/John.jpg',
     gender: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
@@ -52,7 +52,7 @@ mongoose.connect(dbUri, (err, db) => {
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1992, 6, 17),
     location: 'New York',
-    image: '../images/cpu-profile-images/placeholder.jpg',
+    image: '../images/cpu-profile-images/foreveralone.jpeg',
     gender: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
 

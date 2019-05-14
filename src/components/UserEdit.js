@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import Auth from '../lib/Auth'
+
 import ReactFilestack from 'filestack-react'
 
 const options = {
@@ -14,6 +14,10 @@ const options = {
 
 // const filestackKey= process.env.FILESTACK
 // console.log(filestackKey, 'key')
+
+// import Auth from '../lib/Auth'
+import Loading from './loading'
+
 
 class UserEdit extends React.Component {
 
@@ -69,6 +73,7 @@ class UserEdit extends React.Component {
   }
 
   render() {
+    if(!this.state.data._id) return <Loading />
     return (
       <section className="section user-background">
         <div className="container edit-container">
