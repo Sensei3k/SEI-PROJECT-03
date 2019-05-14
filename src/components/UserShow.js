@@ -70,10 +70,28 @@ class UserShow extends React.Component {
                   <img className="" src={this.state.user.image || 'https://i0.wp.com/reviveyouthandfamily.org/wp-content/uploads/2013/01/headshot-placeholder.jpg?fit=600%2C600&ssl=1'} alt={this.state.user.name} />
                 </figure>
               </div>
-              <div className="column is-two-thirds-desktop">
+              <div className="column is-one-third-desktop">
                 <p className="subtitle is-3">{this.state.user.username}</p>
                 <p className="subtitle">Age: {this.displayAge()}</p>
                 <p className="subtitle">Location: {this.state.user.location}</p>
+              </div>
+              <div className="column is-one-third-desktop">
+                {/*button for editing profiles*/}
+                {this.canModify() &&
+                    <div className="">
+                      <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit Profile</Link>
+                    </div>
+                }
+                <br />
+                {/*a button for finding matches*/}
+                {this.canModify() &&
+                <Link to ={{
+                  pathname: `/users/${this.props.match.params.id}/matches`,
+                  state: {id: this.props.match.params.id}
+                }}>
+                  <button className="button is-danger">Find Matches</button>
+                </Link>
+                }
               </div>
             </div>
             <div className="columns is-multiline">
@@ -109,26 +127,10 @@ class UserShow extends React.Component {
                     Leave a message:
                 </label>
                 <input type="textarea" name="content" value={this.state.value} onChange={this.handleChange} />
-                <button className="button is-info submit-edit-button">Submit Changes</button>
+                <button className="button is-info submit-edit-button">Post</button>
               </form>
             }
           </div>
-          {/*a button for finding matches*/}
-          {this.canModify() &&
-          <Link to ={{
-            pathname: `/users/${this.props.match.params.id}/matches`,
-            state: {id: this.props.match.params.id}
-          }}>
-            <button className="button is-danger">Find Matches</button>
-          </Link>
-          }
-
-          {/*button for editing profiles*/}
-          {this.canModify() &&
-              <div className="level-right">
-                <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
-              </div>
-          }
         </section>
 
         <Footer />
