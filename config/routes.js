@@ -4,11 +4,11 @@ const authController = require('../controllers/auth')
 const matchController = require('../controllers/matches')
 //const secureRoute = require('../lib/secureRoute')
 
-router.get('/', (req,res) => res.json({ message: 'Welcome to the Dating App API' }))
+router.get('/', (req,res) => res.json({ message: 'Welcome to the CRUSH API' }))
 
 router.get('/users', usersController.index)
-router.get('/users/:id', usersController.show)
 router.post('/users', usersController.create)
+router.get('/users/:id', usersController.show)
 router.put('/users/:id', usersController.update)
 router.delete('/users/:id', usersController.delete)
 

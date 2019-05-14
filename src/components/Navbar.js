@@ -49,7 +49,7 @@ class Navbar extends React.Component {
 
             <div className="navbar-end">
               {/* Right-hand links*/}
-              {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item is-danger">Register</Link>}
+              {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item">Register</Link>}
               {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item">Login</Link>}
 
               {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.logout}>Logout</a>}

@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+
 import UserCard from './UserCard'
+import Footer from './Footer'
 
 class MatchIndex extends React.Component {
   constructor(props) {
@@ -19,18 +21,21 @@ class MatchIndex extends React.Component {
 
   render() {
     return (
-      <section className="section user-background">
-        <div className="container">
-          <div className="columns is-multiline">
-            {this.state.users.map(user =>
-              <div key={user._id} className="column is-one-third-desktop is-half-tablet">
-                <Link to ={`/users/${user._id}`}>
-                  <UserCard {...user} />
-                </Link>
-              </div>
-            )}
+      <section>
+        <section className="section user-background">
+          <div className="container">
+            <div className="columns is-multiline">
+              {this.state.users.map(user =>
+                <div key={user._id} className="column is-one-third-desktop is-half-tablet">
+                  <Link to ={`/users/${user._id}`}>
+                    <UserCard {...user} />
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </section>
+        <Footer />
       </section>
     )
   }
