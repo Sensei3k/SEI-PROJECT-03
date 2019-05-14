@@ -5,12 +5,8 @@ import ReactFilestack from 'filestack-react'
 
 const options = {
   accept: 'image/*',
-  maxFiles: 1,
-  storeTo: {
-    location: 's3'
-  },
   transformations: {
-    crop: false,
+    crop: true,
     circle: true,
     rotate: true
   }
@@ -31,8 +27,8 @@ class UserEdit extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    // this.onSuccess = this.onSuccess.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleUploadImages = this.handleUploadImages.bind(this)
   }
 
   handleChange(e) {
@@ -41,13 +37,7 @@ class UserEdit extends React.Component {
     this.setState({ data })
 
     console.log(this.state.data)
-
   }
-
-
-  // onSuccess(e) {
-  //   // handle result here
-  // }
 
   handleSubmit(e) {
     e.preventDefault()
@@ -56,7 +46,7 @@ class UserEdit extends React.Component {
     //console.log('recognise submit')
     //console.log(this.state.data)
 
-    axios.put(`api/users/${this.props.match.params.id}`, this.state.data)
+    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data)
       .then(res => {
         this.props.history.push(`/users/${res.data._id}`)
         // this.props.history.push(`/users/${this.props.match.params.id}`)
@@ -71,6 +61,13 @@ class UserEdit extends React.Component {
 
   }
 
+  handleUploadImages(result) {
+    console.log(result, 'result')
+    const data = { ...this.state.data, image: result.filesUploaded[0].url}
+    this.setState({ data })
+    console.log(this.state.data)
+  }
+
   render() {
     return (
       <section className="section user-background">
@@ -81,12 +78,14 @@ class UserEdit extends React.Component {
                 <div className="field">
                   <label className="label">Profile Photo</label>
                   <ReactFilestack
-                    apikey="AfhH1JCT0RgGDN0EoyZNoz"
+                    apikey={process.env.FILESTACK}
                     buttonText="Upload Photo"
-                    buttonClass="upload-photo"
+                    buttonClass="button"
                     options={options}
+                    onSuccess={(result) => this.handleUploadImages(result)}
                     preload={true}
                   />
+                  {this.state.data.image && <img src={this.state.data.image} />}
                 </div>
                 <div className="field">
                   <label className="label">Name</label>

@@ -65,8 +65,6 @@ function matchRoute(req, res, next) {
     .catch(next) //catch any errors
 }
 
-
-
 module.exports = {
   match: matchRoute
 }
