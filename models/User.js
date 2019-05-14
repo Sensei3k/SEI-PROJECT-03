@@ -2,10 +2,12 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const commentSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User',
-    required: true
+  //user: {
+  username: {
+    //type: mongoose.Schema.ObjectId,
+    type: String
+    //ref: 'User',
+    //required: true - might put back
   },
   content: {
     type: String,
@@ -46,15 +48,13 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   gender: {
-    type: String,
-    enum: ['Male', 'Female', 'Other']
+    type: String
   },
   image: {
     type: String
   },
   interestedIn: {
-    type: String,
-    enum: ['Male', 'Female', 'Other']
+    type: String
   },
   interests: {
     type: String

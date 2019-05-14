@@ -9,17 +9,51 @@ class UserShow extends React.Component {
     super(props)
 
     this.state = {
-      user: null
+      user: null,
+      data: {},
+      errors: {}
     }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.commentLoaded = this.commentLoaded.bind(this)
   }
+
+  handleChange(e) {
+    const data = { ...this.state.data, [e.target.name]: e.target.value }
+    this.setState({ data: data })
+    console.log(this.state)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+
+    const token = Auth.getToken()
+
+    axios.post(`api/users/${this.state.user._id}/comments`, this.state.data, { headers: {'Authorization': `Bearer ${token}` }
+    })
+      .then(res => this.props.history.push(`/users/${res.data._id}`))
+      .catch(err => this.setState({ errors: err.response.data.errors }))
+  }
+
 
   componentDidMount() {
     axios.get(`api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
   }
 
+
   canModify() {
     return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id
+  }
+
+  commentLoaded() {
+    if(this.state.user.comments[4]) {
+      return this.state.user.comments[4].content
+    } else {
+      return false
+    }
+
   }
 
   render() {
@@ -52,7 +86,32 @@ class UserShow extends React.Component {
             <div className="column is-desktop">
               <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
+
+            {this.canModify() &&
+            <div>
+              <div className="column is-full-desktop">
+                <p className="subtitle is-3">Comments</p>
+              </div>
+              <div className="column is-desktop">
+                <p className="subtitle">{ this.commentLoaded() || ''}</p>
+              </div>
+            </div>
+            }
+
+            {!this.canModify() &&
+              <form onSubmit={this.handleSubmit}>
+                <label>
+                    Leave a message:
+                </label>
+                <input type="textarea" name="content" value={this.state.value} onChange={this.handleChange} />
+                <button className="button is-info submit-edit-button">Submit Changes</button>
+              </form>
+
+            }
+
           </div>
+
+
 
           {/*a button for finding matches*/}
           {this.canModify() &&
