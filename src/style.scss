@@ -41,7 +41,7 @@ body {
   }
 
   .input {
-      width: 500px;
+      max-width: 500px;
     }
 
 
@@ -153,35 +153,12 @@ input {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .leave-comment {
   font-size: 16px;
+}
+
+.location-container {
+  button {
+    height: inherit;
+  }
 }

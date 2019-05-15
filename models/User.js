@@ -70,6 +70,12 @@ const userSchema = new mongoose.Schema({
   aboutMe: {
     type: String
   },
+  minAge: {
+    type: String
+  },
+  maxAge: {
+    type: String
+  },
   comments: [commentSchema]
 }, {
   toJSON: {
