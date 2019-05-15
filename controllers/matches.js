@@ -31,6 +31,7 @@ function matchRoute(req, res, next) {
       //initialize variables to store the users matching details
       //let userLocation = ''
       let userGender = ''
+      let userInterestedIn = ''
       let userInterests = ''
       let userRadius = ''
       let userCoordinates = []
@@ -46,6 +47,7 @@ function matchRoute(req, res, next) {
         if(user._id.equals(req.params.id)) {
           //userLocation = user.location
           userGender = user.gender
+          userInterestedIn = user.interestedIn
           //create an array of user interests
           userInterests = user.interests.split(', ')
           userCoordinates = user.coordinates
@@ -62,6 +64,7 @@ function matchRoute(req, res, next) {
       users.forEach((match) => {
         //const matchLocation = match.location
         const matchGender = match.gender
+        const matchInterestedIn = match.interestedIn
         const matchId = match._id
         const matchInterests = match.interests.split(', ')
         const matchRadius = parseInt(match.radius)
@@ -77,11 +80,13 @@ function matchRoute(req, res, next) {
 
         //calculate the distance between the user and the potential match
         const distanceApart = calcDistance(userCoordinates, match.coordinates)
-        console.log(distanceApart)
-        // if IDs dont match and the locations match, push into array
+        //console.log(distanceApart)
 
-        if(userId !== matchId && userGender !== matchGender && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
+
+        // if the user and potential match pass the conditions below they are a match
+        if(!matchId.equals(userId) && (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender) && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
           arrayOfMatches.push(match)
+          console.log(distanceApart, matchId)
         }
 
       })

@@ -3,10 +3,10 @@ import React from 'react'
 
 const Footer = () => {
   return(
-    <footer className="footer">
+    <footer className="footer" style={{backgroundColor: 'teal'}}>
       <div className="content has-text-centered">
         <p>
-          <strong>Crush &copy;</strong> by <a href="http://localhost:8000/#/">Crush Dev Team &#8482;</a>. Created at GA
+          <strong>Crush &copy;</strong> by <a href="http://localhost:8000/#/">Crush Dev Team &#8482; </a>. Created at GA
         </p>
       </div>
     </footer>
