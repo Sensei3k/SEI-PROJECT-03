@@ -1,11 +1,7 @@
 $hr-color: #B0E2FF;
 
 body {
-  background-image: url('https://wallpaperstudio10.com/static/wpdb/wallpapers/3840x2160/181007.jpg');
   min-height: 100vh;
-  background-position: center;
-  background-size: cover;
-  background-image: contain;
 
     a.navbar-item {
       padding-top: 10px;
@@ -25,15 +21,6 @@ body {
     //opacity: 0;
   }
 
-  #facebook {
-    background-image: url('https://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png');
-    background-size: contain;
-    width: 50px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 10px;
-  }
 
   .loading {
    image-orientation: 40px;
@@ -157,7 +144,12 @@ input {
   }
 }
 
-
+#background-change {
+  background-position: center;
+  background-size: cover;
+  background-image: contain;
+  transition: background-image 2s ease;
+}
 
 
 
