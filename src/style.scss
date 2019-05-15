@@ -151,8 +151,13 @@ input {
   transition: background-image 2s ease;
 }
 
-  button {
-    margin-top: 20px;
+  .location-container {
+    display: flex;
+    align-items: center;
+
+    button {
+      margin-top: 20px;
+    }
   }
 
   .editform-input {
