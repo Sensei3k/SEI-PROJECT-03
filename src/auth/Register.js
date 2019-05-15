@@ -12,24 +12,11 @@ class Register extends React.Component {
       startDate: new Date()
     }
 
-    // this.handleDateChange = this.handleDateChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.dobToAge = this.dobToAge.bind(this)
 
   }
-
-  // handleDateChange(e) {
-  //   const date = {...this.state.data, [e.target.name]: e.target.value}
-  //   this.setState({ data: date })
-  // }
-
-  // componentDidMount() {
-  //   navigator.geolocation.watchPosition((position) => {
-  //     const { latitude, longitude } = position.coords
-  //     this.setState({ data: { coordinates: { latitude: latitude, longitude: longitude } } })
-  //   })
-  // }
 
   //function for converting the date of birth to an age in years
   dobToAge(e) {
@@ -39,12 +26,8 @@ class Register extends React.Component {
     const dob = str.substr(0,10)
     const years = moment().diff(dob, 'years')
 
-    //const year = toString(years)
     const data = { ...this.state.data, age: years }
     this.setState({ data: data }, this.handleSubmit)
-
-    console.log(years)
-    console.log(this.state.data)
 
   }
 
@@ -56,19 +39,12 @@ class Register extends React.Component {
   handleSubmit() {
     //e.preventDefault()
 
-    //this.dobToAge()
-
     axios.post('api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({errors: err.response.data.errors}))
 
-
-    // axios.post('api/register', this.state.data)
-    //   .then(() => this.props.history.push('/login'))
-    //   .catch(err => this.setState({errors: err.response.data.errors}))
   }
 
-  // within render, added a dropdown menu for location.
   render() {
     return (
       <section className="section">
@@ -142,20 +118,5 @@ class Register extends React.Component {
     )
   }
 }
-
-
-// <div className="field">
-//   <label className="label">Date of Birth</label>
-//   <div className="control">
-//     <input className="input" name="Date of Birth" type="number" placeholder="YYYY-MM-DD" onChange={this.handleChange} />
-//   </div>
-// </div>
-//
-// <div className="field">
-//   <label className="label">Location</label>
-//   <div className="control">
-//     <input className="input" name="Location" placeholder="eg: London, Tokyo, New York " onChange={this.handleChange} />
-//   </div>
-// </div>
 
 export default Register

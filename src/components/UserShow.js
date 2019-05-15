@@ -4,7 +4,6 @@ import axios from 'axios'
 import Auth from '../lib/Auth'
 import CommentCard from './CommentCard'
 import Loading from './Loading'
-import moment from 'moment'
 import Footer from './Footer'
 
 class UserShow extends React.Component {
@@ -20,7 +19,6 @@ class UserShow extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.displayAge = this.displayAge.bind(this)
   }
 
   handleChange(e) {
@@ -57,17 +55,6 @@ class UserShow extends React.Component {
     }
   }
 
-  displayAge(){
-    const str = this.state.user.dateOfBirth
-    const dob = str.substr(0,9)
-    const years = moment().diff(dob, 'years')
-
-    const data = { ...this.state.data, age: years }
-    this.setState({ data: data })
-
-    return years
-  }
-
   canModify() {
     return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id
   }
@@ -86,7 +73,7 @@ class UserShow extends React.Component {
               </div>
               <div className="column is-half-desktop">
                 <p className="subtitle is-4">Name: {this.state.user.username}</p>
-                <p className="subtitle">Age: {this.displayAge()}</p>
+                <p className="subtitle">Age: {this.state.user.age}</p>
                 <p className="subtitle">Location: {this.state.user.location}</p>
                 <div className="container is-flex">
                   {/*button for editing profiles*/}
@@ -158,8 +145,3 @@ class UserShow extends React.Component {
 }
 
 export default UserShow
-
-// <div key={comment._id}>
-//   <p>{comment.content}</p>
-//   <p>{comment.user.username}</p>
-// </div>
