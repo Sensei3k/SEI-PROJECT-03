@@ -158,7 +158,21 @@ input {
 }
 
 .location-container {
+  display: flex;
+  align-items: center;
+
   button {
-    height: inherit;
+    margin-top: 20px;
+  }
+
+  .editform-input {
+    max-width: 140px;
+  }
+}
+
+.age-range {
+
+  .editform-input {
+    max-width: 140px;
   }
 }

@@ -101,7 +101,8 @@ class UserEdit extends React.Component {
                   <ReactFilestack
                     apikey={process.env.FILESTACK}
                     buttonText="Upload Photo"
-                    buttonClass="button"
+                    buttonClass="button is-primary"
+                    className="upload-image"
                     options={options}
                     onSuccess={(result) => this.handleUploadImages(result)}
                     preload={true}
@@ -148,7 +149,7 @@ class UserEdit extends React.Component {
                     <label className="label">Match Radius</label>
                     <div className="control">
                       <input
-                        className="input"
+                        className="input editform-input"
                         type="text"
                         pattern="[0-9]*"
                         name="radius"
@@ -160,16 +161,16 @@ class UserEdit extends React.Component {
                   </div>
                   <div className="field">
                     <div className="control">
-                      <button className="button is-info" onClick={this.updateLocation}>Update Location</button>
+                      <button className="button is-primary" onClick={this.updateLocation}>Update Location</button>
                     </div>
                   </div>
                 </div>
-                <div className="container is-flex">
+                <div className="container is-flex age-range">
                   <div className="field">
                     <label className="label">Min Age Range</label>
                     <div className="control">
                       <input
-                        className="input"
+                        className="input editform-input"
                         type="text"
                         name="minAge"
                         placeholder="eg. 25"
@@ -182,7 +183,7 @@ class UserEdit extends React.Component {
                     <label className="label">Max Age Range</label>
                     <div className="control">
                       <input
-                        className="input"
+                        className="input editform-input"
                         type="text"
                         name="maxAge"
                         placeholder="eg. 35"
