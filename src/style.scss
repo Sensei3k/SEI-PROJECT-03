@@ -22,8 +22,7 @@ body {
     }
 
   .navbar {
-    opacity: 0.3;
-    background-color: black;
+    //opacity: 0;
   }
 
   #facebook {
@@ -61,6 +60,11 @@ body {
     font-size: 20px;
    }
 
+  }
+
+  .footer {
+    background-color: #151515;
+    height: 50px;
   }
 
   .user-background {
