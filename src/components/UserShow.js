@@ -31,6 +31,7 @@ class UserShow extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    e.target.reset()
 
     const token = Auth.getToken()
 
@@ -76,8 +77,8 @@ class UserShow extends React.Component {
           <div className="container profile">
             <div className="columns is-multiline is-mobile columns-profile">
               <div className="column is-half-desktop img-profile">
-                <figure className="image is-128x128">
-                  <img className="" src={this.state.user.image || 'https://i0.wp.com/reviveyouthandfamily.org/wp-content/uploads/2013/01/headshot-placeholder.jpg?fit=600%2C600&ssl=1'} alt={this.state.user.name} />
+                <figure className="image-profile">
+                  <img className="image-profile" src={this.state.user.image || 'https://i0.wp.com/reviveyouthandfamily.org/wp-content/uploads/2013/01/headshot-placeholder.jpg?fit=600%2C600&ssl=1'} alt={this.state.user.name} />
                 </figure>
               </div>
               <div className="column is-half-desktop">
@@ -114,11 +115,14 @@ class UserShow extends React.Component {
               </div>
             </div>
             <div className="columns is-multiline is-mobile">
-              {this.canModify() && this.state.user.comments.length &&
-              <div>
-                <div className="column is-full-desktop">
-                  <p className="subtitle is-4">Comments</p>
-                </div>
+              <hr />
+
+              <div className="column is-full-desktop">
+                <p className="subtitle is-4">Comments</p>
+              </div>
+              {this.canModify() && (this.state.user.comments.length &&
+              <div className="container">
+
                 <div className="column is-desktop">
                   {this.state.user.comments.map(comment =>
                     <div key={comment._id}>
@@ -127,14 +131,13 @@ class UserShow extends React.Component {
                   )}
                 </div>
               </div>
-              }
+              || 'You haven\'t received any comments yet.')}
             </div>
             <br/>
             <div className="columns is-multiline">
-              <div className="column is-desktop has-text-centered">
+              <div className="column is-desktop">
                 {!this.canModify() &&
                   <form onSubmit={this.handleSubmit}>
-                    <label className="subtitle is-5">Leave a message...</label>
                     <br/>
                     <textarea rows="4" cols="60" className="leave-comment" type="text" name="content" placeholder="Max: 280 characters" value={this.state.value} onChange={this.handleChange} />
                     <br/>
@@ -154,8 +157,3 @@ class UserShow extends React.Component {
 }
 
 export default UserShow
-
-// <div key={comment._id}>
-//   <p>{comment.content}</p>
-//   <p>{comment.user.username}</p>
-// </div>
