@@ -35,6 +35,9 @@ function matchRoute(req, res, next) {
       let userInterests = ''
       let userRadius = ''
       let userCoordinates = []
+      let userAge = ''
+      let userMinAge = ''
+      let userMaxAge = ''
 
       //filter out the users that have not entered interests yet
       users = users.filter((user) => {
@@ -52,6 +55,9 @@ function matchRoute(req, res, next) {
           userInterests = user.interests.split(', ')
           userCoordinates = user.coordinates
           userRadius = parseInt(user.radius)
+          userAge = parseInt(user.age)
+          userMinAge = parseInt(user.minAge)
+          userMaxAge = parseInt(user.maxAge)
         }
 
       })
@@ -69,7 +75,9 @@ function matchRoute(req, res, next) {
         const matchInterests = match.interests.split(', ')
         const matchRadius = parseInt(match.radius)
         const similarInterests = []
-        //let distanceApart = ''
+        const matchAge = parseInt(match.age)
+        const matchMinAge = parseInt(match.minAge)
+        const matchMaxAge = parseInt(match.maxAge)
 
         //count the number of similar interests
         matchInterests.forEach((interest) => {
@@ -82,11 +90,10 @@ function matchRoute(req, res, next) {
         const distanceApart = calcDistance(userCoordinates, match.coordinates)
         //console.log(distanceApart)
 
-
+        //note store each category into a variable when refactoring!
         // if the user and potential match pass the conditions below they are a match
-        if(!matchId.equals(userId) && (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender) && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
+        if(!matchId.equals(userId) && (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender) && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius && matchAge < userMaxAge && matchAge > userMinAge && userAge < matchMaxAge && userAge > matchMinAge) {
           arrayOfMatches.push(match)
-          console.log(distanceApart, matchId)
         }
 
       })

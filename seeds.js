@@ -15,6 +15,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1991, 11, 25),
+    age: '27',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //bethnal green
     coordinates: {
@@ -34,6 +37,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1995, 2, 13),
+    age: '24',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //wimbledon
     coordinates: {
@@ -53,6 +59,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1994, 2, 19),
+    age: '25',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //elephant & castle
     coordinates: {
@@ -72,6 +81,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1992, 6, 17),
+    age: '26',
+    minAge: '13',
+    maxAge: '30',
     location: 'London',
     //tottenham
     coordinates: {
@@ -92,6 +104,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1993, 5, 11),
+    age: '25',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //stratford
     coordinates: {
@@ -111,6 +126,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1996, 8, 17),
+    age: '22',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //canary wharf
     coordinates: {
@@ -131,6 +149,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1998, 9, 27),
+    age: '20',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //croydon
     coordinates: {
@@ -151,6 +172,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1996, 4, 23),
+    age: '23',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //sloane square
     coordinates: {
@@ -170,6 +194,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(2000, 2, 11),
+    age: '19',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //southfields
     coordinates: {
@@ -189,6 +216,9 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1999, 4, 18),
+    age: '20',
+    minAge: '18',
+    maxAge: '30',
     location: 'London',
     //old street
     coordinates: {
@@ -199,7 +229,7 @@ mongoose.connect(dbUri, (err, db) => {
     image: '../images/cpu-profile-images/Valentina.jpg',
     gender: 'Female',
     interestedIn: 'Male',
-    interests: 'biking, swimming, beach, painting, travel'
+    interests: 'biking, swimming, hiking, eating, music'
   })
     .then(() => mongoose.connection.close())
     .catch(err => {
