@@ -74,82 +74,76 @@ class UserShow extends React.Component {
       <section>
         <section className="section user-background">
           <div className="container profile">
-            <div className="columns is-multiline columns-profile">
-              <div className="column is-one-third-desktop img-profile">
+            <div className="columns is-multiline is-mobile columns-profile">
+              <div className="column is-half-desktop img-profile">
                 <figure className="image is-128x128">
                   <img className="" src={this.state.user.image || 'https://i0.wp.com/reviveyouthandfamily.org/wp-content/uploads/2013/01/headshot-placeholder.jpg?fit=600%2C600&ssl=1'} alt={this.state.user.name} />
                 </figure>
               </div>
-              <div className="column is-two-thirds-desktop">
-                <p className="subtitle is-3">{this.state.user.username}</p>
+              <div className="column is-half-desktop">
+                <p className="subtitle is-4">Name: {this.state.user.username}</p>
                 <p className="subtitle">Age: {this.displayAge()}</p>
                 <p className="subtitle">Location: {this.state.user.location}</p>
-              </div>
-            </div>
-            <div className="columns is-multiline">
-              <div className="column is-full-desktop">
-                <p className="subtitle is-3">About Me</p>
-              </div>
-              <div className="column is-desktop">
-                <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-              <div className="column is-full-desktop">
-                <p className="subtitle is-3">Interests</p>
-              </div>
-              <div className="column is-desktop">
-                <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-            </div>
-            <div className="column is-desktop">
-              <p className="subtitle">{this.state.user.aboutMe || ''}</p>
-            </div>
-            <div className="column is-full-desktop">
-              <p className="subtitle is-3">Interests</p>
-            </div>
-            <div className="column is-desktop">
-              <p className="subtitle">{this.state.user.interests || ''}</p>
-            </div>
-
-            {this.canModify() && this.state.user.comments.length &&
-            <div>
-              <div className="column is-full-desktop">
-                <p className="subtitle is-3">Comments</p>
-              </div>
-              {this.state.user.comments.map(comment =>
-                <div key={comment._id}>
-                  <CommentCard {...comment} />
+                <div className="container is-flex">
+                  {/*button for editing profiles*/}
+                  {this.canModify() &&
+                      <div className="">
+                        <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit Profile</Link>
+                      </div>
+                  }
+                  {/*a button for finding matches*/}
+                  {this.canModify() &&
+                  <Link to ={{
+                    pathname: `/users/${this.props.match.params.id}/matches`,
+                    state: {id: this.props.match.params.id}
+                  }}>
+                    <button className="button is-danger">Find Matches</button>
+                  </Link>
+                  }
                 </div>
-              )}
-            </div>
-            }
-
-            {!this.canModify() &&
-              <form onSubmit={this.handleSubmit}>
-                <label>
-                    Leave a message:
-                </label>
-                <input type="textarea" name="content" value={this.state.value} onChange={this.handleChange} />
-                <button className="button is-info submit-edit-button">Submit Changes</button>
-              </form>
-
-            }
-          </div>
-          {/*a button for finding matches*/}
-          {this.canModify() &&
-          <Link to ={{
-            pathname: `/users/${this.props.match.params.id}/matches`,
-            state: {id: this.props.match.params.id}
-          }}>
-            <button className="button is-danger">Find Matches</button>
-          </Link>
-          }
-
-          {/*button for editing profiles*/}
-          {this.canModify() &&
-              <div className="level-right">
-                <Link to={`/users/${this.state.user._id}/edit`} className="button is-info">Edit</Link>
               </div>
-          }
+            </div>
+            <div className="columns is-multiline is-mobile">
+              <div className="column is-half-desktop">
+                <p className="subtitle is-4">About Me</p>
+                <p className="subtitle">{this.state.user.aboutMe || ''}</p>
+              </div>
+              <div className="column is-half-desktop">
+                <p className="subtitle is-4">Interests</p>
+                <p className="subtitle">{this.state.user.interests || ''}</p>
+              </div>
+            </div>
+            <div className="columns is-multiline is-mobile">
+              {this.canModify() && this.state.user.comments.length &&
+              <div>
+                <div className="column is-full-desktop">
+                  <p className="subtitle is-4">Comments</p>
+                </div>
+                <div className="column is-desktop">
+                  {this.state.user.comments.map(comment =>
+                    <div key={comment._id}>
+                      <CommentCard {...comment} />
+                    </div>
+                  )}
+                </div>
+              </div>
+              }
+            </div>
+            <br/>
+            <div className="columns is-multiline">
+              <div className="column is-desktop has-text-centered">
+                {!this.canModify() &&
+                  <form onSubmit={this.handleSubmit}>
+                    <label className="subtitle is-5">Leave a message...</label>
+                    <br/>
+                    <textarea rows="4" cols="60" className="leave-comment" type="text" name="content" placeholder="Max: 280 characters" value={this.state.value} onChange={this.handleChange} />
+                    <br/>
+                    <button className="button is-info submit-edit-button">Post</button>
+                  </form>
+                }
+              </div>
+            </div>
+          </div>
         </section>
 
         <Footer />

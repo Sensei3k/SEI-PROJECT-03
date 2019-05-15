@@ -46,6 +46,13 @@ const userSchema = new mongoose.Schema({
   location: {
     type: String
   },
+  coordinates: {
+    latitude: { type: Number },
+    longitude: { type: Number }
+  },
+  radius: {
+    type: String
+  },
   gender: {
     type: String
     // enum: ['Male', 'Female', 'Other']

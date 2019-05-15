@@ -22,6 +22,13 @@ class Register extends React.Component {
   //   this.setState({ data: date })
   // }
 
+  // componentDidMount() {
+  //   navigator.geolocation.watchPosition((position) => {
+  //     const { latitude, longitude } = position.coords
+  //     this.setState({ data: { coordinates: { latitude: latitude, longitude: longitude } } })
+  //   })
+  // }
+
   handleChange(e) {
     const data =  {...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data: data })
@@ -29,6 +36,9 @@ class Register extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    //get coordinates from user location
+
+
     axios.post('api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({errors: err.response.data.errors}))

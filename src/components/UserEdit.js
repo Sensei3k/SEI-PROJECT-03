@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+//import Auth from '../lib/Auth'
 import ReactFilestack from 'filestack-react'
 
 const options = {
@@ -33,6 +33,8 @@ class UserEdit extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleUploadImages = this.handleUploadImages.bind(this)
+
+    this.updateLocation = this.updateLocation.bind(this)
   }
 
   handleChange(e) {
@@ -63,6 +65,20 @@ class UserEdit extends React.Component {
     axios.get(`api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data }))
 
+  }
+
+  updateLocation(e) {
+
+    e.preventDefault()
+    console.log('button recognised')
+    
+    navigator.geolocation.watchPosition((position) => {
+      const { latitude, longitude } = position.coords
+      const data = {...this.state.data, coordinates: {latitude: latitude, longitude: longitude}}
+      this.setState({ data: data })
+
+      console.log(this.state.data)
+    })
   }
 
   handleUploadImages(result) {
@@ -111,18 +127,37 @@ class UserEdit extends React.Component {
                     <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
                       <option value="">Select</option>
                       <option value="Amsterdam">Amsterdam</option>
-                      <option value="london">London</option>
-                      <option value="manchester">Manchester</option>
-                      <option value="birmingham">Birmingham</option>
-                      <option value="mexico-city">Mexico City</option>
+                      <option value="London">London</option>
+                      <option value="Manchester">Manchester</option>
+                      <option value="Birmingham">Birmingham</option>
+                      <option value="Mexico-City">Mexico City</option>
                       <option value="Berlin">Berlin</option>
                       <option value="Paris">Paris</option>
                       <option value="Brussels">Brussels</option>
-                      <option value="Qubec">Qubec</option>
+                      <option value="Quebec">Qubec</option>
                       <option value="Montreal">Montreal</option>
                       <option value="New York">New York</option>
                       <option value="Venice">Venice</option>
                     </select>
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Match Radius</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="text"
+                      pattern="[0-9]*"
+                      name="radius"
+                      placeholder="please enter the maximum distance (km) for your matches"
+                      onChange={this.handleChange}
+                      value={this.state.data.radius || ''}
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <button onClick={this.updateLocation}>Update Location</button>
                   </div>
                 </div>
               </div>
