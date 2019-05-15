@@ -61,6 +61,10 @@ class UserShow extends React.Component {
     const str = this.state.user.dateOfBirth
     const dob = str.substr(0,9)
     const years = moment().diff(dob, 'years')
+
+    const data = { ...this.state.data, age: years }
+    this.setState({ data: data })
+
     return years
   }
 

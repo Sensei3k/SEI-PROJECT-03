@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import moment from 'moment'
 
 class Register extends React.Component {
   constructor() {
@@ -14,6 +15,7 @@ class Register extends React.Component {
     // this.handleDateChange = this.handleDateChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.dobToAge = this.dobToAge.bind(this)
 
   }
 
@@ -29,30 +31,51 @@ class Register extends React.Component {
   //   })
   // }
 
+  //function for converting the date of birth to an age in years
+  dobToAge(e) {
+    e.preventDefault()
+
+    const str = this.state.data.dateOfBirth
+    const dob = str.substr(0,10)
+    const years = moment().diff(dob, 'years')
+
+    //const year = toString(years)
+    const data = { ...this.state.data, age: years }
+    this.setState({ data: data }, this.handleSubmit)
+
+    console.log(years)
+    console.log(this.state.data)
+
+  }
+
   handleChange(e) {
     const data =  {...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data: data })
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
-    //get coordinates from user location
+  handleSubmit() {
+    //e.preventDefault()
 
+    //this.dobToAge()
 
     axios.post('api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({errors: err.response.data.errors}))
+
+
+    // axios.post('api/register', this.state.data)
+    //   .then(() => this.props.history.push('/login'))
+    //   .catch(err => this.setState({errors: err.response.data.errors}))
   }
 
   // within render, added a dropdown menu for location.
   render() {
-    console.log(this.state.errors.username)
     return (
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.dobToAge}>
 
                 <div className="field">
                   <label className="label">Username</label>
@@ -75,10 +98,10 @@ class Register extends React.Component {
                       <select name="location" onChange={this.handleChange}>
                         <option value="">Select</option>
                         <option value="Amsterdam">Amsterdam</option>
-                        <option value="london">London</option>
-                        <option value="manchester">Manchester</option>
-                        <option value="birmingham">Birmingham</option>
-                        <option value="mexico-city">Mexico City</option>
+                        <option value="London">London</option>
+                        <option value="Manchester">Manchester</option>
+                        <option value="Birmingham">Birmingham</option>
+                        <option value="Mexico City">Mexico City</option>
                         <option value="Berlin">Berlin</option>
                         <option value="Paris">Paris</option>
                         <option value="Brussels">Brussels</option>

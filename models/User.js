@@ -70,6 +70,9 @@ const userSchema = new mongoose.Schema({
   aboutMe: {
     type: String
   },
+  age: {
+    type: String
+  },
   minAge: {
     type: String
   },
