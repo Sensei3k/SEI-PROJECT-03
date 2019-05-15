@@ -70,7 +70,8 @@ class UserEdit extends React.Component {
   updateLocation(e) {
 
     e.preventDefault()
-
+    console.log('button recognised')
+    
     navigator.geolocation.watchPosition((position) => {
       const { latitude, longitude } = position.coords
       const data = {...this.state.data, coordinates: {latitude: latitude, longitude: longitude}}
