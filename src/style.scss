@@ -1,5 +1,9 @@
 $hr-color: #B0E2FF;
 
+.footer {
+  background-color: teal;
+}
+
 body {
   min-height: 100vh;
 
@@ -23,7 +27,7 @@ body {
   }
 
   .input {
-      width: 500px;
+      max-width: 500px;
     }
 
 
@@ -147,33 +151,27 @@ input {
   transition: background-image 2s ease;
 }
 
+  button {
+    margin-top: 20px;
+  }
+
+  .editform-input {
+    max-width: 140px;
+  }
 
 
+.age-range {
 
+  .editform-input {
+    max-width: 140px;
+  }
+}
 
+.image-comment {
+  height: 100px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.leave-comment {
-  font-size: 16px;
+.image-profile {
+  height: 200px;
+  align-items: center;
 }

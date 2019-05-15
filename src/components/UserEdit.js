@@ -16,7 +16,7 @@ const options = {
 // console.log(filestackKey, 'key')
 
 // import Auth from '../lib/Auth'
-import Loading from './loading'
+import Loading from './Loading'
 
 
 class UserEdit extends React.Component {
@@ -71,7 +71,7 @@ class UserEdit extends React.Component {
 
     e.preventDefault()
     console.log('button recognised')
-    
+
     navigator.geolocation.watchPosition((position) => {
       const { latitude, longitude } = position.coords
       const data = {...this.state.data, coordinates: {latitude: latitude, longitude: longitude}}
@@ -101,7 +101,8 @@ class UserEdit extends React.Component {
                   <ReactFilestack
                     apikey={process.env.FILESTACK}
                     buttonText="Upload Photo"
-                    buttonClass="button"
+                    buttonClass="button is-primary"
+                    className="upload-image"
                     options={options}
                     onSuccess={(result) => this.handleUploadImages(result)}
                     preload={true}
@@ -121,47 +122,77 @@ class UserEdit extends React.Component {
                     />
                   </div>
                 </div>
-                <div className="field">
-                  <label className="label">Location</label>
-                  <div className="select">
-                    <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
-                      <option value="">Select</option>
-                      <option value="Amsterdam">Amsterdam</option>
-                      <option value="London">London</option>
-                      <option value="Manchester">Manchester</option>
-                      <option value="Birmingham">Birmingham</option>
-                      <option value="Mexico-City">Mexico City</option>
-                      <option value="Berlin">Berlin</option>
-                      <option value="Paris">Paris</option>
-                      <option value="Brussels">Brussels</option>
-                      <option value="Quebec">Qubec</option>
-                      <option value="Montreal">Montreal</option>
-                      <option value="New York">New York</option>
-                      <option value="Venice">Venice</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label">Match Radius</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type="text"
-                      pattern="[0-9]*"
-                      name="radius"
-                      placeholder="please enter the maximum distance (km) for your matches"
-                      onChange={this.handleChange}
-                      value={this.state.data.radius || ''}
-                    />
-                  </div>
-                </div>
-                <div className="field">
-                  <div className="control">
-                    <button onClick={this.updateLocation}>Update Location</button>
-                  </div>
-                </div>
               </div>
               <div className="column is-two-thirds-desktop level-right is-half-tablet is-mobile">
+                <div className="container location-container is-flex">
+                  <div className="field">
+                    <label className="label">Location</label>
+                    <div className="select">
+                      <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
+                        <option value="">Select</option>
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="London">London</option>
+                        <option value="Manchester">Manchester</option>
+                        <option value="Birmingham">Birmingham</option>
+                        <option value="Mexico-City">Mexico City</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Brussels">Brussels</option>
+                        <option value="Quebec">Qubec</option>
+                        <option value="Montreal">Montreal</option>
+                        <option value="New York">New York</option>
+                        <option value="Venice">Venice</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Match Radius</label>
+                    <div className="control">
+                      <input
+                        className="input editform-input"
+                        type="text"
+                        pattern="[0-9]*"
+                        name="radius"
+                        placeholder="please enter the maximum distance (km) for your matches"
+                        onChange={this.handleChange}
+                        value={this.state.data.radius || ''}
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <div className="control">
+                      <button className="button is-primary" onClick={this.updateLocation}>Update Location</button>
+                    </div>
+                  </div>
+                </div>
+                <div className="container is-flex age-range">
+                  <div className="field">
+                    <label className="label">Min Age Range</label>
+                    <div className="control">
+                      <input
+                        className="input editform-input"
+                        type="text"
+                        name="minAge"
+                        placeholder="eg. 25"
+                        onChange={this.handleChange}
+                        value={this.state.data.minAge || ''}
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Max Age Range</label>
+                    <div className="control">
+                      <input
+                        className="input editform-input"
+                        type="text"
+                        name="maxAge"
+                        placeholder="eg. 35"
+                        onChange={this.handleChange}
+                        value={this.state.data.maxAge || ''}
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div className="field">
                   <label className="label">About Me</label>
                   <div className="control">
