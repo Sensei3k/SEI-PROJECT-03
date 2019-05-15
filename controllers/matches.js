@@ -29,10 +29,10 @@ function matchRoute(req, res, next) {
       //const userId = JSON.stringify(req.params.id)
       const userId = req.params.id
       //initialize variables to store the users matching details
-      let userLocation = ''
+      //let userLocation = ''
       let userGender = ''
       let userInterests = ''
-
+      let userRadius = ''
       let userCoordinates = []
 
       //filter out the users that have not entered interests yet
@@ -40,20 +40,19 @@ function matchRoute(req, res, next) {
         if(user.interests) return user
       })
 
-
       //find the location, gender of interest, and interests of the user searching for a match
       users.forEach((user) => {
 
         if(user._id.equals(req.params.id)) {
-          userLocation = user.location
+          //userLocation = user.location
           userGender = user.gender
           //create an array of user interests
           userInterests = user.interests.split(', ')
           userCoordinates = user.coordinates
+          userRadius = parseInt(user.radius)
         }
 
       })
-
 
 
       //initialize an array in which to store your matches
@@ -61,12 +60,12 @@ function matchRoute(req, res, next) {
 
       //loop through all users to find which ones match, and exclude yourself
       users.forEach((match) => {
-        const matchLocation = match.location
+        //const matchLocation = match.location
         const matchGender = match.gender
         const matchId = match._id
         const matchInterests = match.interests.split(', ')
+        const matchRadius = parseInt(match.radius)
         const similarInterests = []
-        //const matchCoordinates = match.coordinates
         //let distanceApart = ''
 
         //count the number of similar interests
@@ -78,12 +77,12 @@ function matchRoute(req, res, next) {
 
         //calculate the distance between the user and the potential match
         const distanceApart = calcDistance(userCoordinates, match.coordinates)
-
+        console.log(distanceApart)
         // if IDs dont match and the locations match, push into array
-        if(userId !== matchId && userLocation === matchLocation && userGender !== matchGender && similarInterests.length > 2 && distanceApart < 10) {
+
+        if(userId !== matchId && userGender !== matchGender && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
           arrayOfMatches.push(match)
         }
-
 
       })
       //return the arrayOfMatches as JSON

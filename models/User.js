@@ -50,6 +50,9 @@ const userSchema = new mongoose.Schema({
     latitude: { type: Number },
     longitude: { type: Number }
   },
+  radius: {
+    type: String
+  },
   gender: {
     type: String
     // enum: ['Male', 'Female', 'Other']
