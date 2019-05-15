@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 //import Auth from '../lib/Auth'
 import ReactFilestack from 'filestack-react'
+import { ToastContainer, toast } from 'react-toastify'
 
 const options = {
   accept: 'image/*',
@@ -42,7 +43,7 @@ class UserEdit extends React.Component {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data })
 
-    console.log(this.state.data)
+    // console.log(this.state.data)
   }
 
   handleSubmit(e) {
@@ -64,7 +65,6 @@ class UserEdit extends React.Component {
   componentDidMount() {
     axios.get(`api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data }))
-
   }
 
   updateLocation(e) {
@@ -76,17 +76,19 @@ class UserEdit extends React.Component {
       const { latitude, longitude } = position.coords
       const data = {...this.state.data, coordinates: {latitude: latitude, longitude: longitude}}
       this.setState({ data: data })
-
-      console.log(this.state.data)
+      toast.info('Location updated!', {containerId: 'A'})
+      // console.log(this.state.data)
     })
   }
 
   handleUploadImages(result) {
-    console.log(result, 'result')
+    // console.log(result, 'result')
     const data = { ...this.state.data, image: result.filesUploaded[0].url}
     this.setState({ data })
-    console.log(this.state.data)
+    // console.log(this.state.data)
+    toast.success('New Profile Image Updated!', {containerId: 'B'})
   }
+
 
   render() {
     if(!this.state.data._id) return <Loading />
@@ -252,6 +254,25 @@ class UserEdit extends React.Component {
               </div>
             </form>
           </div>
+          <ToastContainer
+            enableMultiContainer
+            containerId= "A"
+            position="top-right"
+            hideProgressBar={false}
+            rtl={false}
+            closeOnClick
+            autoClose={2000}
+            toastClassName="location-toast"
+          />
+          <ToastContainer
+            enableMultiContainer
+            containerId= "B"
+            position="top-right"
+            hideProgressBar={false}
+            closeOnClick
+            autoClose={2000}
+            toastClassName="image-toast"
+          />
         </div>
       </section>
     )
