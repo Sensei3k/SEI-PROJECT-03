@@ -42,9 +42,19 @@ class UserShow extends React.Component {
   }
 
 
-  componentDidMount() {
+  getUser() {
     axios.get(`api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
+  }
+
+  componentDidMount() {
+    this.getUser()
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.location.pathname !== this.props.location.pathname) {
+      this.getUser()
+    }
   }
 
   displayAge(){
