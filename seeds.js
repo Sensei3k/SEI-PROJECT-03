@@ -28,7 +28,7 @@ mongoose.connect(dbUri, (err, db) => {
   }, {
 
     // 2.)
-    username: 'Paul',
+    username: 'John',
     email: 'paulo@gmail.com',
     password: 'pass',
     passwordConfirmation: 'pass',
