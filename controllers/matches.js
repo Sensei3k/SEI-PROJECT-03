@@ -30,7 +30,8 @@ function matchRoute(req, res, next) {
       const userId = req.params.id
       //initialize variables to store the users matching details
       //let userLocation = ''
-      let userGender = ''
+      //let userGender = ''
+      let userInterestedIn = ''
       let userInterests = ''
       let userRadius = ''
       let userCoordinates = []
@@ -45,7 +46,8 @@ function matchRoute(req, res, next) {
 
         if(user._id.equals(req.params.id)) {
           //userLocation = user.location
-          userGender = user.gender
+          //userGender = user.gender
+          userInterestedIn = user.interestedIn
           //create an array of user interests
           userInterests = user.interests.split(', ')
           userCoordinates = user.coordinates
@@ -80,7 +82,7 @@ function matchRoute(req, res, next) {
         console.log(distanceApart)
         // if IDs dont match and the locations match, push into array
 
-        if(userId !== matchId && userGender !== matchGender && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
+        if(userId !== matchId && userInterestedIn === matchGender && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
           arrayOfMatches.push(match)
         }
 

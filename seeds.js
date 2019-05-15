@@ -24,6 +24,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
+    interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
@@ -42,6 +43,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
+    interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
@@ -60,6 +62,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/elmo.jpg',
     gender: 'Female',
+    interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
@@ -78,6 +81,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
+    interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
 
   }, {
@@ -97,6 +101,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/Luke.jpg',
     gender: 'Male',
+    interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
@@ -115,6 +120,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/Harrison.jpg',
     gender: 'Male',
+    interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
 
   }, {
@@ -134,6 +140,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/Lara.jpg',
     gender: 'Female',
+    interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
 
   }, {
@@ -153,6 +160,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/Veronica.jpg',
     gender: 'Female',
+    interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
 
     // 9.)
@@ -171,6 +179,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/Hannah.jpg',
     gender: 'Female',
+    interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
 
     // 10.)
@@ -189,6 +198,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/Valentina.jpg',
     gender: 'Female',
+    interestedIn: 'Male',
     interests: 'biking, swimming, beach, painting, travel'
   })
     .then(() => mongoose.connection.close())
