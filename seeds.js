@@ -24,7 +24,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
-    interestedIn: 'Female',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
@@ -43,7 +43,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
-    interestedIn: 'Female',
+    interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
@@ -62,7 +62,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/elmo.jpg',
     gender: 'Female',
-    interestedIn: 'Male',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
 
@@ -140,7 +140,7 @@ mongoose.connect(dbUri, (err, db) => {
     radius: '20',
     image: '../images/cpu-profile-images/Lara.jpg',
     gender: 'Female',
-    interestedIn: 'Male',
+    interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
 
   }, {
