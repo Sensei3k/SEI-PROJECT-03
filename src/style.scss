@@ -1,4 +1,4 @@
-$hr-color: #bbd9ea;
+$hr-color: #B0E2FF;
 
 body {
   background-image: url('https://wallpaperstudio10.com/static/wpdb/wallpapers/3840x2160/181007.jpg');
@@ -15,7 +15,7 @@ body {
     a.navbar-home {
       width: 80px;
       padding-top: 10px;
-      background-image: url('./images/h-logo.png');
+      background-image: url('./images/logos/h-logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -64,12 +64,27 @@ body {
   }
 
   .user-background {
-    // background-image: url('https://static.eharmony.com/files/corp/prod/images/tour/section-1/background.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-color: #f9fbff;
     min-height: 800px;
   }
+
+  .aboutus-background {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .AboutUs {
+    background-size: cover;
+    background-image: url('./images/background-images/blackbeach.jpg');
+  }
+
+  section {
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+  }
+
 
 .profile {
     max-width: 800px;
