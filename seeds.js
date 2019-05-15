@@ -16,7 +16,7 @@ mongoose.connect(dbUri, (err, db) => {
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1991, 11, 25),
     location: 'New York',
-    image: '../images/cpu-profile-images/cristiano-ronaldo.jpg',
+    image: './images/cpu-profile-images/cristiano-ronaldo.jpg',
     gender: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
