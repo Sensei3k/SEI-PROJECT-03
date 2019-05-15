@@ -26,7 +26,6 @@ class UserShow extends React.Component {
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data: data })
-    console.log(this.state)
   }
 
   handleSubmit(e) {

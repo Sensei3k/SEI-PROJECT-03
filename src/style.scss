@@ -1,7 +1,11 @@
 $hr-color: #B0E2FF;
 
 .footer {
-  background-color: teal;
+  // background-color: teal;
+
+    a{
+      color: white;
+    }
 }
 
 body {
@@ -104,6 +108,7 @@ body {
 
 .edit-form {
   display: flex;
+  // height: 100vh;
 }
 
 .img-profile {
@@ -174,4 +179,8 @@ input {
 .image-profile {
   height: 200px;
   align-items: center;
+}
+
+.section {
+  height: 100vh;
 }

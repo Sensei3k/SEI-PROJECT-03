@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../lib/Auth'
 
+import Footer from '../components/Footer'
+
 class Login extends React.Component {
   constructor() {
     super()
@@ -37,35 +39,38 @@ class Login extends React.Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
-              <form onSubmit={this.handleSubmit}>
+      <section>
+        <section className="section">
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half-desktop is-two-thirds-tablet">
+                <form onSubmit={this.handleSubmit}>
 
-                <div className="field">
-                  <label className="label">Email</label>
-                  <div className="control">
-                    <input className="input" name="email" placeholder="eg: leela@planetexpress.nnyc" onChange={this.handleChange} />
+                  <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control">
+                      <input className="input" name="email" placeholder="eg: leela@planetexpress.nnyc" onChange={this.handleChange} />
+                    </div>
+
                   </div>
 
-                </div>
+                  <div className="field">
+                    <label className="label">Password</label>
+                    <div className="control">
+                      <input className="input" name="password" type="password" placeholder="eg: ••••••••" onChange={this.handleChange} />
+                    </div>
 
-                <div className="field">
-                  <label className="label">Password</label>
-                  <div className="control">
-                    <input className="input" name="password" type="password" placeholder="eg: ••••••••" onChange={this.handleChange} />
+                    {this.state.error && <div className="help is-danger">{this.state.error}</div>}
+
                   </div>
-
-                  {this.state.error && <div className="help is-danger">{this.state.error}</div>}
-
-                </div>
-                <br/>
-                <button className="button is-info submit-edit-button">Submit</button>
-              </form>
+                  <br/>
+                  <button className="button is-info submit-edit-button">Submit</button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+        <Footer />
       </section>
     )
   }

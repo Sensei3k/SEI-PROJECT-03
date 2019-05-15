@@ -47,6 +47,7 @@ class Register extends React.Component {
   // within render, added a dropdown menu for location.
   render() {
     console.log(this.state.errors.username)
+    console.log(this.state.errors.email)
     return (
       <section className="section">
         <div className="container">
@@ -66,7 +67,7 @@ class Register extends React.Component {
                   <div className="control">
                     <input className="input" name="email" placeholder="eg: leela@planetexpress.nnyc" onChange={this.handleChange} />
                   </div>
-                </div>```
+                </div>
 
                 <div className="register-container">
                   <div className="field">
@@ -120,19 +121,5 @@ class Register extends React.Component {
   }
 }
 
-
-// <div className="field">
-//   <label className="label">Date of Birth</label>
-//   <div className="control">
-//     <input className="input" name="Date of Birth" type="number" placeholder="YYYY-MM-DD" onChange={this.handleChange} />
-//   </div>
-// </div>
-//
-// <div className="field">
-//   <label className="label">Location</label>
-//   <div className="control">
-//     <input className="input" name="Location" placeholder="eg: London, Tokyo, New York " onChange={this.handleChange} />
-//   </div>
-// </div>
 
 export default Register

@@ -27,7 +27,7 @@ class Home extends React.Component {
         <div className="container">
           <img></img>
           <h1 className="title is-1"> CRUSH </h1>
-          <h2 className="subtitle is-2"> DESIGNED FOR YOU </h2>
+          <h2 className="subtitle is-2"> DEMO: DESIGNED FOR YOU </h2>
         </div>
       </section>
     )
