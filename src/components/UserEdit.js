@@ -131,18 +131,21 @@ class UserEdit extends React.Component {
                   <div className="select">
                     <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
                       <option value="">Select</option>
-                      <option value="Amsterdam">Amsterdam</option>
+                      <option value="Edinburgh">Edinburgh</option>
                       <option value="London">London</option>
                       <option value="Manchester">Manchester</option>
                       <option value="Birmingham">Birmingham</option>
-                      <option value="Mexico-City">Mexico City</option>
-                      <option value="Berlin">Berlin</option>
-                      <option value="Paris">Paris</option>
-                      <option value="Brussels">Brussels</option>
-                      <option value="Quebec">Qubec</option>
-                      <option value="Montreal">Montreal</option>
-                      <option value="New York">New York</option>
-                      <option value="Venice">Venice</option>
+                      <option value="Bristol">Bristol</option>
+                      <option value="Glasgow">Glasgow</option>
+                      <option value="Newcastle">Newcastle</option>
+                      <option value="York">York</option>
+                      <option value="Brighton">Brighton</option>
+                      <option value="Belfast">Belfast</option>
+                      <option value="Cardiff">Cardiff</option>
+                      <option value="Leeds">Leeds</option>
+                      <option value="Bath">Bath</option>
+                      <option value="Sheffield">Sheffield</option>
+                      <option value="Norwich">Norwich</option>
                     </select>
                   </div>
                 </div>

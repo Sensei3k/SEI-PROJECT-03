@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Auth from '../lib/Auth'
 import images from '../images'
 
 class Home extends React.Component {
@@ -27,7 +29,7 @@ class Home extends React.Component {
         <div className="container title-container has-text-centered">
           <h1 className="title is-1"> CRUSH </h1>
           <h2 className="subtitle is-2"> DESIGNED FOR YOU </h2>
-          <button className="button is-danger">Sign Up</button>
+          {!Auth.isAuthenticated() && <Link to="/register"><button className="button is-danger">Sign Up</button></Link> || <Link to="/aboutus"><button className="button is-danger">About Crush</button></Link>}
         </div>
       </section>
     )
