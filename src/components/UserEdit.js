@@ -95,185 +95,183 @@ class UserEdit extends React.Component {
     return (
       <section className="section user-background">
         <div className="container edit-container">
-          <div className="columns edit-columns is-multiline is-mobile">
-            <form className="edit-form" onSubmit={this.handleSubmit}>
-              <div className="column is-one-third-desktop is-half-tablet is-mobile level-left">
-                <div className="field">
-                  <label className="label">Profile Photo</label>
-                  <ReactFilestack
-                    apikey={process.env.FILESTACK}
-                    buttonText="Upload Photo"
-                    buttonClass="button is-primary"
-                    className="upload-image"
-                    options={options}
-                    onSuccess={(result) => this.handleUploadImages(result)}
-                    preload={true}
+          <form className="edit-form columns is-multiline is-mobile" onSubmit={this.handleSubmit}>
+            <div className="column is-half-desktop is-full-tablet is-mobile level-left">
+              <div className="field">
+                <label className="label">Profile Photo</label>
+                <ReactFilestack
+                  apikey={process.env.FILESTACK}
+                  buttonText="Upload Photo"
+                  buttonClass="button is-primary"
+                  className="upload-image"
+                  options={options}
+                  onSuccess={(result) => this.handleUploadImages(result)}
+                  preload={true}
+                />
+                {this.state.data.image && <img src={this.state.data.image} />}
+              </div>
+              <div className="field">
+                <label className="label">Name</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    name="username"
+                    placeholder="eg: Charlie"
+                    onChange={this.handleChange}
+                    value={this.state.data.username || ''}
                   />
-                  {this.state.data.image && <img src={this.state.data.image} />}
+                </div>
+              </div>
+            </div>
+            <div className="column is-half-desktop is-full-tablet is-mobile">
+              <div className="container location-container is-flex">
+                <div className="field">
+                  <label className="label">Location</label>
+                  <div className="select">
+                    <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
+                      <option value="">Select</option>
+                      <option value="Amsterdam">Amsterdam</option>
+                      <option value="London">London</option>
+                      <option value="Manchester">Manchester</option>
+                      <option value="Birmingham">Birmingham</option>
+                      <option value="Mexico-City">Mexico City</option>
+                      <option value="Berlin">Berlin</option>
+                      <option value="Paris">Paris</option>
+                      <option value="Brussels">Brussels</option>
+                      <option value="Quebec">Qubec</option>
+                      <option value="Montreal">Montreal</option>
+                      <option value="New York">New York</option>
+                      <option value="Venice">Venice</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="field">
-                  <label className="label">Name</label>
+                  <label className="label">Match Radius</label>
                   <div className="control">
                     <input
-                      className="input"
+                      className="input editform-input"
                       type="text"
-                      name="username"
-                      placeholder="eg: Charlie"
+                      pattern="[0-9]*"
+                      name="radius"
+                      placeholder="please enter the maximum distance (km) for your matches"
                       onChange={this.handleChange}
-                      value={this.state.data.username || ''}
+                      value={this.state.data.radius || ''}
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <button className="button is-primary" onClick={this.updateLocation}>Update Location</button>
+                  </div>
+                </div>
+              </div>
+              <div className="container is-flex age-range">
+                <div className="field">
+                  <label className="label">Min Age Range</label>
+                  <div className="control">
+                    <input
+                      className="input editform-input"
+                      type="text"
+                      name="minAge"
+                      placeholder="eg. 25"
+                      onChange={this.handleChange}
+                      value={this.state.data.minAge || ''}
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Max Age Range</label>
+                  <div className="control">
+                    <input
+                      className="input editform-input"
+                      type="text"
+                      name="maxAge"
+                      placeholder="eg. 35"
+                      onChange={this.handleChange}
+                      value={this.state.data.maxAge || ''}
                     />
                   </div>
                 </div>
               </div>
-              <div className="column is-two-thirds-desktop level-right is-half-tablet is-mobile">
-                <div className="container location-container is-flex">
-                  <div className="field">
-                    <label className="label">Location</label>
+              <div className="field">
+                <label className="label">About Me</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    name="aboutMe"
+                    placeholder="eg. I enjoy socialising with friends..."
+                    onChange={this.handleChange}
+                    value={this.state.data.aboutMe || ''} />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Interests</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    name="interests"
+                    placeholder="eg. Walking, Cooking, Socialising..."
+                    onChange={this.handleChange}
+                    value={this.state.data.interests || ''} />
+                </div>
+              </div>
+              <div className="genders-container">
+                <div className="field">
+                  <label className="label">Gender</label>
+                  <div className="control">
                     <div className="select">
-                      <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
+                      <select name="gender" onChange={this.handleChange} value={this.state.data.gender || ''}>
                         <option value="">Select</option>
-                        <option value="Amsterdam">Amsterdam</option>
-                        <option value="London">London</option>
-                        <option value="Manchester">Manchester</option>
-                        <option value="Birmingham">Birmingham</option>
-                        <option value="Mexico-City">Mexico City</option>
-                        <option value="Berlin">Berlin</option>
-                        <option value="Paris">Paris</option>
-                        <option value="Brussels">Brussels</option>
-                        <option value="Quebec">Qubec</option>
-                        <option value="Montreal">Montreal</option>
-                        <option value="New York">New York</option>
-                        <option value="Venice">Venice</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Both">Both</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                   </div>
-                  <div className="field">
-                    <label className="label">Match Radius</label>
-                    <div className="control">
-                      <input
-                        className="input editform-input"
-                        type="text"
-                        pattern="[0-9]*"
-                        name="radius"
-                        placeholder="please enter the maximum distance (km) for your matches"
-                        onChange={this.handleChange}
-                        value={this.state.data.radius || ''}
-                      />
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="control">
-                      <button className="button is-primary" onClick={this.updateLocation}>Update Location</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="container is-flex age-range">
-                  <div className="field">
-                    <label className="label">Min Age Range</label>
-                    <div className="control">
-                      <input
-                        className="input editform-input"
-                        type="text"
-                        name="minAge"
-                        placeholder="eg. 25"
-                        onChange={this.handleChange}
-                        value={this.state.data.minAge || ''}
-                      />
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label className="label">Max Age Range</label>
-                    <div className="control">
-                      <input
-                        className="input editform-input"
-                        type="text"
-                        name="maxAge"
-                        placeholder="eg. 35"
-                        onChange={this.handleChange}
-                        value={this.state.data.maxAge || ''}
-                      />
-                    </div>
-                  </div>
                 </div>
                 <div className="field">
-                  <label className="label">About Me</label>
+                  <label className="label">Interested In</label>
                   <div className="control">
-                    <input
-                      className="input"
-                      type="text"
-                      name="aboutMe"
-                      placeholder="eg. I enjoy socialising with friends..."
-                      onChange={this.handleChange}
-                      value={this.state.data.aboutMe || ''} />
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label">Interests</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type="text"
-                      name="interests"
-                      placeholder="eg. Walking, Cooking, Socialising..."
-                      onChange={this.handleChange}
-                      value={this.state.data.interests || ''} />
-                  </div>
-                </div>
-                <div className="genders-container">
-                  <div className="field">
-                    <label className="label">Gender</label>
-                    <div className="control">
-                      <div className="select">
-                        <select name="gender" onChange={this.handleChange} value={this.state.data.gender || ''}>
-                          <option value="">Select</option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                          <option value="Both">Both</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label className="label">Interested In</label>
-                    <div className="control">
-                      <div className="select">
-                        <select name="interestedIn" onChange={this.handleChange} value={this.state.data.interestedIn || ''}>
-                          <option value="">Select</option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                          <option value="Both">Both</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </div>
+                    <div className="select">
+                      <select name="interestedIn" onChange={this.handleChange} value={this.state.data.interestedIn || ''}>
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Both">Both</option>
+                        <option value="Other">Other</option>
+                      </select>
                     </div>
                   </div>
                 </div>
-                <br/>
-                <button className="button is-info submit-edit-button">Submit Changes</button>
               </div>
-            </form>
-          </div>
-          <ToastContainer
-            enableMultiContainer
-            containerId= "A"
-            position="top-right"
-            hideProgressBar={false}
-            rtl={false}
-            closeOnClick
-            autoClose={2000}
-            toastClassName="location-toast"
-          />
-          <ToastContainer
-            enableMultiContainer
-            containerId= "B"
-            position="top-right"
-            hideProgressBar={false}
-            closeOnClick
-            autoClose={2000}
-            toastClassName="image-toast"
-          />
+              <br/>
+              <button className="button is-info submit-edit-button">Submit Changes</button>
+            </div>
+          </form>
         </div>
+        <ToastContainer
+          enableMultiContainer
+          containerId= "A"
+          position="top-right"
+          hideProgressBar={false}
+          rtl={false}
+          closeOnClick
+          autoClose={2000}
+          toastClassName="location-toast"
+        />
+        <ToastContainer
+          enableMultiContainer
+          containerId= "B"
+          position="top-right"
+          hideProgressBar={false}
+          closeOnClick
+          autoClose={2000}
+          toastClassName="image-toast"
+        />
       </section>
     )
   }

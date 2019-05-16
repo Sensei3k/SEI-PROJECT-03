@@ -21,13 +21,13 @@ class Home extends React.Component {
 
   render() {
     return (
-      <section className="section" id="background-change" style={{
+      <section className="section home-container" id="background-change" style={{
         backgroundImage: `url(${images[this.state.currentImg]})`
       }}>
-        <div className="container">
-          <img></img>
+        <div className="container title-container has-text-centered">
           <h1 className="title is-1"> CRUSH </h1>
           <h2 className="subtitle is-2"> DESIGNED FOR YOU </h2>
+          <button className="button is-danger">Sign Up</button>
         </div>
       </section>
     )
