@@ -6,8 +6,7 @@ $hr-color: #B0E2FF;
 
 body {
       background-image: url('./images/background-images/stagingbackground.jpg');
-      background-size: contain;
-      //background-repeat: no-repeat;
+      background-size: cover;
       min-height: 100vh;
     a.navbar-item {
       padding-top: 10px;
@@ -16,7 +15,6 @@ body {
       font-family: 'Poiret One', cursive;
       &:hover.navbar-item {
         color: #77DCFF !important;
-      //text-decoration: underline;
       }
     }
 
