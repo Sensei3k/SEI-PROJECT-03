@@ -25,8 +25,7 @@ class Home extends React.Component {
         backgroundImage: `url(${images[this.state.currentImg]})`
       }}>
         <div className="container">
-          <img></img>
-          <h1 className="title is-1"> CRUSH </h1>
+          <h1 className="title logohome is-1"> CRUSH </h1>
           <h2 className="subtitle is-2"> DESIGNED FOR YOU </h2>
         </div>
       </section>

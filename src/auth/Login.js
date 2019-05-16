@@ -61,7 +61,7 @@ class Login extends React.Component {
 
                 </div>
                 <br/>
-                <button className="button is-info submit-edit-button">Submit</button>
+                <button className="button is-danger submit-edit-button">Submit</button>
               </form>
             </div>
           </div>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
   return(
-    <footer className="footer" style={{backgroundColor: 'teal'}}>
+    <footer className="footer" style={{backgroundColor: '#202020'}}>
       <div className="content has-text-centered">
         <p>
           <strong>Crush &copy;</strong> by <a href="http://localhost:8000/#/">Crush Dev Team &#8482; </a>. Created at GA
