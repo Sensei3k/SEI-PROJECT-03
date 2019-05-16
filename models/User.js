@@ -91,12 +91,12 @@ const userSchema = new mongoose.Schema({
   }
 })
 
+//fields not saved in database - store plaintext password for later
 userSchema.virtual('age')
   .get(function getAge() {
     return Math.floor((Date.now() - this.dateOfBirth.getTime()) / 1000 / 60 / 60 / 24 / 365)
   })
 
-//virtual fields not saved in database - store plaintext password for later
 userSchema.virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(plaintext) {
     this._passwordConfirmation = plaintext
@@ -124,8 +124,6 @@ userSchema.methods.isPasswordValid = function isPasswordValid(plaintext) {
   //the hash in the data base
   return bcrypt.compareSync(plaintext, this.password)
 }
-
-
 
 
 module.exports = mongoose.model('User', userSchema)
