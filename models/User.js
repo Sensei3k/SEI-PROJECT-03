@@ -21,6 +21,9 @@ const commentSchema = new mongoose.Schema({
       delete json.__v
       return json
     }
+  },
+  toObject: {
+    virtuals: true
   }
 })
 
@@ -40,8 +43,8 @@ const userSchema = new mongoose.Schema({
     required: 'Please provide a password'
   },
   dateOfBirth: {
-    type: Date
-    // required: 'Please enter your date of birth'
+    type: Date,
+    required: 'Please enter your date of birth'
   },
   location: {
     type: String
@@ -51,7 +54,7 @@ const userSchema = new mongoose.Schema({
     longitude: { type: Number }
   },
   radius: {
-    type: String
+    type: Number
   },
   gender: {
     type: String
@@ -70,14 +73,11 @@ const userSchema = new mongoose.Schema({
   aboutMe: {
     type: String
   },
-  age: {
-    type: String
-  },
   minAge: {
-    type: String
+    type: Number
   },
   maxAge: {
-    type: String
+    type: Number
   },
   comments: [commentSchema]
 }, {
@@ -90,6 +90,11 @@ const userSchema = new mongoose.Schema({
     }
   }
 })
+
+userSchema.virtual('age')
+  .get(function getAge() {
+    return Math.floor((Date.now() - this.dateOfBirth.getTime()) / 1000 / 60 / 60 / 24 / 365)
+  })
 
 //virtual fields not saved in database - store plaintext password for later
 userSchema.virtual('passwordConfirmation')

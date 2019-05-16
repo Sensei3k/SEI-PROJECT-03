@@ -3,7 +3,6 @@ import React from 'react'
 const CommentCard = ({ content, user }) => {
   return (
     <div className="card">
-
       <div className="card-header">
         <figure>
           <img src={user.image} alt={user.username} />
@@ -14,7 +13,6 @@ const CommentCard = ({ content, user }) => {
         <p>{content}</p>
         <p>{content.createdAt}</p>
       </div>
-
     </div>
   )
 }

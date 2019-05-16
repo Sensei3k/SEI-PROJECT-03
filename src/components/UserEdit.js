@@ -1,7 +1,8 @@
 import React from 'react'
-import axios from 'axios'
-//import Auth from '../lib/Auth'
 import ReactFilestack from 'filestack-react'
+import Loading from './Loading'
+import axios from 'axios'
+import Auth from '../lib/Auth'
 
 const options = {
   accept: 'image/*',
@@ -12,15 +13,7 @@ const options = {
   }
 }
 
-// const filestackKey= process.env.FILESTACK
-// console.log(filestackKey, 'key')
-
-// import Auth from '../lib/Auth'
-import Loading from './loading'
-
-
 class UserEdit extends React.Component {
-
   constructor(props) {
     super(props)
 
@@ -32,60 +25,48 @@ class UserEdit extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleUploadImages = this.handleUploadImages.bind(this)
-
     this.updateLocation = this.updateLocation.bind(this)
+    this.handleUploadImages = this.handleUploadImages.bind(this)
   }
 
   handleChange(e) {
     e.preventDefault()
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data })
-
-    console.log(this.state.data)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-
-    // Auth.getToken()
-    //console.log('recognise submit')
-    //console.log(this.state.data)
-
-    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data)
+    //update the user's details in the database
+    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => {
         this.props.history.push(`/users/${res.data._id}`)
-        // this.props.history.push(`/users/${this.props.match.params.id}`)
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
-
   }
 
   componentDidMount() {
-    axios.get(`api/users/${this.props.match.params.id}`)
+    axios.get(`/api/users/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => this.setState({ data: res.data }))
-
   }
 
   updateLocation(e) {
-
     e.preventDefault()
-    console.log('button recognised')
-
+    //update the user's geolocation
     navigator.geolocation.watchPosition((position) => {
       const { latitude, longitude } = position.coords
       const data = {...this.state.data, coordinates: {latitude: latitude, longitude: longitude}}
       this.setState({ data: data })
-
-      console.log(this.state.data)
     })
   }
 
   handleUploadImages(result) {
-    console.log(result, 'result')
     const data = { ...this.state.data, image: result.filesUploaded[0].url}
     this.setState({ data })
-    console.log(this.state.data)
   }
 
   render() {
@@ -149,8 +130,7 @@ class UserEdit extends React.Component {
                     <div className="control">
                       <input
                         className="input"
-                        type="text"
-                        pattern="[0-9]*"
+                        type="number"
                         name="radius"
                         placeholder="please enter the maximum distance (km) for your matches"
                         onChange={this.handleChange}
@@ -170,7 +150,7 @@ class UserEdit extends React.Component {
                     <div className="control">
                       <input
                         className="input"
-                        type="text"
+                        type="number"
                         name="minAge"
                         placeholder="eg. 25"
                         onChange={this.handleChange}
@@ -183,7 +163,7 @@ class UserEdit extends React.Component {
                     <div className="control">
                       <input
                         className="input"
-                        type="text"
+                        type="number"
                         name="maxAge"
                         placeholder="eg. 35"
                         onChange={this.handleChange}
@@ -256,7 +236,5 @@ class UserEdit extends React.Component {
     )
   }
 }
-//
-
 
 export default UserEdit

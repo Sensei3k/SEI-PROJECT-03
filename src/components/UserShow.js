@@ -24,24 +24,22 @@ class UserShow extends React.Component {
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data: data })
-    console.log(this.state)
   }
 
   handleSubmit(e) {
     e.preventDefault()
 
-    const token = Auth.getToken()
-
-    axios.post(`api/users/${this.state.user._id}/comments`, this.state.data, { headers: {'Authorization': `Bearer ${token}` }
+    axios.post(`api/users/${this.state.user._id}/comments`, this.state.data, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => this.props.history.push(`/users/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
-
   }
 
-
   getUser() {
-    axios.get(`api/users/${this.props.match.params.id}`)
+    axios.get(`api/users/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => this.setState({ user: res.data }))
   }
 
@@ -136,10 +134,8 @@ class UserShow extends React.Component {
             </div>
           </div>
         </section>
-
         <Footer />
       </section>
-
     )
   }
 }

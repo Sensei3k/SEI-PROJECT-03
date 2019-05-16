@@ -22,52 +22,34 @@ function matchRoute(req, res, next) {
   //get all the users from the database
   User.find()
     .then((users) => {
-      //store the users ID for reference
-      const userId = req.params.id
-
       //initialize variables to store the users matching details
-      let userGender = ''
-      let userInterestedIn = ''
-      let userRadius = ''
-      let userCoordinates = []
-      let userAge = ''
-      let userMinAge = ''
-      let userMaxAge = ''
-
-      //find the location, gender of interest, of the user
-      users.forEach((user) => {
-
-        if(user._id.equals(req.params.id)) {
-          userGender = user.gender
-          userInterestedIn = user.interestedIn
-
-          userCoordinates = user.coordinates
-          userRadius = parseInt(user.radius)
-
-          userAge = parseInt(user.age)
-          userMinAge = parseInt(user.minAge)
-          userMaxAge = parseInt(user.maxAge)
-        }
-
-      })
-
-      //initialize an array in which to store your matches
-      const arrayOfMatches = []
+      const {
+        _id: userId,
+        gender: userGender,
+        interestedIn: userInterestedIn,
+        radius: userRadius,
+        coordinates: userCoordinates,
+        age: userAge,
+        minAge: userMinAge,
+        maxAge: userMaxAge
+      } = req.currentUser
 
       //loop through all users to find which ones match, and exclude yourself
-      users.forEach((match) => {
-        const matchId = match._id
-        const matchGender = match.gender
-        const matchInterestedIn = match.interestedIn
-        //convert text input from React to integers
-        const matchRadius = parseInt(match.radius)
-        const matchAge = parseInt(match.age)
-        const matchMinAge = parseInt(match.minAge)
-        const matchMaxAge = parseInt(match.maxAge)
+      const arrayOfMatches = users.filter((match) => {
+        const {
+          _id: matchId,
+          gender: matchGender,
+          interestedIn: matchInterestedIn,
+          radius: matchRadius,
+          coordinates: matchCoordinates,
+          age: matchAge,
+          minAge: matchMinAge,
+          maxAge: matchMaxAge
+        } = match
 
         //calc the distance between the user and the potential match and check...
         //that they meet eachothers radius requirements
-        const distanceApart = calcDistance(userCoordinates, match.coordinates)
+        const distanceApart = calcDistance(userCoordinates, matchCoordinates)
         const distanceRequirement = distanceApart < userRadius && distanceApart < matchRadius
 
         //check if the potential match meets users age requirements and vice versa
@@ -76,10 +58,7 @@ function matchRoute(req, res, next) {
         //check if the potential match meets gender preference requirements and vice versa
         const interestRequirement = (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender)
 
-
-        if(!matchId.equals(userId) && interestRequirement && distanceRequirement && ageRequirement) {
-          arrayOfMatches.push(match)
-        }
+        return (!matchId.equals(userId) && interestRequirement && distanceRequirement && ageRequirement)
 
 
       })
