@@ -4,6 +4,7 @@ import axios from 'axios'
 // import moment from 'moment'
 
 import Footer from '../components/Footer'
+// import { ToastContainer, toast } from 'react-toastify'
 
 class Register extends React.Component {
   constructor() {
@@ -15,46 +16,26 @@ class Register extends React.Component {
       startDate: new Date()
     }
 
-    // this.handleDateChange = this.handleDateChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
+    this.ageValidator = this.ageValidator.bind(this)
   }
 
-  // handleDateChange(e) {
-  //   const date = {...this.state.data, [e.target.name]: e.target.value}
-  //   this.setState({ data: date })
-  // }
-
-  // componentDidMount() {
-  //   navigator.geolocation.watchPosition((position) => {
-  //     const { latitude, longitude } = position.coords
-  //     this.setState({ data: { coordinates: { latitude: latitude, longitude: longitude } } })
-  //   })
-  // }
-
   handleChange(e) {
+    console.log(e.target.value)
     const data =  {...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data: data })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    //get coordinates from user location
 
-
-    axios.post('api/register', this.state.data)
+    axios.post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({errors: err.response.data.errors}))
   }
 
-  ageValidator() {
-    return null
-  }
-
-  // within render, added a dropdown menu for location.
   render() {
-    console.log(this.state.data.dateOfBirth, 'dob')
     return (
       <section>
         <section className="section">
@@ -111,8 +92,8 @@ class Register extends React.Component {
                       <input type="date"
                         id="dateOfBirth"
                         name="dateOfBirth"
-                        max="2000-01-01"
-                        onChange={this.handleChange}/>
+                        onChange={this.handleChange}
+                      />
                     </div>
                     {this.state.errors.dateOfBirth && <div className="help is-danger">{this.state.errors.dateOfBirth}</div>}
                   </div>
@@ -154,3 +135,26 @@ class Register extends React.Component {
 
 
 export default Register
+
+
+
+
+
+// ageValidator() {
+//   const str = this.state.data.dateOfBirth
+//   const years = moment().diff(str, 'years')
+//   return years >= 21 ? toast.success('You are old enough to enter this site!', {containerId: 'E'}) : toast.error('You are not old enough to enter this site!', {containerId: 'E'})
+// }
+
+// <button onClick={this.ageValidator}>verify age</button>
+
+// <ToastContainer
+// enableMultiContainer
+// containerId= "E"
+// position="top-right"
+// hideProgressBar={true}
+// rtl={false}
+// closeOnClick
+// autoClose={2000}
+// toastClassName="validator-toast"
+// />

@@ -6,10 +6,6 @@ import ReactFilestack from 'filestack-react'
 import { ToastContainer, toast } from 'react-toastify'
 import Footer from './Footer'
 
-// const filestackKey= process.env.FILESTACK
-// console.log(filestackKey, 'key')
-
-// import Auth from '../lib/Auth'
 import Loading from './Loading'
 
 const options = {
@@ -36,31 +32,28 @@ class UserEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.handleUploadImages = this.handleUploadImages.bind(this)
-    // this.profileSubmit = this.profileSubmit.bind(this)
+    this.profileSubmit = this.profileSubmit.bind(this)
   }
 
   handleChange(e) {
     e.preventDefault()
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data })
-
   }
 
   handleSubmit(e) {
-    e.preventDefault()
 
+    e.preventDefault()
 
     axios.put(`/api/users/${this.props.match.params.id}`, this.state.data)
       .then(res => {
         this.props.history.push(`/users/${res.data._id}`)
-        // this.props.history.push(`/users/${this.props.match.params.id}`)
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
-
   }
 
   componentDidMount() {
-    axios.get(`api/users/${this.props.match.params.id}`)
+    axios.get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data }))
   }
 
@@ -73,21 +66,18 @@ class UserEdit extends React.Component {
       const data = {...this.state.data, coordinates: {latitude: latitude, longitude: longitude}}
       this.setState({ data: data })
     })
-
     toast.success('Location updated!', {containerId: 'A'})
   }
 
   handleUploadImages(result) {
-    // console.log(result, 'result')
     const data = { ...this.state.data, image: result.filesUploaded[0].url}
     this.setState({ data })
-    // console.log(this.state.data)
     toast.success('New Profile Image Updated!', {containerId: 'B'})
   }
 
-  // toastId = null
   profileSubmit(){
-    return toast.success('Profile Updated!', { containerId: 'D' })
+    toast.success('Profile Updated!', { containerId: 'D' })
+    console.log('button clicked')
   }
 
   render() {
@@ -174,11 +164,11 @@ class UserEdit extends React.Component {
                       <div className="control">
                         <input
                           className="input editform-input"
-                          type="text"
+                          type="number"
                           name="minAge"
                           placeholder="eg. 25"
                           onChange={this.handleChange}
-                          value={this.state.data.minAge || ''}
+                          value={this.state.data.minAge || '21'}
                         />
                       </div>
                     </div>
@@ -187,11 +177,11 @@ class UserEdit extends React.Component {
                       <div className="control">
                         <input
                           className="input editform-input"
-                          type="text"
+                          type="number"
                           name="maxAge"
                           placeholder="eg. 35"
                           onChange={this.handleChange}
-                          value={this.state.data.maxAge || ''}
+                          value={this.state.data.maxAge || '45'}
                         />
                       </div>
                     </div>
@@ -252,8 +242,9 @@ class UserEdit extends React.Component {
                   </div>
                   <br/>
                   <button className="button is-info submit-edit-button"
-                    onClick={this.profileSubmit()}>
-                  Submit Changes</button>
+                    onClick={this.profileSubmit}>
+                  Submit Changes
+                  </button>
                 </div>
               </form>
             </div>
@@ -261,7 +252,7 @@ class UserEdit extends React.Component {
               enableMultiContainer
               containerId= "A"
               position="top-right"
-              hideProgressBar={false}
+              hideProgressBar={true}
               rtl={false}
               closeOnClick
               autoClose={2000}
@@ -271,7 +262,7 @@ class UserEdit extends React.Component {
               enableMultiContainer
               containerId= "B"
               position="top-right"
-              hideProgressBar={false}
+              hideProgressBar={true}
               closeOnClick
               autoClose={2000}
               toastClassName="image-toast"
@@ -280,7 +271,7 @@ class UserEdit extends React.Component {
               enableMultiContainer
               containerId= "C"
               position="top-right"
-              hideProgressBar={false}
+              hideProgressBar={true}
               closeOnClick
               autoClose={2000}
               toastClassName="image-toast"
@@ -290,11 +281,11 @@ class UserEdit extends React.Component {
             <ToastContainer
               enableMultiContainer
               containerId= "D"
-              position="top-right"
-              hideProgressBar={false}
+              position="top-center"
+              hideProgressBar={true}
               closeOnClick
               autoClose={2000}
-              toastClassName="image-toast"
+              toastClassName="profile-toast"
             />
           </div>
         </section>
@@ -303,7 +294,7 @@ class UserEdit extends React.Component {
     )
   }
 }
-//
+
 
 
 export default UserEdit

@@ -26,7 +26,7 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    axios.post('api/login', this.state.data)
+    axios.post('/api/login', this.state.data)
       .then(res => {
       // set the token in localStorage
         Auth.setToken(res.data.token)
