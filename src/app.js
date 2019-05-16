@@ -16,9 +16,6 @@ import UserEdit from './components/UserEdit'
 import 'bulma'
 import './style.scss'
 
-// import Login from './components/Login'
-// import SecureRoute from './components/SecureRoute'
-
 class App extends React.Component {
   render() {
     return (
