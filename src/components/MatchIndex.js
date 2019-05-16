@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import Auth from '../lib/Auth'
+import NoMatch from './NoMatch'
 import UserCard from './UserCard'
 import Footer from './Footer'
 
@@ -14,13 +15,14 @@ class MatchIndex extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`api/users/${this.props.match.params.id}/matches`, {
+    axios.get(`/api/users/${this.props.match.params.id}/matches`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => this.setState({ users: res.data }))
   }
 
   render() {
+    if(!this.state.users.matches) return <NoMatch />
     return (
       <section>
         <section className="section user-background">

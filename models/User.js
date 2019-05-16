@@ -42,7 +42,14 @@ const userSchema = new mongoose.Schema({
   },
   dateOfBirth: {
     type: Date,
-    required: 'Please enter your date of birth'
+    required: 'Please enter your date of birth',
+    // The section below is a Custom Validator to modify the date of
+    validate: {
+      validator: (val) => {
+        return Math.floor((Date.now() - val.getTime()) / 1000 / 60 / 60 / 24 / 365) >= 21
+      },
+      message: 'You must be 21 or over to use this site'
+    }
   },
   location: {
     type: String

@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactFilestack from 'filestack-react'
 import Loading from './Loading'
-import axios from 'axios'
 import Auth from '../lib/Auth'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
+import Footer from './Footer'
 
 const options = {
   accept: 'image/*',
@@ -28,6 +30,7 @@ class UserEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.handleUploadImages = this.handleUploadImages.bind(this)
+    this.profileSubmit = this.profileSubmit.bind(this)
   }
 
   handleChange(e) {
@@ -58,33 +61,41 @@ class UserEdit extends React.Component {
 
   updateLocation(e) {
     e.preventDefault()
-    //update the user's geolocation
+
     navigator.geolocation.watchPosition((position) => {
       const { latitude, longitude } = position.coords
       const data = {...this.state.data, coordinates: {latitude: latitude, longitude: longitude}}
       this.setState({ data: data })
     })
+    toast.success('Location updated!', {containerId: 'A'})
   }
 
   handleUploadImages(result) {
     const data = { ...this.state.data, image: result.filesUploaded[0].url}
     this.setState({ data })
+    toast.success('New Profile Image Updated!', {containerId: 'B'})
+  }
+
+  profileSubmit(){
+    toast.success('Profile Updated!', { containerId: 'D' })
+    console.log('button clicked')
   }
 
   render() {
     if(!this.state.data._id) return <Loading />
     return (
-      <section className="section user-background">
-        <div className="container edit-container">
-          <div className="columns edit-columns is-multiline is-mobile">
-            <form className="edit-form" onSubmit={this.handleSubmit}>
-              <div className="column is-one-third-desktop is-half-tablet is-mobile level-left">
+      <section>
+        <section className="section user-background">
+          <div className="container edit-container">
+            <form className="edit-form columns is-multiline is-mobile" onSubmit={this.handleSubmit}>
+              <div className="column is-half-desktop is-full-tablet is-mobile level-left">
                 <div className="field">
                   <label className="label">Profile Photo</label>
                   <ReactFilestack
                     apikey={process.env.FILESTACK}
                     buttonText="Upload Photo"
-                    buttonClass="button"
+                    buttonClass="button is-primary"
+                    className="upload-image"
                     options={options}
                     onSuccess={(result) => this.handleUploadImages(result)}
                     preload={true}
@@ -105,7 +116,7 @@ class UserEdit extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="column is-two-thirds-desktop level-right is-half-tablet is-mobile">
+              <div className="column is-half-desktop is-full-tablet is-mobile">
                 <div className="container location-container is-flex">
                   <div className="field">
                     <label className="label">Location</label>
@@ -131,8 +142,8 @@ class UserEdit extends React.Component {
                     <label className="label">Match Radius</label>
                     <div className="control">
                       <input
-                        className="input"
                         type="number"
+                        className="input editform-input"
                         name="radius"
                         placeholder="please enter the maximum distance (km) for your matches"
                         onChange={this.handleChange}
@@ -142,21 +153,21 @@ class UserEdit extends React.Component {
                   </div>
                   <div className="field">
                     <div className="control">
-                      <button className="button is-info" onClick={this.updateLocation}>Update Location</button>
+                      <button className="button is-primary" onClick={this.updateLocation}>Update Location</button>
                     </div>
                   </div>
                 </div>
-                <div className="container is-flex">
+                <div className="container is-flex age-range">
                   <div className="field">
                     <label className="label">Min Age Range</label>
                     <div className="control">
                       <input
-                        className="input"
+                        className="input editform-input"
                         type="number"
                         name="minAge"
                         placeholder="eg. 25"
                         onChange={this.handleChange}
-                        value={this.state.data.minAge || ''}
+                        value={this.state.data.minAge || '21'}
                       />
                     </div>
                   </div>
@@ -164,18 +175,18 @@ class UserEdit extends React.Component {
                     <label className="label">Max Age Range</label>
                     <div className="control">
                       <input
-                        className="input"
+                        className="input editform-input"
                         type="number"
                         name="maxAge"
                         placeholder="eg. 35"
                         onChange={this.handleChange}
-                        value={this.state.data.maxAge || ''}
+                        value={this.state.data.maxAge || '45'}
                       />
                     </div>
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">About Me</label>
+                  <label className="label">Bio</label>
                   <div className="control">
                     <input
                       className="input"
@@ -229,14 +240,58 @@ class UserEdit extends React.Component {
                   </div>
                 </div>
                 <br/>
-                <button className="button is-info submit-edit-button">Submit Changes</button>
+                <button className="button is-info submit-edit-button"
+                  onClick={this.profileSubmit}>
+                Submit Changes
+                </button>
               </div>
             </form>
           </div>
-        </div>
+          <ToastContainer
+            enableMultiContainer
+            containerId= "A"
+            position="top-right"
+            hideProgressBar={true}
+            rtl={false}
+            closeOnClick
+            autoClose={2000}
+            toastClassName="location-toast"
+          />
+          <ToastContainer
+            enableMultiContainer
+            containerId= "B"
+            position="top-right"
+            hideProgressBar={true}
+            closeOnClick
+            autoClose={2000}
+            toastClassName="image-toast"
+          />
+          <ToastContainer
+            enableMultiContainer
+            containerId= "C"
+            position="top-right"
+            hideProgressBar={true}
+            closeOnClick
+            autoClose={2000}
+            toastClassName="image-toast"
+          />
+          <div>
+            <ToastContainer
+              enableMultiContainer
+              containerId= "D"
+              position="top-center"
+              hideProgressBar={true}
+              closeOnClick
+              autoClose={2000}
+              toastClassName="profile-toast"
+            />
+          </div>
+        </section>
+        <Footer />
       </section>
     )
   }
 }
+
 
 export default UserEdit

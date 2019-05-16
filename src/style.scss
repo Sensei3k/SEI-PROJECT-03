@@ -1,44 +1,53 @@
 $hr-color: #B0E2FF;
 
 .footer {
-  background-color: teal;
+  background-color: #202020;
 }
 
 body {
-  background-image: url('https://wallpaperstudio10.com/static/wpdb/wallpapers/3840x2160/181007.jpg');
-  min-height: 100vh;
-  background-position: center;
-  background-size: cover;
-  background-image: contain;
-
+      background-image: url('./images/background-images/stagingbackground.jpg');
+      background-size: cover;
+      min-height: 100vh;
     a.navbar-item {
       padding-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      font-family: 'Poiret One', cursive;
+      &:hover.navbar-item {
+        color: #77DCFF !important;
+      }
+    }
 
+    .logohome {
+      font-weight: bold;
+      font-size: 18px;
+      font-family: 'Monoton', cursive !important;
+      color: white;
+    }
+
+    .headshots {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .label{
+      color: white;
     }
 
     a.navbar-home {
-      width: 80px;
+      font-family: 'Monoton', cursive;
+      font-size: 25px;
+      font-weight: bold;
+      width: 127px;
       padding-top: 10px;
-      background-image: url('./images/logos/h-logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      &:hover {
+        color: #77DCFF !important;
+      }
     }
 
-  .navbar {
-    opacity: 0.3;
-    background-color: black;
-  }
-
-  #facebook {
-    background-image: url('https://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png');
-    background-size: contain;
-    width: 50px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 10px;
-  }
 
   .loading {
    image-orientation: 40px;
@@ -46,6 +55,14 @@ body {
 
   .input {
       max-width: 500px;
+    }
+
+    .title {
+      font-family: 'Poiret One', cursive;
+    }
+
+    .subtitle {
+      font-family: 'Poiret One', cursive;
     }
 
 
@@ -65,6 +82,11 @@ body {
     font-size: 20px;
    }
 
+  }
+
+  .footer {
+    background-color: #363636;
+    height: 50px;
   }
 
   .user-background {
@@ -117,6 +139,7 @@ body {
 
 .edit-form {
   display: flex;
+  // height: 100vh;
 }
 
 .img-profile {
@@ -157,12 +180,73 @@ input {
   }
 }
 
-.leave-comment {
-  font-size: 16px;
+#background-change {
+  background-position: center;
+  background-size: cover;
+  background-image: contain;
+  transition: background-image 2s ease;
 }
 
-.location-container {
-  button {
-    height: inherit;
+  .location-container {
+    display: flex;
+    align-items: center;
+
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  .edit-form {
+    display: flex;
+    justify-content: center;
+  }
+  .editform-input {
+    max-width: 140px;
+  }
+
+
+.age-range {
+
+  .editform-input {
+    max-width: 140px;
   }
 }
+
+.image-comment {
+  height: 100px;
+}
+
+.image-profile {
+  height: 200px;
+  align-items: center;
+}
+
+.section {
+  height: 80vh;
+}
+
+.home-container {
+  display: flex;
+  align-items: center;
+
+  .title-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    height: 250px;
+    border-radius: 10px;
+
+    .title {
+      font-size: 70px;
+      text-shadow: 2px 2px 2px black;
+    }
+    .subtitle {
+      color: white;
+      font-size: 50px;
+      text-shadow: 2px 2px 2px black;
+    }
+    button {
+      font-size: 20px;
+      width: 130px;
+      border-radius: 15px;
+    }
+  }

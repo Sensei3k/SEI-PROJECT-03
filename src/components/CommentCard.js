@@ -1,19 +1,29 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CommentCard = ({ content, user }) => {
   return (
-    <div className="card">
-      <div className="card-header">
-        <figure>
-          <img src={user.image} alt={user.username} />
+    <Link to ={`/users/${user._id}`}>
+      <article className="media">
+
+
+        <figure className="media-left">
+          <img className="image-comment" src={user.image} alt={user.username}/>
         </figure>
-        <p>{user.username}</p>
-      </div>
-      <div className="card-content">
-        <p>{content}</p>
-        <p>{content.createdAt}</p>
-      </div>
-    </div>
+        <div className="media-content">
+          <div className="content">
+            <p>
+              <strong>{user.username}</strong> <small>{content.createdAt}</small>
+              <br/>
+              {content}
+            </p>
+          </div>
+        </div>
+        <div className="media-right">
+          <button className="delete"></button>
+        </div>
+      </article>
+    </Link>
   )
 }
 
