@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+// import moment from 'moment'
+
 import Footer from '../components/Footer'
 
 class Register extends React.Component {
@@ -46,10 +48,13 @@ class Register extends React.Component {
       .catch(err => this.setState({errors: err.response.data.errors}))
   }
 
+  ageValidator() {
+    return null
+  }
+
   // within render, added a dropdown menu for location.
   render() {
-    console.log(this.state, 'username')
-    console.log(this.state.errors.email, 'email')
+    console.log(this.state.data.dateOfBirth, 'dob')
     return (
       <section>
         <section className="section">
@@ -109,6 +114,7 @@ class Register extends React.Component {
                         max="2000-01-01"
                         onChange={this.handleChange}/>
                     </div>
+                    {this.state.errors.dateOfBirth && <div className="help is-danger">{this.state.errors.dateOfBirth}</div>}
                   </div>
 
                   <div className="field">

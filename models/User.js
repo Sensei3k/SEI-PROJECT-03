@@ -40,8 +40,8 @@ const userSchema = new mongoose.Schema({
     required: 'Please provide a password'
   },
   dateOfBirth: {
-    type: Date
-    // required: 'Please enter your date of birth'
+    type: Date,
+    required: 'Please enter your date of birth'
   },
   location: {
     type: String

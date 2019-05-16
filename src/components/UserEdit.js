@@ -6,6 +6,12 @@ import ReactFilestack from 'filestack-react'
 import { ToastContainer, toast } from 'react-toastify'
 import Footer from './Footer'
 
+// const filestackKey= process.env.FILESTACK
+// console.log(filestackKey, 'key')
+
+// import Auth from '../lib/Auth'
+import Loading from './Loading'
+
 const options = {
   accept: 'image/*',
   transformations: {
@@ -14,13 +20,6 @@ const options = {
     rotate: true
   }
 }
-
-// const filestackKey= process.env.FILESTACK
-// console.log(filestackKey, 'key')
-
-// import Auth from '../lib/Auth'
-import Loading from './Loading'
-
 
 class UserEdit extends React.Component {
 
@@ -37,6 +36,7 @@ class UserEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.handleUploadImages = this.handleUploadImages.bind(this)
+    // this.profileSubmit = this.profileSubmit.bind(this)
   }
 
   handleChange(e) {
@@ -48,7 +48,6 @@ class UserEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
 
 
     axios.put(`/api/users/${this.props.match.params.id}`, this.state.data)
@@ -86,6 +85,10 @@ class UserEdit extends React.Component {
     toast.success('New Profile Image Updated!', {containerId: 'B'})
   }
 
+  // toastId = null
+  profileSubmit(){
+    return toast.success('Profile Updated!', { containerId: 'D' })
+  }
 
   render() {
     if(!this.state.data._id) return <Loading />
@@ -194,7 +197,7 @@ class UserEdit extends React.Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">About Me</label>
+                    <label className="label">Bio</label>
                     <div className="control">
                       <input
                         className="input"
@@ -248,7 +251,9 @@ class UserEdit extends React.Component {
                     </div>
                   </div>
                   <br/>
-                  <button className="button is-info submit-edit-button">Submit Changes</button>
+                  <button className="button is-info submit-edit-button"
+                    onClick={this.profileSubmit()}>
+                  Submit Changes</button>
                 </div>
               </form>
             </div>
@@ -274,6 +279,17 @@ class UserEdit extends React.Component {
             <ToastContainer
               enableMultiContainer
               containerId= "C"
+              position="top-right"
+              hideProgressBar={false}
+              closeOnClick
+              autoClose={2000}
+              toastClassName="image-toast"
+            />
+          </div>
+          <div>
+            <ToastContainer
+              enableMultiContainer
+              containerId= "D"
               position="top-right"
               hideProgressBar={false}
               closeOnClick
