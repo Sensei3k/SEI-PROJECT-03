@@ -20,7 +20,8 @@ class UserEdit extends React.Component {
     this.state = {
       data: {},
       errors: {},
-      file: null
+      file: null,
+      submitDisabled: true
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -48,6 +49,7 @@ class UserEdit extends React.Component {
   }
 
   componentDidMount() {
+    //load the user's current data
     axios.get(`/api/users/${this.props.match.params.id}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })

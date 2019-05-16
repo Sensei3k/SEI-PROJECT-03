@@ -8,7 +8,6 @@ mongoose.connect(dbUri, (err, db) => {
   db.dropDatabase()
   //add new objects to database
   User.create({
-
     // 1.)
     username: 'Kristiano',
     email: 'kristiano@gmail.com',
@@ -29,7 +28,6 @@ mongoose.connect(dbUri, (err, db) => {
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
-
     // 2.)
     username: 'John',
     email: 'paulo@gmail.com',
@@ -49,7 +47,6 @@ mongoose.connect(dbUri, (err, db) => {
     interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
-
     // 3.)
     username: 'Elleo',
     email: 'elleo@gmail.com',
@@ -70,7 +67,6 @@ mongoose.connect(dbUri, (err, db) => {
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
-
     // 4.)
     username: 'Sensei',
     email: 'ade@gmail.com',
@@ -90,9 +86,7 @@ mongoose.connect(dbUri, (err, db) => {
     gender: 'Male',
     interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
-
   }, {
-
     // 5.)
     username: 'Luke',
     email: 'luke@gmail.com',
@@ -113,7 +107,6 @@ mongoose.connect(dbUri, (err, db) => {
     interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
-
     // 6.)
     username: 'Harrison',
     email: 'harrison@gmail.com',
@@ -133,9 +126,7 @@ mongoose.connect(dbUri, (err, db) => {
     gender: 'Male',
     interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
-
   }, {
-
     // 7.)
     username: 'Lara',
     email: 'lara@gmail.com',
@@ -155,9 +146,7 @@ mongoose.connect(dbUri, (err, db) => {
     gender: 'Female',
     interestedIn: 'Female',
     interests: 'biking, swimming, hiking, eating, music'
-
   }, {
-
     // 8.)
     username: 'Veronica ',
     email: 'veronica@gmail.com',
@@ -177,9 +166,8 @@ mongoose.connect(dbUri, (err, db) => {
     gender: 'Female',
     interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
-
-    // 9.)
   }, {
+    // 9.)
     username: 'Hannah',
     email: 'hannah@gmail.com',
     password: 'pass',
@@ -198,9 +186,8 @@ mongoose.connect(dbUri, (err, db) => {
     gender: 'Female',
     interestedIn: 'Male',
     interests: 'biking, swimming, hiking, eating, music'
-
-    // 10.)
   }, {
+    // 10.)
     username: 'Valentina',
     email: 'valentina@gmail.com',
     password: 'pass',

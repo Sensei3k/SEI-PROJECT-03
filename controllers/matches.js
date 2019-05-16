@@ -60,7 +60,6 @@ function matchRoute(req, res, next) {
 
         return (!matchId.equals(userId) && interestRequirement && distanceRequirement && ageRequirement)
 
-
       })
       //return the arrayOfMatches as JSON
       return res.json(arrayOfMatches)

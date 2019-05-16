@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import Auth from '../lib/Auth'
-
 import UserCard from './UserCard'
 import Footer from './Footer'
 
@@ -10,7 +9,6 @@ class MatchIndex extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      //consider changing the below to 'matches'
       users: []
     }
   }
