@@ -141,7 +141,6 @@ class UserShow extends React.Component {
               <div className="column is-desktop">
                 {!this.canModify() &&
                   <form onSubmit={this.handleSubmit}>
-                    <br/>
                     <textarea rows="4" cols="60" className="leave-comment" type="text" name="content" placeholder="Max: 280 characters" value={this.state.value} onChange={this.handleChange} />
                     <br/>
                     <button className="button is-info submit-edit-button"

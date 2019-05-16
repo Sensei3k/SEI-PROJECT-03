@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
+import NoMatch from './NoMatch'
 import UserCard from './UserCard'
 import Footer from './Footer'
 
@@ -20,6 +21,7 @@ class MatchIndex extends React.Component {
   }
 
   render() {
+    if(!this.state.users.matches) return <NoMatch />
     return (
       <section>
         <section className="section user-background">

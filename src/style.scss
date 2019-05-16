@@ -1,28 +1,51 @@
 $hr-color: #B0E2FF;
 
 .footer {
-  // background-color: teal;
-
-    a{
-      color: white;
-    }
+  background-color: #202020;
 }
 
 body {
-  min-height: 100vh;
-
+      background-image: url('./images/background-images/stagingbackground.jpg');
+      background-size: cover;
+      min-height: 100vh;
     a.navbar-item {
       padding-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      font-family: 'Poiret One', cursive;
+      &:hover.navbar-item {
+        color: #77DCFF !important;
+      }
+    }
 
+    .logohome {
+      font-weight: bold;
+      font-size: 18px;
+      font-family: 'Monoton', cursive !important;
+      color: white;
+    }
+
+    .headshots {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .label{
+      color: white;
     }
 
     a.navbar-home {
-      width: 80px;
+      font-family: 'Monoton', cursive;
+      font-size: 25px;
+      font-weight: bold;
+      width: 127px;
       padding-top: 10px;
-      background-image: url('./images/logos/h-logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      &:hover {
+        color: #77DCFF !important;
+      }
     }
 
 
@@ -32,6 +55,14 @@ body {
 
   .input {
       max-width: 500px;
+    }
+
+    .title {
+      font-family: 'Poiret One', cursive;
+    }
+
+    .subtitle {
+      font-family: 'Poiret One', cursive;
     }
 
 
@@ -156,10 +187,19 @@ input {
   transition: background-image 2s ease;
 }
 
-  button {
-    margin-top: 20px;
+  .location-container {
+    display: flex;
+    align-items: center;
+
+    button {
+      margin-top: 20px;
+    }
   }
 
+  .edit-form {
+    display: flex;
+    justify-content: center;
+  }
   .editform-input {
     max-width: 140px;
   }
@@ -184,3 +224,29 @@ input {
 .section {
   height: 80vh;
 }
+
+.home-container {
+  display: flex;
+  align-items: center;
+
+  .title-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    height: 250px;
+    border-radius: 10px;
+
+    .title {
+      font-size: 70px;
+      text-shadow: 2px 2px 2px black;
+    }
+    .subtitle {
+      color: white;
+      font-size: 50px;
+      text-shadow: 2px 2px 2px black;
+    }
+    button {
+      font-size: 20px;
+      width: 130px;
+      border-radius: 15px;
+    }
+  }
