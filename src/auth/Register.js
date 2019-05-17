@@ -77,26 +77,27 @@ class Register extends React.Component {
                     {this.state.errors.email && <div className="help is-danger">{this.state.errors.email}</div>}
                   </div>
 
-                  <div className="register-container">
-                    <div className="field">
-                      <label className="label">Location</label>
-                      <div className="select">
-                        <select name="location" onChange={this.handleChange}>
-                          <option value="">Select</option>
-                          <option value="Amsterdam">Amsterdam</option>
-                          <option value="london">London</option>
-                          <option value="manchester">Manchester</option>
-                          <option value="birmingham">Birmingham</option>
-                          <option value="mexico-city">Mexico City</option>
-                          <option value="Berlin">Berlin</option>
-                          <option value="Paris">Paris</option>
-                          <option value="Brussels">Brussels</option>
-                          <option value="Qubec">Qubec</option>
-                          <option value="Montreal">Montreal</option>
-                          <option value="New York">New York</option>
-                          <option value="Venice">Venice</option>
-                        </select>
-                      </div>
+                  <div className="field">
+                    <label className="label">Location</label>
+                    <div className="select">
+                      <select name="location" onChange={this.handleChange}>
+                        <option value="">Select</option>
+                        <option value="Edinburgh">Edinburgh</option>
+                        <option value="London">London</option>
+                        <option value="Manchester">Manchester</option>
+                        <option value="Birmingham">Birmingham</option>
+                        <option value="Bristol">Bristol</option>
+                        <option value="Glasgow">Glasgow</option>
+                        <option value="Newcastle">Newcastle</option>
+                        <option value="York">York</option>
+                        <option value="Brighton">Brighton</option>
+                        <option value="Belfast">Belfast</option>
+                        <option value="Cardiff">Cardiff</option>
+                        <option value="Leeds">Leeds</option>
+                        <option value="Bath">Bath</option>
+                        <option value="Sheffield">Sheffield</option>
+                        <option value="Norwich">Norwich</option>
+                      </select>
                     </div>
 
                     <div className="field">
