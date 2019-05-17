@@ -167,7 +167,7 @@ class UserEdit extends React.Component {
                         name="minAge"
                         placeholder="eg. 25"
                         onChange={this.handleChange}
-                        value={this.state.data.minAge || '21'}
+                        value={this.state.data.minAge}
                       />
                     </div>
                   </div>
@@ -180,7 +180,7 @@ class UserEdit extends React.Component {
                         name="maxAge"
                         placeholder="eg. 35"
                         onChange={this.handleChange}
-                        value={this.state.data.maxAge || '45'}
+                        value={this.state.data.maxAge}
                       />
                     </div>
                   </div>

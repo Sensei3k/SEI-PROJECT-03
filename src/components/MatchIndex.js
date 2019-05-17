@@ -22,7 +22,7 @@ class MatchIndex extends React.Component {
   }
 
   render() {
-    if(!this.state.users.matches) return <NoMatch />
+    if(!this.state.users.length) return <NoMatch />
     return (
       <section>
         <section className="section user-background">

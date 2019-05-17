@@ -1,9 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import moment from 'moment'
-
-// import moment from 'moment'
-
 import Footer from '../components/Footer'
 // import { ToastContainer, toast } from 'react-toastify'
 
@@ -21,7 +18,7 @@ class Register extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
 
     this.dobToAge = this.dobToAge.bind(this)
-    this.ageValidator = this.ageValidator.bind(this)
+    //this.ageValidator = this.ageValidator.bind(this)
   }
 
   //function for converting the date of birth to an age in years

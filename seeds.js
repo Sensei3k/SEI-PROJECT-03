@@ -14,15 +14,15 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1991, 11, 25),
-    minAge: '18',
-    maxAge: '30',
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //bethnal green
     coordinates: {
       latitude: 51.5273,
       longitude: 0.0555
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
     interestedIn: 'Both',
@@ -34,17 +34,17 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1995, 2, 13),
-    minAge: '18',
-    maxAge: '30',
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     coordinates: {
       latitude: 51.4214,
       longitude: 0.2055
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
-    interestedIn: 'Male',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
     // 3.)
@@ -53,15 +53,15 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1994, 2, 19),
-    minAge: '18',
-    maxAge: '30',
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //elephant & castle
     coordinates: {
       latitude: 51.4952,
       longitude: 0.1008
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/elmo.jpg',
     gender: 'Female',
     interestedIn: 'Both',
@@ -73,18 +73,18 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1992, 6, 17),
-    minAge: '13',
-    maxAge: '30',
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //tottenham
     coordinates: {
       latitude: 51.5152,
       longitude: 0.1419
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
-    interestedIn: 'Female',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
     // 5.)
@@ -93,18 +93,18 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1993, 5, 11),
-    minAge: '18',
-    maxAge: '30',
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //stratford
     coordinates: {
       latitude: 51.5431,
       longitude: 0.0072
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/Luke.jpg',
     gender: 'Male',
-    interestedIn: 'Female',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
     // 6.)
@@ -113,18 +113,18 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1996, 8, 17),
-    minAge: '18',
-    maxAge: '30',
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //canary wharf
     coordinates: {
       latitude: 51.5035,
       longitude: 0.0184
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/Harrison.jpg',
     gender: 'Male',
-    interestedIn: 'Female',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
     // 7.)
@@ -132,19 +132,19 @@ mongoose.connect(dbUri, (err, db) => {
     email: 'lara@gmail.com',
     password: 'pass',
     passwordConfirmation: 'pass',
-    dateOfBirth: new Date(1998, 9, 27),
-    minAge: '18',
-    maxAge: '30',
+    dateOfBirth: new Date(1996, 9, 27),
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //croydon
     coordinates: {
       latitude: 51.3784,
       longitude: 0.1026
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/Lara.jpg',
     gender: 'Female',
-    interestedIn: 'Female',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
     // 8.)
@@ -153,18 +153,18 @@ mongoose.connect(dbUri, (err, db) => {
     password: 'pass',
     passwordConfirmation: 'pass',
     dateOfBirth: new Date(1996, 4, 23),
-    minAge: '18',
-    maxAge: '30',
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //sloane square
     coordinates: {
       latitude: 51.4923,
       longitude: 0.1562
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/Veronica.jpg',
     gender: 'Female',
-    interestedIn: 'Male',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
     // 9.)
@@ -172,19 +172,19 @@ mongoose.connect(dbUri, (err, db) => {
     email: 'hannah@gmail.com',
     password: 'pass',
     passwordConfirmation: 'pass',
-    dateOfBirth: new Date(2000, 2, 11),
-    minAge: '18',
-    maxAge: '30',
+    dateOfBirth: new Date(1997, 2, 11),
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //southfields
     coordinates: {
       latitude: 51.4448,
       longitude: 0.2068
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/Hannah.jpg',
     gender: 'Female',
-    interestedIn: 'Male',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   }, {
     // 10.)
@@ -192,19 +192,19 @@ mongoose.connect(dbUri, (err, db) => {
     email: 'valentina@gmail.com',
     password: 'pass',
     passwordConfirmation: 'pass',
-    dateOfBirth: new Date(1999, 4, 18),
-    minAge: '18',
-    maxAge: '30',
+    dateOfBirth: new Date(1995, 4, 18),
+    minAge: 21,
+    maxAge: 30,
     location: 'London',
     //old street
     coordinates: {
       latitude: 51.5257,
       longitude: 0.0875
     },
-    radius: '20',
+    radius: 20,
     image: '../images/cpu-profile-images/Valentina.jpg',
     gender: 'Female',
-    interestedIn: 'Male',
+    interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
   })
     .then(() => mongoose.connection.close())
