@@ -129,9 +129,16 @@ body {
 }
 
 .card {
-  border-radius: 50%;
-  height: 300px;
-  width: 300px;
+
+  .card-image {
+    padding: 30px;
+    figure {
+      background-position: center;
+      background-size: cover;
+      border-radius: 50%;
+      padding-bottom: 100%;
+    }
+  }
 
   figure {
     background-position: center;
