@@ -142,25 +142,12 @@ class UserEdit extends React.Component {
                     <label className="label has-text-black">Match Radius</label>
                     <div className="control">
                       <input
-                        className="input"
-                        type="text"
-                        name="username"
-                        placeholder="eg: Charlie"
-                        onChange={this.handleChange}
-                        value={this.state.data.username || ''}
-                      />
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label className="label has-text-black">Match Radius</label>
-                    <div className="control">
-                      <input
                         type="number"
                         className="input editform-input"
                         name="radius"
                         placeholder="please enter the maximum distance (km) for your matches"
                         onChange={this.handleChange}
-                        value={this.state.data.radius || ''}
+                        value={this.state.data.radius}
                       />
                     </div>
                   </div>
@@ -191,7 +178,7 @@ class UserEdit extends React.Component {
                         className="input editform-input"
                         type="number"
                         name="maxAge"
-                        placeholder="eg. 35"
+                        placeholder="eg. 65"
                         onChange={this.handleChange}
                         value={this.state.data.maxAge}
                       />
