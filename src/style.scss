@@ -24,7 +24,7 @@ body {
         color: #77DCFF !important;
       }
     }
-  
+
 
   .logohome {
     padding: 15px;
@@ -132,13 +132,8 @@ body {
   border-radius: 50%;
   height: 300px;
   width: 300px;
-  box-shadow: none;
 
-  .card-header {
-    box-shadow: none; // ---> new Feature
-  }
-
-  figure.img-profile {
+  figure {
     background-position: center;
     background-size: cover;
     border-radius: 50%;

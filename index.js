@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -10,8 +11,8 @@ const app = express()
 
 //connect to the database
 mongoose.connect(dbUri)
-require('dotenv').config()
 
+app.use(express.static(`${__dirname}/dist`))
 //config the middleware
 app.use(bodyParser.json())
 app.use('/api', routes)
