@@ -1,10 +1,11 @@
 import React from 'react'
+// import ReactDOM from 'react-dom'
 import axios from 'axios'
 
-// import moment from 'moment'
+import moment from 'moment'
 
 import Footer from '../components/Footer'
-// import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 
 class Register extends React.Component {
   constructor() {
@@ -22,7 +23,11 @@ class Register extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value)
+    // console.log({current: ReactDOM.findDOMNode(e.target)}, 'this is target')
+    if (e.target.name === 'dateOfBirth') {
+      const isValidAge = this.ageValidator(e.target.value)
+      if (!isValidAge) return
+    }
     const data =  {...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data: data })
   }
@@ -33,6 +38,14 @@ class Register extends React.Component {
     axios.post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({errors: err.response.data.errors}))
+  }
+
+  ageValidator(dateOfBirth) {
+    const years = moment().diff(dateOfBirth, 'years')
+    const isValidAge = years >= 21
+    // console.log(dateOfBirth, isValidAge, 'this is from ageValidator')
+    isValidAge ? toast.success('You are old enough to enter this site!', {containerId: 'E'}) : toast.error('You are not old enough to enter this site!', {containerId: 'E'})
+    return isValidAge
   }
 
   render() {
@@ -128,6 +141,16 @@ class Register extends React.Component {
           </div>
         </section>
         <Footer />
+        <ToastContainer
+          enableMultiContainer
+          containerId= "E"
+          position="top-center"
+          hideProgressBar={true}
+          rtl={false}
+          closeOnClick
+          autoClose={2000}
+          toastClassName="validator-toast"
+        />
       </section>
     )
   }
@@ -140,21 +163,6 @@ export default Register
 
 
 
-// ageValidator() {
-//   const str = this.state.data.dateOfBirth
-//   const years = moment().diff(str, 'years')
-//   return years >= 21 ? toast.success('You are old enough to enter this site!', {containerId: 'E'}) : toast.error('You are not old enough to enter this site!', {containerId: 'E'})
-// }
+
 
 // <button onClick={this.ageValidator}>verify age</button>
-
-// <ToastContainer
-// enableMultiContainer
-// containerId= "E"
-// position="top-right"
-// hideProgressBar={true}
-// rtl={false}
-// closeOnClick
-// autoClose={2000}
-// toastClassName="validator-toast"
-// />
