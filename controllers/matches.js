@@ -1,9 +1,7 @@
 const User = require('../models/User')
 
 function calcDistance(user, match) {
-  //haversine formula for distance between two lat, long coordinate pairs
-
-  const R = 6371e3 // earths radius in metres
+  //haversine formula for distance between two lat, lon coordinate pairs
   const radConst = (Math.PI/180)
   const φ1 = user.latitude*radConst
   const φ2 = match.latitude*radConst
@@ -13,80 +11,54 @@ function calcDistance(user, match) {
   const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
           Math.cos(φ1) * Math.cos(φ2) *
           Math.sin(Δλ/2) * Math.sin(Δλ/2)
+  const r = 6371e3 // earths radius in metres
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-
-  const distance = R * c / 1000 //d is in km
+  const distance = r * c / 1000 //d is in km
 
   return distance
-
 }
 
 function matchRoute(req, res, next) {
   //get all the users from the database
   User.find()
     .then((users) => {
-      //change the ID from the url to a string
-      //const userId = JSON.stringify(req.params.id)
-      const userId = req.params.id
       //initialize variables to store the users matching details
-      //let userLocation = ''
-      let userGender = ''
-      let userInterestedIn = ''
-      let userInterests = ''
-      let userRadius = ''
-      let userCoordinates = []
-
-      //filter out the users that have not entered interests yet
-      users = users.filter((user) => {
-        if(user.interests) return user
-      })
-
-      //find the location, gender of interest, and interests of the user searching for a match
-      users.forEach((user) => {
-
-        if(user._id.equals(req.params.id)) {
-          //userLocation = user.location
-          userGender = user.gender
-          userInterestedIn = user.interestedIn
-          //create an array of user interests
-          userInterests = user.interests.split(', ')
-          userCoordinates = user.coordinates
-          userRadius = parseInt(user.radius)
-        }
-
-      })
-
-
-      //initialize an array in which to store your matches
-      const arrayOfMatches = []
+      const {
+        _id: userId,
+        gender: userGender,
+        interestedIn: userInterestedIn,
+        radius: userRadius,
+        coordinates: userCoordinates,
+        age: userAge,
+        minAge: userMinAge,
+        maxAge: userMaxAge
+      } = req.currentUser
 
       //loop through all users to find which ones match, and exclude yourself
-      users.forEach((match) => {
-        //const matchLocation = match.location
-        const matchGender = match.gender
-        const matchInterestedIn = match.interestedIn
-        const matchId = match._id
-        const matchInterests = match.interests.split(', ')
-        const matchRadius = parseInt(match.radius)
-        const similarInterests = []
-        //let distanceApart = ''
+      const arrayOfMatches = users.filter((match) => {
+        const {
+          _id: matchId,
+          gender: matchGender,
+          interestedIn: matchInterestedIn,
+          radius: matchRadius,
+          coordinates: matchCoordinates,
+          age: matchAge,
+          minAge: matchMinAge,
+          maxAge: matchMaxAge
+        } = match
 
-        //count the number of similar interests
-        matchInterests.forEach((interest) => {
-          if(userInterests.includes(interest)) {
-            similarInterests.push(interest)
-          }
-        })
+        //calc the distance between the user and the potential match and check...
+        //that they meet eachothers radius requirements
+        const distanceApart = calcDistance(userCoordinates, matchCoordinates)
+        const distanceRequirement = distanceApart < userRadius && distanceApart < matchRadius
 
-        //calculate the distance between the user and the potential match
-        const distanceApart = calcDistance(userCoordinates, match.coordinates)
-        //console.log(distanceApart)
+        //check if the potential match meets users age requirements and vice versa
+        const ageRequirement = matchAge < userMaxAge && matchAge > userMinAge && userAge < matchMaxAge && userAge > matchMinAge
 
+        //check if the potential match meets gender preference requirements and vice versa
+        const interestRequirement = (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender)
 
-        // if the user and potential match pass the conditions below they are a match
-        if(!matchId.equals(userId) && (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender) && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
-          arrayOfMatches.push(match)
-        }
+        return (!matchId.equals(userId) && interestRequirement && distanceRequirement && ageRequirement)
 
       })
       //return the arrayOfMatches as JSON

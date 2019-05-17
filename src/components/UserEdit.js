@@ -1,12 +1,10 @@
 import React from 'react'
-import axios from 'axios'
-//import Auth from '../lib/Auth'
-
 import ReactFilestack from 'filestack-react'
+import Loading from './Loading'
+import Auth from '../lib/Auth'
+import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import Footer from './Footer'
-
-import Loading from './Loading'
 
 const options = {
   accept: 'image/*',
@@ -18,14 +16,14 @@ const options = {
 }
 
 class UserEdit extends React.Component {
-
   constructor(props) {
     super(props)
 
     this.state = {
       data: {},
       errors: {},
-      file: null
+      file: null,
+      submitDisabled: true
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -42,10 +40,11 @@ class UserEdit extends React.Component {
   }
 
   handleSubmit(e) {
-
     e.preventDefault()
-
-    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data)
+    //update the user's details in the database
+    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => {
         this.props.history.push(`/users/${res.data._id}`)
       })
@@ -53,12 +52,14 @@ class UserEdit extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/users/${this.props.match.params.id}`)
+    //load the user's current data
+    axios.get(`/api/users/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => this.setState({ data: res.data }))
   }
 
   updateLocation(e) {
-
     e.preventDefault()
 
     navigator.geolocation.watchPosition((position) => {
@@ -89,7 +90,7 @@ class UserEdit extends React.Component {
             <form className="edit-form columns is-multiline is-mobile" onSubmit={this.handleSubmit}>
               <div className="column is-half-desktop is-full-tablet is-mobile level-left">
                 <div className="field">
-                  <label className="label">Profile Photo</label>
+                  <label className="label has-text-black">Profile Photo</label>
                   <ReactFilestack
                     apikey={process.env.FILESTACK}
                     buttonText="Upload Photo"
@@ -118,7 +119,7 @@ class UserEdit extends React.Component {
               <div className="column is-half-desktop is-full-tablet is-mobile">
                 <div className="container location-container is-flex">
                   <div className="field">
-                    <label className="label">Location</label>
+                    <label className="label has-text-black">Location</label>
                     <div className="select">
                       <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
                         <option value="">Select</option>
@@ -138,12 +139,24 @@ class UserEdit extends React.Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Match Radius</label>
+                    <label className="label has-text-black">Match Radius</label>
                     <div className="control">
                       <input
-                        className="input editform-input"
+                        className="input"
                         type="text"
-                        pattern="[0-9]*"
+                        name="username"
+                        placeholder="eg: Charlie"
+                        onChange={this.handleChange}
+                        value={this.state.data.username || ''}
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label has-text-black">Match Radius</label>
+                    <div className="control">
+                      <input
+                        type="number"
+                        className="input editform-input"
                         name="radius"
                         placeholder="please enter the maximum distance (km) for your matches"
                         onChange={this.handleChange}
@@ -159,7 +172,7 @@ class UserEdit extends React.Component {
                 </div>
                 <div className="container is-flex age-range">
                   <div className="field">
-                    <label className="label">Min Age Range</label>
+                    <label className="label has-text-black">Min Age Range</label>
                     <div className="control">
                       <input
                         className="input editform-input"
@@ -167,12 +180,12 @@ class UserEdit extends React.Component {
                         name="minAge"
                         placeholder="eg. 25"
                         onChange={this.handleChange}
-                        value={this.state.data.minAge || '21'}
+                        value={this.state.data.minAge}
                       />
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Max Age Range</label>
+                    <label className="label has-text-black">Max Age Range</label>
                     <div className="control">
                       <input
                         className="input editform-input"
@@ -180,13 +193,13 @@ class UserEdit extends React.Component {
                         name="maxAge"
                         placeholder="eg. 35"
                         onChange={this.handleChange}
-                        value={this.state.data.maxAge || '45'}
+                        value={this.state.data.maxAge}
                       />
                     </div>
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Bio</label>
+                  <label className="label has-text-black">Bio</label>
                   <div className="control">
                     <input
                       className="input"
@@ -198,7 +211,7 @@ class UserEdit extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Interests</label>
+                  <label className="label has-text-black">Interests</label>
                   <div className="control">
                     <input
                       className="input"
@@ -211,7 +224,7 @@ class UserEdit extends React.Component {
                 </div>
                 <div className="genders-container">
                   <div className="field">
-                    <label className="label">Gender</label>
+                    <label className="label has-text-black">Gender</label>
                     <div className="control">
                       <div className="select">
                         <select name="gender" onChange={this.handleChange} value={this.state.data.gender || ''}>
@@ -225,7 +238,7 @@ class UserEdit extends React.Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Interested In</label>
+                    <label className="label has-text-black">Interested In</label>
                     <div className="control">
                       <div className="select">
                         <select name="interestedIn" onChange={this.handleChange} value={this.state.data.interestedIn || ''}>
@@ -292,7 +305,6 @@ class UserEdit extends React.Component {
     )
   }
 }
-
 
 
 export default UserEdit

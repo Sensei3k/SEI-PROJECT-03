@@ -7,10 +7,9 @@ const AboutUs = () => {
     <main className="AboutUs">
       <section className="section aboutus-background">
         <div className="container">
-          <img></img>
           <h1 className="title is-1 has-text-light"> WHO ARE WE?</h1>
           <hr />
-          <h3 className="subtitle is-2 has-text-light"> WHAT MAKES CRUSH DIFFERENT | MEET THE TEAM</h3>
+          <h3 className="subtitle is-2 has-text-light"> MEET THE TEAM </h3>
           <hr className="paragraph"/>
 
           <div className="columns headshots is-vcentered">
@@ -24,7 +23,7 @@ const AboutUs = () => {
             </figure>
 
             <figure className="image is-128x128">
-              <img className="is-rounded" src="./images/cpu-profile-images/John.jpg"></img>
+              <img className="is-rounded" src="./images/cpu-profile-images/comic.jpg"></img>
             </figure>
 
             <figure className="image is-128x128">

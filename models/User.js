@@ -2,10 +2,8 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const commentSchema = new mongoose.Schema({
-  //user: {
   user: {
     type: mongoose.Schema.ObjectId,
-    // type: String
     ref: 'User'
   },
   content: {
@@ -16,11 +14,14 @@ const commentSchema = new mongoose.Schema({
 }, {
   timestamps: true, // this adds `createdAt` and `updatedAt` properties
   toJSON: {
-    // whenever the comment is converted to JSON
+    // whenever the comment is converted to JSON, remove the '__v' property
     transform(doc, json) {
       delete json.__v
       return json
     }
+  },
+  toObject: {
+    virtuals: true
   }
 })
 
@@ -58,15 +59,13 @@ const userSchema = new mongoose.Schema({
     longitude: { type: Number }
   },
   radius: {
-    type: String
+    type: Number
   },
   gender: {
     type: String
-    // enum: ['Male', 'Female', 'Other']
   },
   interestedIn: {
     type: String
-    // enum: ['Male', 'Female', 'Other']
   },
   image: {
     type: String
@@ -78,10 +77,10 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   minAge: {
-    type: String
+    type: Number
   },
   maxAge: {
-    type: String
+    type: Number
   },
   comments: [commentSchema]
 }, {
@@ -95,13 +94,18 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-//virtual fields not saved in database - store plaintext password for later
+//fields not saved in database - store plaintext password for later
+userSchema.virtual('age')
+  .get(function getAge() {
+    return Math.floor((Date.now() - this.dateOfBirth.getTime()) / 1000 / 60 / 60 / 24 / 365)
+  })
+
 userSchema.virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(plaintext) {
     this._passwordConfirmation = plaintext
   })
 
-// check if the password stored (virtual) matches the password in database
+//check if the password stored (virtual) matches the password in database
 userSchema.pre('validate', function checkPasswords(next) {
   if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match')
@@ -109,7 +113,7 @@ userSchema.pre('validate', function checkPasswords(next) {
   next()
 })
 
-// if the password has changed - hash the password and save it in the database
+//if the password has changed - hash the password and save it in the database
 userSchema.pre('save', function hashPassword(next) {
   if(this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8))
@@ -117,14 +121,11 @@ userSchema.pre('save', function hashPassword(next) {
   next()
 })
 
-// "methods" in below is used to assign isPasswordValid function to all users
+//"methods" in below is used to assign isPasswordValid function to all users
 userSchema.methods.isPasswordValid = function isPasswordValid(plaintext) {
   //checks if the plain text password when hashed would equal
   //the hash in the data base
   return bcrypt.compareSync(plaintext, this.password)
 }
-
-
-
 
 module.exports = mongoose.model('User', userSchema)

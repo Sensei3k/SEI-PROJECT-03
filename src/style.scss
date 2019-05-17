@@ -12,7 +12,7 @@ main {
 }
 
 body {
-      // background-image: url('./images/background-images/stagingbackground.jpg'); // ---> new Feature
+      background-image: url('./images/background-images/stagingbackground.jpg');
       background-size: cover;
       min-height: 100vh;
     a.navbar-item {
@@ -24,72 +24,74 @@ body {
         color: #77DCFF !important;
       }
     }
+  
 
-    .logohome {
-      font-weight: bold;
-      font-size: 18px;
-      font-family: 'Monoton', cursive !important;
-      color: white;
-    }
+  .logohome {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Monoton', cursive !important;
+    color: white;
+  }
 
-    .headshots {
-      display: flex;
-      justify-content: space-around;
-    }
+  .headshots {
+    display: flex;
+    justify-content: space-around;
+  }
 
-    .label{
-      color: white;
-    }
+  .label{
+    color: white;
+  }
 
-    a.navbar-home {
-      font-family: 'Monoton', cursive;
-      font-size: 25px;
-      font-weight: bold;
-      width: 127px;
-      padding-top: 10px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      &:hover {
-        color: #77DCFF !important;
-      }
+  a.navbar-home {
+    font-family: 'Monoton', cursive;
+    font-size: 25px;
+    font-weight: bold;
+    width: 127px;
+    padding-top: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    &:hover {
+      color: #77DCFF !important;
     }
+  }
 
 
   .loading {
-   image-orientation: 40px;
+    image-orientation: 40px;
   }
 
   .input {
-      max-width: 500px;
-    }
-
-    .title {
-      font-family: 'Poiret One', cursive;
-    }
-
-    .subtitle {
-      font-family: 'Poiret One', cursive;
-    }
-
-
-    hr {
-      border: 1px solid $hr-color;
-   }
-
-   h3 {
-     font-size: 30px;
-   }
-
-   .div-frame {
-     padding-top: 70px;
-   }
-
-   i {
-    font-size: 20px;
-   }
-
+    max-width: 500px;
   }
+
+  .title {
+    font-family: 'Poiret One', cursive;
+  }
+
+  .subtitle {
+    font-family: 'Poiret One', cursive;
+  }
+
+
+  hr {
+    border: 1px solid $hr-color;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  .div-frame {
+    padding-top: 70px;
+  }
+
+  i {
+    font-size: 20px;
+  }
+
+}
 
   .footer {
     background-color: #363636;
@@ -97,21 +99,21 @@ body {
     margin-top: auto; // ---> new Feature
   }
 
-  .user-background {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #f9fbff;
-    min-height: 800px;
-  }
+.user-background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f9fbff;
+  min-height: 800px;
+}
 
-  .aboutus-background {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+.aboutus-background {
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
-  .AboutUs {
-    background-size: cover;
-    background-image: url('./images/background-images/blackbeach.jpg');
-  }
+.AboutUs {
+  background-size: cover;
+  background-image: url('./images/background-images/blackbeach.jpg');
+}
 
   section {
     display: flex;
@@ -123,8 +125,8 @@ body {
 
 
 .profile {
-    max-width: 800px;
-  }
+  max-width: 800px;
+}
 
 .card {
   border-radius: 50%;
@@ -136,16 +138,15 @@ body {
     box-shadow: none; // ---> new Feature
   }
 
-  img {
+  figure.img-profile {
+    background-position: center;
+    background-size: cover;
     border-radius: 50%;
-    height: 298px;
-    width: 298px;
   }
 
-  figure {
-   text-align: center;
+  .card-content {
+    text-align: center;
   }
-
 }
 
 .columns-profile {
@@ -202,22 +203,22 @@ input {
   transition: background-image 2s ease;
 }
 
-  .location-container {
-    display: flex;
-    align-items: center;
+.location-container {
+  display: flex;
+  align-items: center;
 
-    button {
-      margin-top: 20px;
-    }
+  button {
+    margin-top: 20px;
   }
+}
 
-  .edit-form {
-    display: flex;
-    justify-content: center;
-  }
-  .editform-input {
-    max-width: 140px;
-  }
+.edit-form {
+  display: flex;
+  justify-content: center;
+}
+.editform-input {
+  max-width: 140px;
+}
 
 
 .age-range {
@@ -248,7 +249,6 @@ input {
   .title-container {
     // background-color: rgba(0, 0, 0, 0.3); ----> new Feature
     max-width: 600px;
-    height: 250px;
     border-radius: 10px;
 
     .title {
@@ -264,6 +264,7 @@ input {
       font-size: 20px;
       width: 130px;
       border-radius: 15px;
+      margin-bottom: 20px;
     }
   }
 }
