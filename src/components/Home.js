@@ -26,7 +26,7 @@ class Home extends React.Component {
       }}>
         <div className="container title-container has-text-centered">
           <h1 className="title logohome is-1"> CRUSH </h1>
-          <h2 className="subtitle is-2"> DESIGNED FOR YOU </h2>
+          <h2 className="subtitle is-2"> MAKE DREAMS A REALITY </h2>
           <button className="button is-danger">Sign Up</button>
         </div>
       </section>

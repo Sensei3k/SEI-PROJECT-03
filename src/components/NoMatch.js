@@ -3,7 +3,7 @@ import React from 'react'
 const NoMatch = () => {
 
   return (
-    <section className="hero is-fullheight">
+    <section className="hero has-background-white is-fullheight">
       <div className="hero-body has-text-centered is-vcentered">
         <div className="container">
           <p className="title is-4">We didnt find any Matches 😕. But Dont give up hope, try expanding your search 😄!</p>

@@ -98,7 +98,7 @@ class UserEdit extends React.Component {
           <form className="edit-form columns is-multiline is-mobile" onSubmit={this.handleSubmit}>
             <div className="column is-half-desktop is-full-tablet is-mobile level-left">
               <div className="field">
-                <label className="label">Profile Photo</label>
+                <label className="label has-text-black">Profile Photo</label>
                 <ReactFilestack
                   apikey={process.env.FILESTACK}
                   buttonText="Upload Photo"
@@ -127,7 +127,7 @@ class UserEdit extends React.Component {
             <div className="column is-half-desktop is-full-tablet is-mobile">
               <div className="container location-container is-flex">
                 <div className="field">
-                  <label className="label">Location</label>
+                  <label className="label has-text-black">Location</label>
                   <div className="select">
                     <select name="location" onChange={this.handleChange} value={this.state.data.location || ''}>
                       <option value="">Select</option>
@@ -147,7 +147,7 @@ class UserEdit extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Match Radius</label>
+                  <label className="label has-text-black">Match Radius</label>
                   <div className="control">
                     <input
                       className="input editform-input"
@@ -168,7 +168,7 @@ class UserEdit extends React.Component {
               </div>
               <div className="container is-flex age-range">
                 <div className="field">
-                  <label className="label">Min Age Range</label>
+                  <label className="label has-text-black">Min Age Range</label>
                   <div className="control">
                     <input
                       className="input editform-input"
@@ -181,7 +181,7 @@ class UserEdit extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Max Age Range</label>
+                  <label className="label has-text-black">Max Age Range</label>
                   <div className="control">
                     <input
                       className="input editform-input"
@@ -195,7 +195,7 @@ class UserEdit extends React.Component {
                 </div>
               </div>
               <div className="field">
-                <label className="label">About Me</label>
+                <label className="label has-text-black">About Me</label>
                 <div className="control">
                   <input
                     className="input"
@@ -207,7 +207,7 @@ class UserEdit extends React.Component {
                 </div>
               </div>
               <div className="field">
-                <label className="label">Interests</label>
+                <label className="label has-text-black">Interests</label>
                 <div className="control">
                   <input
                     className="input"
@@ -220,7 +220,7 @@ class UserEdit extends React.Component {
               </div>
               <div className="genders-container">
                 <div className="field">
-                  <label className="label">Gender</label>
+                  <label className="label has-text-black">Gender</label>
                   <div className="control">
                     <div className="select">
                       <select name="gender" onChange={this.handleChange} value={this.state.data.gender || ''}>
@@ -234,7 +234,7 @@ class UserEdit extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Interested In</label>
+                  <label className="label has-text-black">Interested In</label>
                   <div className="control">
                     <div className="select">
                       <select name="interestedIn" onChange={this.handleChange} value={this.state.data.interestedIn || ''}>
