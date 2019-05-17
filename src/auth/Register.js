@@ -49,7 +49,7 @@ class Register extends React.Component {
     console.log(this.state.errors.username)
     return (
       <section className="section">
-        <div className="container">
+        <div className="container responsive">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
               <form onSubmit={this.handleSubmit}>

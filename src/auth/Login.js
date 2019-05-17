@@ -38,8 +38,8 @@ class Login extends React.Component {
   render() {
     return (
       <section className="section">
-        <div className="container">
-          <div className="columns is-centered">
+        <div className="container responsive">
+          <div className="columns is-centered is-mobile">
             <div className="column is-half-desktop is-two-thirds-tablet">
               <form onSubmit={this.handleSubmit}>
 
@@ -60,8 +60,8 @@ class Login extends React.Component {
                   {this.state.error && <div className="help is-danger">{this.state.error}</div>}
 
                 </div>
-                <br/>
-                <button className="button is-info submit-edit-button">Submit</button>
+
+                <button className="button is-primary">Submit</button>
               </form>
             </div>
           </div>

@@ -94,7 +94,7 @@ class UserEdit extends React.Component {
     if(!this.state.data._id) return <Loading />
     return (
       <section className="section user-background">
-        <div className="container edit-container">
+        <div className="container responsive edit-container">
           <form className="edit-form columns is-multiline is-mobile" onSubmit={this.handleSubmit}>
             <div className="column is-half-desktop is-full-tablet is-mobile level-left">
               <div className="field">

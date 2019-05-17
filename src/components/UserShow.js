@@ -74,7 +74,7 @@ class UserShow extends React.Component {
     return (
       <section>
         <section className="section user-background">
-          <div className="container profile">
+          <div className="container responsive profile">
             <div className="columns is-multiline is-mobile columns-profile">
               <div className="column is-half-desktop img-profile">
                 <figure className="image-profile">
