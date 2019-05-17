@@ -6,12 +6,13 @@ $hr-color: #B0E2FF;
 
 main {
   display: flex;
-  height: 100vh;
-  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  flex-direction: column; // ---> new Feature
 }
 
 body {
-      // background-image: url('./images/background-images/stagingbackground.jpg');
+      // background-image: url('./images/background-images/stagingbackground.jpg'); // ---> new Feature
       background-size: cover;
       min-height: 100vh;
     a.navbar-item {
@@ -93,7 +94,7 @@ body {
   .footer {
     background-color: #363636;
     height: 50px;
-    margin-top: auto; // New Feature
+    margin-top: auto; // ---> new Feature
   }
 
   .user-background {
@@ -132,7 +133,7 @@ body {
   box-shadow: none;
 
   .card-header {
-    box-shadow: none;
+    box-shadow: none; // ---> new Feature
   }
 
   img {
@@ -242,10 +243,10 @@ input {
 .home-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; // ---- new Feature
 
   .title-container {
-    // background-color: rgba(0, 0, 0, 0.3); ---- new Feature
+    // background-color: rgba(0, 0, 0, 0.3); ----> new Feature
     max-width: 600px;
     height: 250px;
     border-radius: 10px;
