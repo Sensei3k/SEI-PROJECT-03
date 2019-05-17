@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
-import moment from 'moment'
 import { ToastContainer, toast } from 'react-toastify'
 
 import Auth from '../lib/Auth'
@@ -24,7 +22,6 @@ class UserShow extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.displayAge = this.displayAge.bind(this)
   }
 
   handleChange(e) {
@@ -36,18 +33,17 @@ class UserShow extends React.Component {
     e.preventDefault()
     e.target.reset()
 
-    const token = Auth.getToken()
-
-    axios.post(`/api/users/${this.state.user._id}/comments`, this.state.data, { headers: {'Authorization': `Bearer ${token}` }
+    axios.post(`/api/users/${this.state.user._id}/comments`, this.state.data, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => this.props.history.push(`/users/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
-
   }
 
-
   getUser() {
-    axios.get(`/api/users/${this.props.match.params.id}`)
+    axios.get(`/api/users/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => this.setState({ user: res.data }))
   }
 
@@ -59,13 +55,6 @@ class UserShow extends React.Component {
     if(prevProps.location.pathname !== this.props.location.pathname) {
       this.getUser()
     }
-  }
-
-  displayAge(){
-    const str = this.state.user.dateOfBirth
-    const dob = str.substr(0,9)
-    const years = moment().diff(dob, 'years')
-    return years
   }
 
   canModify() {
@@ -86,7 +75,7 @@ class UserShow extends React.Component {
               </div>
               <div className="column is-half-desktop">
                 <p className="subtitle is-4">Name: {this.state.user.username}</p>
-                <p className="subtitle">Age: {this.displayAge()}</p>
+                <p className="subtitle">Age: {this.state.user.age}</p>
                 <p className="subtitle">Location: {this.state.user.location}</p>
                 <div className="container is-flex">
                   {/*button for editing profiles*/}
@@ -164,7 +153,6 @@ class UserShow extends React.Component {
           toastClassName="location-toast"
         />
       </section>
-
     )
   }
 }

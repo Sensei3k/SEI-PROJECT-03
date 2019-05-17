@@ -1,12 +1,10 @@
 import React from 'react'
-import axios from 'axios'
-//import Auth from '../lib/Auth'
-
 import ReactFilestack from 'filestack-react'
+import Loading from './Loading'
+import Auth from '../lib/Auth'
+import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import Footer from './Footer'
-
-import Loading from './Loading'
 
 const options = {
   accept: 'image/*',
@@ -18,14 +16,14 @@ const options = {
 }
 
 class UserEdit extends React.Component {
-
   constructor(props) {
     super(props)
 
     this.state = {
       data: {},
       errors: {},
-      file: null
+      file: null,
+      submitDisabled: true
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -42,10 +40,11 @@ class UserEdit extends React.Component {
   }
 
   handleSubmit(e) {
-
     e.preventDefault()
-
-    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data)
+    //update the user's details in the database
+    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => {
         this.props.history.push(`/users/${res.data._id}`)
       })
@@ -53,12 +52,14 @@ class UserEdit extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/users/${this.props.match.params.id}`)
+    //load the user's current data
+    axios.get(`/api/users/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(res => this.setState({ data: res.data }))
   }
 
   updateLocation(e) {
-
     e.preventDefault()
 
     navigator.geolocation.watchPosition((position) => {
@@ -154,9 +155,8 @@ class UserEdit extends React.Component {
                     <label className="label has-text-black">Match Radius</label>
                     <div className="control">
                       <input
+                        type="number"
                         className="input editform-input"
-                        type="text"
-                        pattern="[0-9]*"
                         name="radius"
                         placeholder="please enter the maximum distance (km) for your matches"
                         onChange={this.handleChange}
@@ -180,7 +180,7 @@ class UserEdit extends React.Component {
                         name="minAge"
                         placeholder="eg. 25"
                         onChange={this.handleChange}
-                        value={this.state.data.minAge || '21'}
+                        value={this.state.data.minAge}
                       />
                     </div>
                   </div>
@@ -193,7 +193,7 @@ class UserEdit extends React.Component {
                         name="maxAge"
                         placeholder="eg. 35"
                         onChange={this.handleChange}
-                        value={this.state.data.maxAge || '45'}
+                        value={this.state.data.maxAge}
                       />
                     </div>
                   </div>
@@ -305,7 +305,6 @@ class UserEdit extends React.Component {
     )
   }
 }
-
 
 
 export default UserEdit
