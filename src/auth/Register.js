@@ -158,11 +158,3 @@ class Register extends React.Component {
 
 
 export default Register
-
-
-
-
-
-
-
-// <button onClick={this.ageValidator}>verify age</button>

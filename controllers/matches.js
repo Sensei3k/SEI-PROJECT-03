@@ -86,7 +86,6 @@ function matchRoute(req, res, next) {
         // if the user and potential match pass the conditions below they are a match
         if(!matchId.equals(userId) && (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender) && similarInterests.length > 2 && distanceApart < userRadius && distanceApart < matchRadius) {
           arrayOfMatches.push(match)
-          console.log(distanceApart, matchId)
         }
 
       })
