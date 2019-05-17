@@ -39,26 +39,12 @@ class Login extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <section className="section">
-        <div className="container responsive">
-          <div className="columns is-centered is-mobile">
-            <div className="column is-half-desktop is-two-thirds-tablet">
-              <form onSubmit={this.handleSubmit}>
-
-                <div className="field">
-                  <label className="label">Email</label>
-                  <div className="control">
-                    <input className="input" name="email" placeholder="eg: leela@planetexpress.nnyc" onChange={this.handleChange} />
-                  </div>
-=======
       <section>
         <section className="section">
           <div className="container">
             <div className="columns is-centered">
               <div className="column is-half-desktop is-two-thirds-tablet">
                 <form onSubmit={this.handleSubmit}>
->>>>>>> development
 
                   <div className="field">
                     <label className="label">Email</label>
@@ -74,12 +60,6 @@ class Login extends React.Component {
                       <input className="input" name="password" type="password" placeholder="eg: ••••••••" onChange={this.handleChange} />
                     </div>
 
-<<<<<<< HEAD
-                </div>
-
-                <button className="button is-primary">Submit</button>
-              </form>
-=======
                     {this.state.error && <div className="help is-danger">{this.state.error}</div>}
 
                   </div>
@@ -87,7 +67,6 @@ class Login extends React.Component {
                   <button className="button is-danger submit-edit-button">Submit</button>
                 </form>
               </div>
->>>>>>> development
             </div>
           </div>
         </section>
