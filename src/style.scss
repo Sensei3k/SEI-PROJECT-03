@@ -1,24 +1,51 @@
 $hr-color: #B0E2FF;
 
 .footer {
-  background-color: teal;
+  background-color: #202020;
 }
 
 body {
-  min-height: 100vh;
-
+      background-image: url('./images/background-images/stagingbackground.jpg');
+      background-size: cover;
+      min-height: 100vh;
     a.navbar-item {
       padding-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      font-family: 'Poiret One', cursive;
+      &:hover.navbar-item {
+        color: #77DCFF !important;
+      }
+    }
 
+    .logohome {
+      font-weight: bold;
+      font-size: 18px;
+      font-family: 'Monoton', cursive !important;
+      color: white;
+    }
+
+    .headshots {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .label{
+      color: white;
     }
 
     a.navbar-home {
-      width: 80px;
+      font-family: 'Monoton', cursive;
+      font-size: 25px;
+      font-weight: bold;
+      width: 127px;
       padding-top: 10px;
-      background-image: url('./images/logos/h-logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      &:hover {
+        color: #77DCFF !important;
+      }
     }
 
 
@@ -28,6 +55,14 @@ body {
 
   .input {
       max-width: 500px;
+    }
+
+    .title {
+      font-family: 'Poiret One', cursive;
+    }
+
+    .subtitle {
+      font-family: 'Poiret One', cursive;
     }
 
 
@@ -50,7 +85,7 @@ body {
   }
 
   .footer {
-    background-color: #151515;
+    background-color: #363636;
     height: 50px;
   }
 
@@ -104,6 +139,7 @@ body {
 
 .edit-form {
   display: flex;
+  // height: 100vh;
 }
 
 .img-profile {
@@ -185,6 +221,10 @@ input {
   align-items: center;
 }
 
+.section {
+  height: 80vh;
+}
+
 .home-container {
   display: flex;
   align-items: center;
@@ -210,6 +250,7 @@ input {
       border-radius: 15px;
     }
   }
+<<<<<<< HEAD
 }
 
 @media only screen and (min-width: 1024px){
@@ -232,3 +273,5 @@ input {
     margin: 50px auto;
   }
 }
+=======
+>>>>>>> development

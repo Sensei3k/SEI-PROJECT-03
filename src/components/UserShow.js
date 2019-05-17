@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+
+import moment from 'moment'
+import { ToastContainer, toast } from 'react-toastify'
+
 import Auth from '../lib/Auth'
 import CommentCard from './CommentCard'
 import Loading from './Loading'
-import moment from 'moment'
 import Footer from './Footer'
+
 
 class UserShow extends React.Component {
 
@@ -26,7 +30,6 @@ class UserShow extends React.Component {
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data: data })
-    console.log(this.state)
   }
 
   handleSubmit(e) {
@@ -35,7 +38,7 @@ class UserShow extends React.Component {
 
     const token = Auth.getToken()
 
-    axios.post(`api/users/${this.state.user._id}/comments`, this.state.data, { headers: {'Authorization': `Bearer ${token}` }
+    axios.post(`/api/users/${this.state.user._id}/comments`, this.state.data, { headers: {'Authorization': `Bearer ${token}` }
     })
       .then(res => this.props.history.push(`/users/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
@@ -44,7 +47,7 @@ class UserShow extends React.Component {
 
 
   getUser() {
-    axios.get(`api/users/${this.props.match.params.id}`)
+    axios.get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
   }
 
@@ -140,15 +143,26 @@ class UserShow extends React.Component {
                   <form onSubmit={this.handleSubmit}>
                     <textarea rows="4" cols="60" className="leave-comment" type="text" name="content" placeholder="Max: 280 characters" value={this.state.value} onChange={this.handleChange} />
                     <br/>
-                    <button className="button is-info submit-edit-button">Post</button>
+                    <button className="button is-info submit-edit-button"
+                      onClick={toast}>
+                    Post</button>
                   </form>
                 }
               </div>
             </div>
           </div>
         </section>
-
         <Footer />
+        <ToastContainer
+          enableMultiContainer
+          containerId= "A"
+          position="top-right"
+          hideProgressBar={true}
+          rtl={false}
+          closeOnClick
+          autoClose={2000}
+          toastClassName="location-toast"
+        />
       </section>
 
     )
