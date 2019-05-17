@@ -24,7 +24,7 @@ const AboutUs = () => {
             </figure>
 
             <figure className="image is-128x128">
-              <img className="is-rounded" src="./images/cpu-profile-images/John.jpg"></img>
+              <img className="is-rounded" src="./images/cpu-profile-images/comic.jpg"></img>
             </figure>
 
             <figure className="image is-128x128">

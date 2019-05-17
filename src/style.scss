@@ -86,10 +86,10 @@ body {
 
 }
 
-.footer {
-  background-color: #151515;
-  height: 50px;
-}
+  .footer {
+    background-color: #363636;
+    height: 50px;
+  }
 
 .user-background {
   background-repeat: no-repeat;
@@ -146,6 +146,7 @@ section {
 
 .edit-form {
   display: flex;
+  // height: 100vh;
 }
 
 .img-profile {
@@ -227,10 +228,14 @@ input {
   align-items: center;
 }
 
+.section {
+  height: 80vh;
+}
+
 .home-container {
   display: flex;
   align-items: center;
-  
+
   .title-container {
     background-color: rgba(0, 0, 0, 0.3);
     max-width: 600px;
@@ -251,5 +256,26 @@ input {
       border-radius: 15px;
       margin-bottom: 20px;
     }
+  }
+}
+
+@media only screen and (min-width: 1024px){
+  .responsive{
+    width: 80%;
+    margin: 50px auto;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .responsive{
+    width: 95%;
+    margin: 50px auto;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .responsive{
+    width: 99%;
+    margin: 50px auto;
   }
 }
