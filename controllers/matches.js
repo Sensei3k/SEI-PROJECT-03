@@ -51,19 +51,12 @@ function matchRoute(req, res, next) {
         //that they meet eachothers radius requirements
         const distanceApart = calcDistance(userCoordinates, matchCoordinates)
         const distanceRequirement = distanceApart < userRadius && distanceApart < matchRadius
-        console.log(userCoordinates, 'user coordinates', matchCoordinates, 'match coordinates')
-        console.log(distanceRequirement, 'distance req')
 
         //check if the potential match meets users age requirements and vice versa
         const ageRequirement = matchAge < userMaxAge && matchAge > userMinAge && userAge < matchMaxAge && userAge > matchMinAge
-        console.log(ageRequirement, 'age req')
-        console.log(userAge, 'user age', matchAge, 'match age')
-        console.log(userMinAge, 'user min age', userMaxAge, 'user max age', matchMinAge, 'match min age', matchMaxAge, 'match max age')
 
         //check if the potential match meets gender preference requirements and vice versa
         const interestRequirement = (userInterestedIn === 'Both' || userInterestedIn === matchGender) && (matchInterestedIn === 'Both' || matchInterestedIn === userGender)
-        console.log(interestRequirement, 'interest req')
-
 
         return (!matchId.equals(userId) && interestRequirement && distanceRequirement && ageRequirement)
 

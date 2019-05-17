@@ -23,7 +23,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.0555
     },
     radius: 20,
-    image: '../images/cpu-profile-images/placeholder.jpg',
+    image: '/images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -42,7 +42,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.2055
     },
     radius: 20,
-    image: '../images/cpu-profile-images/placeholder.jpg',
+    image: '/images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -62,7 +62,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.1008
     },
     radius: 20,
-    image: '../images/cpu-profile-images/elmo.jpg',
+    image: '/images/cpu-profile-images/elmo.jpg',
     gender: 'Female',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -82,7 +82,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.1419
     },
     radius: 20,
-    image: '../images/cpu-profile-images/placeholder.jpg',
+    image: '/images/cpu-profile-images/placeholder.jpg',
     gender: 'Male',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -102,7 +102,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.0072
     },
     radius: 20,
-    image: '../images/cpu-profile-images/Luke.jpg',
+    image: '/images/cpu-profile-images/Luke.jpg',
     gender: 'Male',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -122,7 +122,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.0184
     },
     radius: 20,
-    image: '../images/cpu-profile-images/Harrison.jpg',
+    image: '/images/cpu-profile-images/Harrison.jpg',
     gender: 'Male',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -142,7 +142,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.1026
     },
     radius: 20,
-    image: '../images/cpu-profile-images/Lara.jpg',
+    image: '/images/cpu-profile-images/Lara.jpg',
     gender: 'Female',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -162,7 +162,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.1562
     },
     radius: 20,
-    image: '../images/cpu-profile-images/Veronica.jpg',
+    image: '/images/cpu-profile-images/Veronica.jpg',
     gender: 'Female',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -182,7 +182,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.2068
     },
     radius: 20,
-    image: '../images/cpu-profile-images/Hannah.jpg',
+    image: '/images/cpu-profile-images/Hannah.jpg',
     gender: 'Female',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
@@ -202,7 +202,7 @@ mongoose.connect(dbUri, (err, db) => {
       longitude: 0.0875
     },
     radius: 20,
-    image: '../images/cpu-profile-images/Valentina.jpg',
+    image: '/images/cpu-profile-images/Valentina.jpg',
     gender: 'Female',
     interestedIn: 'Both',
     interests: 'biking, swimming, hiking, eating, music'
