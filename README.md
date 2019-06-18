@@ -18,6 +18,9 @@ In terminal run 3 things: mongod, yarn run:server, yarn run:client
 link to hosted version ----> http://crush-sei.herokuapp.com/#/
 
 ## Application Overview
+
+<img width="1414" alt="Screenshot 2019-06-18 at 16 38 19" src="https://user-images.githubusercontent.com/45519121/59702494-c469f380-91ef-11e9-93de-6f49341739de.png">
+
 The premise of our Web App, wasn’t to try and create something that had never been done before, but rather to demonstrate what we had learned so far on the course, all the while challenging ourselves to learn something completely new, that we’d not yet learned on the course. Therefore the main focus of our project was our multiple matching algorithms, which worked by extracting the data that was input by each user as they edited their profile. 
 
 ## Process
@@ -25,13 +28,15 @@ When breaking down our project, we decided to do so in what seemed like the most
 
 We decided to tackle some of the biggest and most important challenges first. For us this was on the backend with the Matching Algorithms. Being aware that all the popular Dating Applications available pay millions of pounds to get their matching algorithms working to such a high standard, we knew it was going to be pretty tricky to try and replicate even a fraction of what they do, and we only had a week to do so. Please see pictures below for our Matching algorithms. *Location Matching*
 
+<img width="1224" alt="Screenshot 2019-06-18 at 16 48 35" src="https://user-images.githubusercontent.com/45519121/59702754-5c67dd00-91f0-11e9-97eb-6033bf18c74d.png">
 
 Another big challenge for us was setting up an internal messaging system so that, once matched with one another, users could communicate with each other. As the week went on, and we started running out of time, we realised it was going to be risky to try and get this finished before the end of the week. But we wanted the users to still be able to react out to one another, therefore we went with a compromise, which was comments. We wanted to make it so that the user could leave a comment on any of their matches profiles and that message would be stored in on that user through the user of a commentSchema in the user model, which can be seen in the picture below.
 
+When it came to writing the Frontend for the comments section, we wanted the comments to be private so that they would act a bit more like an internal messaging system. We felt this would be more user friendly as it would mean that only the user who’s profile it is can see the comments people have left on their profile. The user would then be able to click on the comment and it would redirect them to the profile of whoever left the comment, and allow them to reply by writing a comment on their profile.
 
-When it came to writing the Frontend for the comments section, we wanted the comments to be private so that they would act a bit more like an internal messaging system. We felt this would be more user friendly as it would mean that only the user who’s profile it is can see the comments people have left on their profile. The user would then be able to click on the comment and it would redirect them to the profile of whoever left the comment, and allow them to reply by writing a comment on their profile.The code for this is below:
+<img width="866" alt="Screenshot 2019-06-18 at 16 49 16" src="https://user-images.githubusercontent.com/45519121/59702981-e152f680-91f0-11e9-9cb5-5edc5f1a9649.png">
 
-
+<img width="427" alt="Screenshot 2019-06-18 at 16 49 32" src="https://user-images.githubusercontent.com/45519121/59703033-fc256b00-91f0-11e9-93a9-0d89735d3057.png">
 
 *Homepage*
 When it came to the homepage, we had a couple of different approaches. Initially we thought it would be better to
