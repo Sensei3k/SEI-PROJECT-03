@@ -11,7 +11,7 @@ Mongoose, MongoDB
 Git + GitHub
 
 ## Installation
-Clone or download the repo 
+Clone or download the repo
 In terminal run 3 things: mongod, yarn run:server, yarn run:client
 
 ## Our Web Application - Crush
@@ -22,7 +22,7 @@ link to hosted version ----> http://crush-sei.herokuapp.com/#/
 
 <img width="1414" alt="Screenshot 2019-06-18 at 16 38 19" src="https://user-images.githubusercontent.com/45519121/59702494-c469f380-91ef-11e9-93de-6f49341739de.png">
 
-The premise of our Web App, wasn’t to try and create something that had never been done before, but rather to demonstrate what we had learned so far on the course, all the while challenging ourselves to learn something completely new, that we’d not yet learned on the course. Therefore the main focus of our project was our multiple matching algorithms, which worked by extracting the data that was input by each user as they edited their profile. 
+The premise of our Web App, wasn’t to try and create something that had never been done before, but rather to demonstrate what we had learned so far on the course, all the while challenging ourselves to learn something completely new, that we’d not yet learned on the course. Therefore the main focus of our project was our multiple matching algorithms, which worked by extracting the data that was input by each user as they edited their profile.
 
 
 ## Process
@@ -44,12 +44,12 @@ When it came to writing the Frontend for the comments section, we wanted the com
 
 When it came to the homepage, we had a couple of different approaches. Initially we thought it would be better to
 have a static image on the page, with some information describing our website to users visiting the website with a
-CTA (Call to action) that would prompt the user to sign up. In the end we settled for keeping the CTA as it was but 
-instead of having a static background image, we decided to have the images on the homepage transition to different 
-images on a set interval of 4 seconds. 
+CTA (Call to action) that would prompt the user to sign up. In the end we settled for keeping the CTA as it was but
+instead of having a static background image, we decided to have the images on the homepage transition to different
+images on a set interval of 4 seconds.
 
-To achieve this, we had to create a seperate file path of images in an array that would be displayed on the homepage 
-background. Then import those images into the home file path and then set them on an interval of 4 seconds on an 
+To achieve this, we had to create a seperate file path of images in an array that would be displayed on the homepage
+background. Then import those images into the home file path and then set them on an interval of 4 seconds on an
 ease transition method in scss. To make the visual transition look seamless.
 
 <img width="732" alt="Screenshot 2019-06-19 at 08 59 09" src="https://user-images.githubusercontent.com/45519121/59747300-84972080-9270-11e9-9b53-81730d1d5456.png">
@@ -58,7 +58,7 @@ We were pleased with the upload photo feature, which like other dating apps, wou
 
 <img width="782" alt="Screenshot 2019-06-19 at 09 00 10" src="https://user-images.githubusercontent.com/45519121/59747391-b6a88280-9270-11e9-9f0a-2230f88256de.png">
 
- 
+
 ## Challenges
 - Delegating work
 - Managing our expectations
