@@ -30,9 +30,13 @@ When breaking down our project, we decided to do so in what seemed like the most
 
 We decided to tackle some of the biggest and most important challenges first. For us this was on the backend with the Matching Algorithms. Being aware that all the popular Dating Applications available pay millions of pounds to get their matching algorithms working to such a high standard, we knew it was going to be pretty tricky to try and replicate even a fraction of what they do, and we only had a week to do so. Please see pictures below for our Matching algorithms.
 
+<img width="699" alt="Screenshot 2019-06-19 at 08 55 40" src="https://user-images.githubusercontent.com/45519121/59747117-236f4d00-9270-11e9-9d1a-d60683ed2161.png">
+
 <img width="1224" alt="Screenshot 2019-06-18 at 16 48 35" src="https://user-images.githubusercontent.com/45519121/59702754-5c67dd00-91f0-11e9-97eb-6033bf18c74d.png">
 
 Another big challenge for us was setting up an internal messaging system so that, once matched with one another, users could communicate with each other. As the week went on, and we started running out of time, we realised it was going to be risky to try and get this finished before the end of the week. But we wanted the users to still be able to react out to one another, therefore we went with a compromise, which was comments. We wanted to make it so that the user could leave a comment on any of their matches profiles and that message would be stored in on that user through the user of a commentSchema in the user model, which can be seen in the picture below.
+
+<img width="765" alt="Screenshot 2019-06-19 at 08 57 36" src="https://user-images.githubusercontent.com/45519121/59747192-4d287400-9270-11e9-9e90-d4f5e4923795.png">
 
 When it came to writing the Frontend for the comments section, we wanted the comments to be private so that they would act a bit more like an internal messaging system. We felt this would be more user friendly as it would mean that only the user who’s profile it is can see the comments people have left on their profile. The user would then be able to click on the comment and it would redirect them to the profile of whoever left the comment, and allow them to reply by writing a comment on their profile.
 
@@ -48,24 +52,28 @@ To achieve this, we had to create a seperate file path of images in an array tha
 background. Then import those images into the home file path and then set them on an interval of 4 seconds on an 
 ease transition method in scss. To make the visual transition look seamless.
 
+<img width="732" alt="Screenshot 2019-06-19 at 08 59 09" src="https://user-images.githubusercontent.com/45519121/59747300-84972080-9270-11e9-9b53-81730d1d5456.png">
+
 We were pleased with the upload photo feature, which like other dating apps, would allow you to upload a photo from a range of different places including: social media platforms, images stored on your device or even take one from your device at that moment (if you were using a smart phone as opposed to a computer. To do so we used a package called file stack which we installed through the terminal and imported onto the relevant page in atom. Handle upload function was then written to tell the computer what to do with the image once the user had selected ‘upload’. The code for this can be seen below. The snippets have been taken from the UserEdit.js page.
+
+<img width="782" alt="Screenshot 2019-06-19 at 09 00 10" src="https://user-images.githubusercontent.com/45519121/59747391-b6a88280-9270-11e9-9f0a-2230f88256de.png">
 
  
 ## Challenges
-Delegating work:
-Managing our expectations:
-Matching Algorithms:
-Getting forms to look how we wanted them to:
-Git merging:
-Time Constraints
+- Delegating work
+- Managing our expectations
+- Matching Algorithms
+- Getting forms to look how we wanted them to
+- Git merging
+- Time Constraints
 
 
 ## Wins
-Matching Algorithms:
-Attention grabbing homepage:
-Ability to communicate with matches:
-User friendly features: loading page, no matches found page, user path redirection - register to login, to user profile, to edit profile or matches etc.
-We had fun making it:
+- Matching Algorithms
+- Attention grabbing homepage
+- Ability to communicate with matches
+- User friendly features: loading page, no matches found page, user path redirection - register to login, to user profile, to - edit profile or matches etc.
+- We had fun making it
 
 
 ## Future Features
