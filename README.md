@@ -36,9 +36,7 @@ Another big challenge for us was setting up an internal messaging system so that
 
 When it came to writing the Frontend for the comments section, we wanted the comments to be private so that they would act a bit more like an internal messaging system. We felt this would be more user friendly as it would mean that only the user who’s profile it is can see the comments people have left on their profile. The user would then be able to click on the comment and it would redirect them to the profile of whoever left the comment, and allow them to reply by writing a comment on their profile.
 
-<img width="343" alt="Screenshot 2019-06-18 at 16 49 16" src="https://user-images.githubusercontent.com/45519121/59746583-1ef66480-926f-11e9-9472-977eb9de1c29.png">
-
-<img width="427" alt="Screenshot 2019-06-18 at 16 49 32" src="https://user-images.githubusercontent.com/45519121/59703033-fc256b00-91f0-11e9-93a9-0d89735d3057.png">
+<img width="343" alt="Screenshot 2019-06-18 at 16 49 16" src="https://user-images.githubusercontent.com/45519121/59746583-1ef66480-926f-11e9-9472-977eb9de1c29.png"> <img width="427" alt="Screenshot 2019-06-18 at 16 49 32" src="https://user-images.githubusercontent.com/45519121/59703033-fc256b00-91f0-11e9-93a9-0d89735d3057.png">
 
 When it came to the homepage, we had a couple of different approaches. Initially we thought it would be better to
 have a static image on the page, with some information describing our website to users visiting the website with a
